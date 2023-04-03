@@ -6,11 +6,17 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:46:02 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/04/03 12:57:17 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/04/03 14:47:08 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef	PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+
+#include <iostream>
+#include <string>
 #include "Contact.hpp"
+#include "PhoneBook.hpp"
 
 class	PhoneBook
 {
@@ -22,48 +28,81 @@ class	PhoneBook
 	void		do_search();
 	Contact		contact_list[8];
 	int		n_contacts;
-}
+};
 
-PhoneBook::init_flags()
+void	PhoneBook::init_flags()
 {
 	int	i = -1;
 
 	while (++i < 8)
-		this::contact_list[i]::is_init = 0;
+		this->contact_list[i]->is_init = 0;
 }
 
-PhoneBook::do_add(void)
+void	PhoneBook::do_add()
 {
 	int	i = 0;
 
-	while (this::contact_list[i]::is_init == 1 && i < 8)
+	while (this->contact_list[i]->is_init == 1 && i < 8)
 		i++;
 	if (i = 8)
 	{
-		std::cout << "The phonebook is full ! First entry (oldest) will be overwritten..." << std:endl;
+		std::cout << "The phonebook is full ! First entry (oldest) will be overwritten..." << std::endl;
 		i = 0;
 	}
 	std::cout << "[ADD] --- Please fill out those informations --- [ADD]" << std::endl;
 	std::cout << "First Name: ";
-	std::cin >> this::contact_list[i]::first_name;
+	std::cin >> this->contact_list[i]->first_name;
+	this->contact_list[i]->format_str(this->contact_list[i]->first_name, this->contact_list[i]->trunc_first_name);
 	std::cout << "Last Name: ";
-	std::cin >> this::contact_list[i]::last_name;
+	std::cin >> this->contact_list[i]->last_name;
+	this->contact_list[i]->format_str(this->contact_list[i]->last_name, this->contact_list[i]->trunc_last_name);
 	std::cout << "Nickname: ";
-	std::cin >> this::contact_list[i]::nickname;
+	std::cin >> this->contact_list[i]->nickname;
+	this->contact_list[i]->format_str(this->contact_list[i]->nickname, this->contact_list[i]->trunc_nickname);
 	std::cout << "Phone Number: ";
-	std::cin >> this::contact_list[i]::phone_number;
+	std::cin >> this->contact_list[i]->phone_number;
+	this->contact_list[i]->format_str(this->contact_list[i]->phone_number, this->contact_list[i]->trunc_phone_number);
 	std::cout << "Darkest Secret: ";
-	std::cin >> this::contact_list[i]::darkest_secret;
-	this::contact_list[i]::is_init = 1;
+	std::cin >> this->contact_list[i]->darkest_secret;
+	this->contact_list[i]->format_str(this->contact_list[i]->darkest_secret, this->contact_list[i]->trunc_darkest_secret);
+	this->contact_list[i].is_init = 1;
+	std::cout << "[ADD] --- Contact successfully created --- [ADD]" << std::endl;
 }
 
-PhoneBook::do_search(void)
+void	PhoneBook::do_search()
 {
-	int	i = 0;
+	int		i = 0;
+	std::string	index = "";
 
-	while (this::contact_list[i]::is_init == 1 && i < 8)
+	while (this->contact_list[i].is_init == 1 && i < 8)
 	{
-		if (std::strlen(this::contact_list[i]::first_name))
-		std::cout << this::contact_list[i]::first_name <<;
+		if (this->contact_list[i]->first_name.compare(this->contact_list[i]->trunc_first_name) == 0)
+			std::cout << this->contact_list[i]->first_name;
+		else
+			std::cout << this->contact_list[i]->trunc_first_name;
+		std::cout << " | ";
+		if (this->contact_list[i]->last_name.compare(this->contact_list[i]->trunc_last_name) == 0)
+			std::cout << this->contact_list[i]->last_name;
+		else
+			std::cout << this->contact_list[i]->trunc_last_name;
+		std::cout << " | ";
+		if (this->contact_list[i]->nickname.compare(this->contact_list[i]->trunc_nickname) == 0)
+			std::cout << this->contact_list[i]->nickname;
+		else
+			std::cout << this->contact_list[i]->trunc_nickname;
+		std::cout << " | ";
+		std::cout << i - '0'; << std::endl;
+		i++;
 	}
+	std::cout << "Please enter the ID of the contact you want to display : ";
+	std::cin >> index;
+	std::cout << endl;	
+	if (index[0] < '1' || index[0] > '8' || index[1] != '\0')
+	{
+		std::cout << "This ID is INVALID, IDs range from 1 to 8" << std::endl;
+		return ;
+	}
+	this->contact_list[(index[0] + '0')]->display_contact_info();
 }
+
+#endif

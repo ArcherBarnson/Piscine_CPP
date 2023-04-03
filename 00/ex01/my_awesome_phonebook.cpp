@@ -6,11 +6,14 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:03:13 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/04/03 12:57:22 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/04/03 14:47:04 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	exec_cmd(int cmd, PhoneBook phonebook);
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
+
+void	exec_cmd(int cmd, PhoneBook phonebook)
 {
 	if (cmd == 1)
 		phonebook::do_add();
