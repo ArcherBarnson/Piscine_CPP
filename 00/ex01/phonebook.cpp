@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:09:30 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/04/04 12:10:45 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/04/04 12:23:25 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	PhoneBook::do_add()
 	std::cout << "First Name: ";
 	std::cin >> this->contact_list[i].first_name;
 	this->contact_list[i].trunc_first_name = this->contact_list[i].format_str(this->contact_list[i].first_name);
-	//std::cout << "first name set as : " << this->contact_list[i].first_name << std::endl;
 	std::cout << "Last Name: ";
 	std::cin >> this->contact_list[i].last_name;
 	this->contact_list[i].trunc_last_name = this->contact_list[i].format_str(this->contact_list[i].last_name);
@@ -59,20 +58,13 @@ void	PhoneBook::do_search()
 	std::string	index;
 	char		display_index;
 
-	std::cout << this->contact_list[i].first_name << std::endl;
 	while (this->contact_list[i].is_init == 1 && i < 8)
 	{
 		display_index = (i + 1) + '0';
 		if (this->contact_list[i].first_name.compare(this->contact_list[i].trunc_first_name) == 0)
-		{
-			std::cout << "OK?" << std::endl;
 			std::cout << this->contact_list[i].first_name;
-		}
 		else
-		{
-			std::cout << "HUUUUH" << std::endl;
 			std::cout << this->contact_list[i].trunc_first_name;
-		}
 		std::cout << " | ";
 		if (this->contact_list[i].last_name.compare(this->contact_list[i].trunc_last_name) == 0)
 			std::cout << this->contact_list[i].last_name;

@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:13:12 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/04/04 12:11:45 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/04/04 12:23:23 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,16 @@ std::string	Contact::format_str(std::string str)
 	int	trunc_size = str.length() - 10;
 	std::string	tr;
 
-	tr = str;
 	if (trunc_size > 0)
 	{
+		tr = str;
 		tr.erase(i - trunc_size + 1, i);
 		tr[i - trunc_size] = '.';
+	}
+	else
+	{
+		str.resize(10, ' ');
+		tr = str;
 	}
 	return (tr);
 }
