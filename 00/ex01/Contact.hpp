@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 11:56:35 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/04/03 16:11:32 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/04/04 12:11:20 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 class	Contact
 {
 public:
-	void		format_str(std::string str, std::string tr);
-	void		display_contact_info();
 	int		is_init;
+	void		display_contact_info();
+	std::string	format_str(std::string str);
 	std::string	first_name;
 	std::string	last_name;
 	std::string	nickname;

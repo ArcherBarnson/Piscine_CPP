@@ -6,27 +6,25 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:13:12 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/04/03 17:26:48 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/04/04 12:11:45 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-void	Contact::format_str(std::string str, std::string tr)
+std::string	Contact::format_str(std::string str)
 {
-	int	i = str.length();
+	int	i = str.length() - 1;
 	int	trunc_size = str.length() - 10;
+	std::string	tr;
 
-	tr.assign(str);
-	if (tr.length() > 10)
+	tr = str;
+	if (trunc_size > 0)
 	{
-		while (trunc_size != 0)
-		{
-			tr.erase(tr[i]);
-			trunc_size--;
-		}
+		tr.erase(i - trunc_size + 1, i);
+		tr[i - trunc_size] = '.';
 	}
-	tr[i] = '.';
+	return (tr);
 }
 
 void	Contact::display_contact_info()

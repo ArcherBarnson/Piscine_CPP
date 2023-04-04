@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:09:30 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/04/03 17:26:46 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/04/04 12:10:45 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,20 @@ void	PhoneBook::do_add()
 	std::cout << "[ADD] --- Please fill out those informations --- [ADD]" << std::endl;
 	std::cout << "First Name: ";
 	std::cin >> this->contact_list[i].first_name;
-	this->contact_list[i].format_str(this->contact_list[i].first_name, this->contact_list[i].trunc_first_name);
+	this->contact_list[i].trunc_first_name = this->contact_list[i].format_str(this->contact_list[i].first_name);
 	//std::cout << "first name set as : " << this->contact_list[i].first_name << std::endl;
 	std::cout << "Last Name: ";
 	std::cin >> this->contact_list[i].last_name;
-	this->contact_list[i].format_str(this->contact_list[i].last_name, this->contact_list[i].trunc_last_name);
+	this->contact_list[i].trunc_last_name = this->contact_list[i].format_str(this->contact_list[i].last_name);
 	std::cout << "Nickname: ";
 	std::cin >> this->contact_list[i].nickname;
-	this->contact_list[i].format_str(this->contact_list[i].nickname, this->contact_list[i].trunc_nickname);
+	this->contact_list[i].trunc_nickname = this->contact_list[i].format_str(this->contact_list[i].nickname);
 	std::cout << "Phone Number: ";
 	std::cin >> this->contact_list[i].phone_number;
-	this->contact_list[i].format_str(this->contact_list[i].phone_number, this->contact_list[i].trunc_phone_number);
+	this->contact_list[i].trunc_phone_number = this->contact_list[i].format_str(this->contact_list[i].phone_number);
 	std::cout << "Darkest Secret: ";
 	std::cin >> this->contact_list[i].darkest_secret;
-	this->contact_list[i].format_str(this->contact_list[i].darkest_secret, this->contact_list[i].trunc_darkest_secret);
+	this->contact_list[i].trunc_darkest_secret = this->contact_list[i].format_str(this->contact_list[i].darkest_secret);
 	this->contact_list[i].is_init = 1;
 	std::cout << "[ADD] --- Contact successfully created --- [ADD]" << std::endl;
 }
@@ -59,13 +59,20 @@ void	PhoneBook::do_search()
 	std::string	index;
 	char		display_index;
 
+	std::cout << this->contact_list[i].first_name << std::endl;
 	while (this->contact_list[i].is_init == 1 && i < 8)
 	{
-		display_index = i + '0';
+		display_index = (i + 1) + '0';
 		if (this->contact_list[i].first_name.compare(this->contact_list[i].trunc_first_name) == 0)
+		{
+			std::cout << "OK?" << std::endl;
 			std::cout << this->contact_list[i].first_name;
+		}
 		else
+		{
+			std::cout << "HUUUUH" << std::endl;
 			std::cout << this->contact_list[i].trunc_first_name;
+		}
 		std::cout << " | ";
 		if (this->contact_list[i].last_name.compare(this->contact_list[i].trunc_last_name) == 0)
 			std::cout << this->contact_list[i].last_name;
@@ -89,5 +96,5 @@ void	PhoneBook::do_search()
 		return ;
 	}
 	index_access = index[0] - '0';
-	this->contact_list[index_access].display_contact_info();
+	this->contact_list[index_access - 1].display_contact_info();
 }

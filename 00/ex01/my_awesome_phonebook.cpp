@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:03:13 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/04/03 17:26:45 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/04/04 10:51:45 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	exec_cmd(int cmd, PhoneBook &phonebook)
 		phonebook.do_search();
 }
 
-int	check_cmd(std::string cmd, PhoneBook &phonebook)
+int	check_cmd(std::string cmd)
 {
-	if (cmd.compare(phonebook.add) == 0)
+	if (cmd.compare(ADD) == 0)
 		return (1);
-	if (cmd.compare(phonebook.search) == 0)
+	if (cmd.compare(SEARCH) == 0)
 		return (2);
 	return (0);
 }
@@ -37,12 +37,12 @@ int	main(void)
 
 	std::cout << "Welcome to MY AWESOME PHONEBOOK !" << std::endl;
 	phonebook.init_flags();
-	while (cmd.compare(phonebook.exit) != 0)
+	while (cmd.compare(EXIT) != 0)
 	{
 		std::cout << "Please enter a command (ADD, SEARCH, EXIT): ";
 		std::cin >> cmd;
 		//std::cout << "cmd is: " << cmd << std::endl;
-		exec_cmd(check_cmd(cmd, phonebook), phonebook);
+		exec_cmd(check_cmd(cmd), phonebook);
 	}
 	std::cout << "GOODBYE ! HAVE FUN IN THIS WONDERFUL COMPUTER AGE !" << std::endl;
 	return (0);
