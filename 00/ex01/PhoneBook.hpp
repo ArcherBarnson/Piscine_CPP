@@ -17,9 +17,15 @@
 #include <string>
 #include "Contact.hpp"
 
-#define	ADD "ADD"
-#define	SEARCH "SEARCH"
-#define	EXIT "EXIT"
+#define	ADD 		"ADD"
+#define	SEARCH 		"SEARCH"
+#define	EXIT 		"EXIT"
+#define	PH_FULL		"The phonebook is full ! First entry (oldest) will be overwritten..."
+#define	PH_ADD		"[ADD] --- |Please fill out those informations| --- [ADD]"
+#define	PH_CREATED	"[ADD] ---    |Contact successfully created|    --- [ADD]"
+#define S_ID		"[SEARCH]- |Please enter the ID of the contact| -[SEARCH]"
+#define	S_BAD_ID	"[SEARCH]- |Invalid ID. IDs range from 1 to 8 | -[SEARCH]"
+#define	SUB_QUIT	"(Eof detected) Exiting contextual menu..."
 
 class	PhoneBook
 {

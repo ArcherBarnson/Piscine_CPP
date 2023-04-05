@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
+#include "PhoneBookCtl.hpp"
 
-void	exec_cmd(int cmd, PhoneBook &phonebook)
+void	PhoneBookCtl::exec_cmd(int cmd, PhoneBook &phonebook)
 {
 	if (cmd == 1)
 		phonebook.do_add();
@@ -21,7 +20,7 @@ void	exec_cmd(int cmd, PhoneBook &phonebook)
 		phonebook.do_search();
 }
 
-int	check_cmd(std::string cmd)
+int	PhoneBookCtl::check_cmd(std::string cmd)
 {
 	if (cmd.compare(ADD) == 0)
 		return (1);
@@ -30,20 +29,17 @@ int	check_cmd(std::string cmd)
 	return (0);
 }
 
-int	main(void)
+void	PhoneBookCtl::info_msg(int msg)
 {
-	std::string cmd;
-	PhoneBook phonebook;
-
-	std::cout << "Welcome to MY AWESOME PHONEBOOK !" << std::endl;
-	phonebook.init_flags();
-	while (cmd.compare(EXIT) != 0)
+	if (msg == 0)
+		std::cout << WELCOME << std::endl;
+	if (msg == 1)
+		std::cout << CMD_MSG << std::endl;
+	if (msg == 2)
 	{
-		std::cout << "Please enter a command (ADD, SEARCH, EXIT): ";
-		std::cin >> cmd;
-		//std::cout << "cmd is: " << cmd << std::endl;
-		exec_cmd(check_cmd(cmd), phonebook);
+		std::cout << EXITING << std::endl;
+		std::cout << GOODBYE << std::endl;
 	}
-	std::cout << "GOODBYE ! HAVE FUN IN THIS WONDERFUL COMPUTER AGE !" << std::endl;
-	return (0);
+	if (msg == 3)
+		std::cout << GOODBYE << std::endl;
 }

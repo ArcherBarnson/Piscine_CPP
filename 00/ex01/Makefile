@@ -14,7 +14,8 @@ NAME	=	phonebook
 
 SRCS	=	contact.cpp \
 		phonebook.cpp \
-		my_awesome_phonebook.cpp
+		phonebook_ctl.cpp \
+		main.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)
 

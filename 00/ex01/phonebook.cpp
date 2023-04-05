@@ -28,27 +28,37 @@ void	PhoneBook::do_add()
 		i++;
 	if (i == 8)
 	{
-		std::cout << "The phonebook is full ! First entry (oldest) will be overwritten..." << std::endl;
+		std::cout << PH_FULL << std::endl;
 		i = 0;
 	}
-	std::cout << "[ADD] --- Please fill out those informations --- [ADD]" << std::endl;
+	std::cout << PH_ADD << std::endl;
 	std::cout << "First Name: ";
-	std::cin >> this->contact_list[i].first_name;
+	std::getline(std::cin, this->contact_list[i].first_name);
+	if (std::cin.eof())
+		return ;
 	this->contact_list[i].trunc_first_name = this->contact_list[i].format_str(this->contact_list[i].first_name);
 	std::cout << "Last Name: ";
-	std::cin >> this->contact_list[i].last_name;
+	std::getline(std::cin, this->contact_list[i].last_name);
+	if (std::cin.eof())
+		return ;
 	this->contact_list[i].trunc_last_name = this->contact_list[i].format_str(this->contact_list[i].last_name);
 	std::cout << "Nickname: ";
-	std::cin >> this->contact_list[i].nickname;
+	std::getline(std::cin, this->contact_list[i].nickname);
+	if (std::cin.eof())
+		return ;
 	this->contact_list[i].trunc_nickname = this->contact_list[i].format_str(this->contact_list[i].nickname);
 	std::cout << "Phone Number: ";
-	std::cin >> this->contact_list[i].phone_number;
+	std::getline(std::cin, this->contact_list[i].phone_number);
+	if (std::cin.eof())
+		return ;
 	this->contact_list[i].trunc_phone_number = this->contact_list[i].format_str(this->contact_list[i].phone_number);
 	std::cout << "Darkest Secret: ";
-	std::cin >> this->contact_list[i].darkest_secret;
+	std::getline(std::cin, this->contact_list[i].darkest_secret);
+	if (std::cin.eof())
+		return ;
 	this->contact_list[i].trunc_darkest_secret = this->contact_list[i].format_str(this->contact_list[i].darkest_secret);
 	this->contact_list[i].is_init = 1;
-	std::cout << "[ADD] --- Contact successfully created --- [ADD]" << std::endl;
+	std::cout << PH_CREATED << std::endl;
 }
 
 void	PhoneBook::do_search()
@@ -79,12 +89,14 @@ void	PhoneBook::do_search()
 		std::cout << display_index << std::endl;
 		i++;
 	}
-	std::cout << "Please enter the ID of the contact you want to display : ";
+	std::cout << S_ID << std::endl;
 	std::cin >> index;
+	if (std::cin.eof())
+		return ;
 	std::cout << std::endl;	
 	if (index[0] < '1' || index[0] > '8' || index[1] != '\0')
 	{
-		std::cout << "This ID is INVALID, IDs range from 1 to 8" << std::endl;
+		std::cout << S_BAD_ID << std::endl;
 		return ;
 	}
 	index_access = index[0] - '0';
