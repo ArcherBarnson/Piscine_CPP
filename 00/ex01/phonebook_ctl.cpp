@@ -28,10 +28,5 @@ void	PhoneBookCtl::info_msg(int msg)
 	if (msg == 1)
 		std::cout << CMD_MSG << std::endl;
 	if (msg == 2)
-	{
-		std::cout << EXITING << std::endl;
-		std::cout << GOODBYE << std::endl;
-	}
-	if (msg == 3)
 		std::cout << GOODBYE << std::endl;
 }

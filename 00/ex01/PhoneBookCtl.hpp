@@ -14,7 +14,6 @@
 
 class PhoneBookCtl {
 public :
-	void	exec_cmd(int cmd, PhoneBook &phonebook);
 	int	check_cmd(std::string cmd);
 	void	info_msg(int msg);
 };

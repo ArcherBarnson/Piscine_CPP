@@ -16,6 +16,6 @@ int	main(void)
 		std::getline(std::cin, cmd);
 		phonebook.exec_cmd(ctl.check_cmd(cmd));
 	}
-	ctl.info_msg(3);
+	ctl.info_msg(2);
 	return (0);
 }

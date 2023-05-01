@@ -44,27 +44,24 @@ void	PhoneBook::do_add()
 	this->prompt_contact_info("Last Name : ", this->contact_list[i].last_name);
 	this->prompt_contact_info("Nickname : ", this->contact_list[i].nickname);
 	this->prompt_contact_info("Phone Number : ", this->contact_list[i].phone_number);
-	this->prompt_contact_info("Darrkest Secret : ", this->contact_list[i].darkest_secret);
+	this->prompt_contact_info("Darkest Secret : ", this->contact_list[i].darkest_secret);
 	std::cout << PH_CREATED << std::endl;
 }
 
 void	PhoneBook::display_format_info(std::string str)
 {
-	int	i = str.length() - 1;
-	int	trunc_size = str.length() - 10;
+	int	len = str.length();
+	int	trunc_size = len - 10;
 	std::string	tr;
 
 	if (trunc_size > 0)
 	{
 		tr = str;
-		tr.erase(i - trunc_size + 1, i);
-		tr[i - trunc_size] = '.';
+		tr.erase(len - trunc_size);
+		tr[(len - 1) - (len - 10)] = '.';
 	}
 	else
-	{
-		str.resize(10, ' ');
-		tr = str;
-	}
+		tr = std::string(10 - str.length(), ' ') + str;
 	std::cout << tr << " | ";
 }
 
@@ -88,7 +85,7 @@ void	PhoneBook::do_search()
 	}
 	std::cout << " --------------------------------------------" << std::endl;
 	std::cout << S_ID << std::endl;
-	std::cin >> index;
+	std::getline(std::cin, index);
 	if (std::cin.eof())
 		return ;
 	if (index[0] < '1' || index[0] > '8' || index[1] != '\0')
