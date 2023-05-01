@@ -29,12 +29,13 @@
 
 class	PhoneBook
 {
-public:
-	void		init_flags();
+private:
+	void		prompt_contact_info(std::string display, std::string &info);
 	void		do_add();
 	void		do_search();
+public:
+	void		exec_cmd(int cmd);
 	Contact		contact_list[8];
-	int		n_contacts;
 };
 
 #endif

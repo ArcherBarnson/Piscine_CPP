@@ -19,7 +19,6 @@
 class	Contact
 {
 public:
-	int		is_init;
 	void		display_contact_info();
 	std::string	format_str(std::string str);
 	std::string	first_name;

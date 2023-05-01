@@ -12,19 +12,28 @@
 
 #include "PhoneBook.hpp"
 
-void	PhoneBook::init_flags()
+void	PhoneBook::exec_cmd(int cmd)
 {
-	int	i = -1;
+	if (cmd == 1)
+		do_add();
+	if (cmd == 2)
+		do_search();
+}
 
-	while (++i < 8)
-		this->contact_list[i].is_init = 0;
+void	PhoneBook::prompt_contact_info(std::string display, std::string &info)
+{
+	std::cout << display;
+	std::getline(std::cin, info);
+	if (std::cin.eof())
+		return ;
+	//wip -- this->contact_list[i].trunc_first_name = this->contact_list[i].format_str(this->contact_list[i].first_name);
 }
 
 void	PhoneBook::do_add()
 {
 	int	i = 0;
 
-	while (this->contact_list[i].is_init == 1 && i < 8)
+	while (this->contact_list[i].first_name != "" && i < 8)
 		i++;
 	if (i == 8)
 	{
@@ -32,32 +41,11 @@ void	PhoneBook::do_add()
 		i = 0;
 	}
 	std::cout << PH_ADD << std::endl;
-	std::cout << "First Name: ";
-	std::getline(std::cin, this->contact_list[i].first_name);
-	if (std::cin.eof())
-		return ;
-	this->contact_list[i].trunc_first_name = this->contact_list[i].format_str(this->contact_list[i].first_name);
-	std::cout << "Last Name: ";
-	std::getline(std::cin, this->contact_list[i].last_name);
-	if (std::cin.eof())
-		return ;
-	this->contact_list[i].trunc_last_name = this->contact_list[i].format_str(this->contact_list[i].last_name);
-	std::cout << "Nickname: ";
-	std::getline(std::cin, this->contact_list[i].nickname);
-	if (std::cin.eof())
-		return ;
-	this->contact_list[i].trunc_nickname = this->contact_list[i].format_str(this->contact_list[i].nickname);
-	std::cout << "Phone Number: ";
-	std::getline(std::cin, this->contact_list[i].phone_number);
-	if (std::cin.eof())
-		return ;
-	this->contact_list[i].trunc_phone_number = this->contact_list[i].format_str(this->contact_list[i].phone_number);
-	std::cout << "Darkest Secret: ";
-	std::getline(std::cin, this->contact_list[i].darkest_secret);
-	if (std::cin.eof())
-		return ;
-	this->contact_list[i].trunc_darkest_secret = this->contact_list[i].format_str(this->contact_list[i].darkest_secret);
-	this->contact_list[i].is_init = 1;
+	this->prompt_contact_info("First Name : ", this->contact_list[i].first_name);
+	this->prompt_contact_info("Last Name : ", this->contact_list[i].last_name);
+	this->prompt_contact_info("Nickname : ", this->contact_list[i].nickname);
+	this->prompt_contact_info("Phone Number : ", this->contact_list[i].phone_number);
+	this->prompt_contact_info("Darrkest Secret : ", this->contact_list[i].darkest_secret);
 	std::cout << PH_CREATED << std::endl;
 }
 
@@ -68,7 +56,7 @@ void	PhoneBook::do_search()
 	std::string	index;
 	char		display_index;
 
-	while (this->contact_list[i].is_init == 1 && i < 8)
+	while (this->contact_list[i].first_name != "" && i < 8)
 	{
 		display_index = (i + 1) + '0';
 		if (this->contact_list[i].first_name.compare(this->contact_list[i].trunc_first_name) == 0)

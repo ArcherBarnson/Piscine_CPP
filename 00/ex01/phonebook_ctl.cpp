@@ -12,14 +12,6 @@
 
 #include "PhoneBookCtl.hpp"
 
-void	PhoneBookCtl::exec_cmd(int cmd, PhoneBook &phonebook)
-{
-	if (cmd == 1)
-		phonebook.do_add();
-	if (cmd == 2)
-		phonebook.do_search();
-}
-
 int	PhoneBookCtl::check_cmd(std::string cmd)
 {
 	if (cmd.compare(ADD) == 0)
