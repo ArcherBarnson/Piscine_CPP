@@ -26,7 +26,6 @@ void	PhoneBook::prompt_contact_info(std::string display, std::string &info)
 	std::getline(std::cin, info);
 	if (std::cin.eof())
 		return ;
-	//wip -- this->contact_list[i].trunc_first_name = this->contact_list[i].format_str(this->contact_list[i].first_name);
 }
 
 void	PhoneBook::do_add()
@@ -49,39 +48,49 @@ void	PhoneBook::do_add()
 	std::cout << PH_CREATED << std::endl;
 }
 
+void	PhoneBook::display_format_info(std::string str)
+{
+	int	i = str.length() - 1;
+	int	trunc_size = str.length() - 10;
+	std::string	tr;
+
+	if (trunc_size > 0)
+	{
+		tr = str;
+		tr.erase(i - trunc_size + 1, i);
+		tr[i - trunc_size] = '.';
+	}
+	else
+	{
+		str.resize(10, ' ');
+		tr = str;
+	}
+	std::cout << tr << " | ";
+}
+
 void	PhoneBook::do_search()
 {
 	int		i = 0;
 	int		index_access;
 	std::string	index;
-	char		display_index;
 
-	while (this->contact_list[i].first_name != "" && i < 8)
+	while (i < 8)
 	{
-		display_index = (i + 1) + '0';
-		if (this->contact_list[i].first_name.compare(this->contact_list[i].trunc_first_name) == 0)
-			std::cout << this->contact_list[i].first_name;
-		else
-			std::cout << this->contact_list[i].trunc_first_name;
+		std::cout << " --------------------------------------------" << std::endl;
 		std::cout << " | ";
-		if (this->contact_list[i].last_name.compare(this->contact_list[i].trunc_last_name) == 0)
-			std::cout << this->contact_list[i].last_name;
-		else
-			std::cout << this->contact_list[i].trunc_last_name;
+		std::cout << (char)((i + 1) + '0');
 		std::cout << " | ";
-		if (this->contact_list[i].nickname.compare(this->contact_list[i].trunc_nickname) == 0)
-			std::cout << this->contact_list[i].nickname;
-		else
-			std::cout << this->contact_list[i].trunc_nickname;
-		std::cout << " | ";
-		std::cout << display_index << std::endl;
+		display_format_info(this->contact_list[i].first_name);
+		display_format_info(this->contact_list[i].last_name);
+		display_format_info(this->contact_list[i].nickname);
+		std::cout << std::endl;
 		i++;
 	}
+	std::cout << " --------------------------------------------" << std::endl;
 	std::cout << S_ID << std::endl;
 	std::cin >> index;
 	if (std::cin.eof())
 		return ;
-	std::cout << std::endl;	
 	if (index[0] < '1' || index[0] > '8' || index[1] != '\0')
 	{
 		std::cout << S_BAD_ID << std::endl;

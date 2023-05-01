@@ -31,6 +31,7 @@ class	PhoneBook
 {
 private:
 	void		prompt_contact_info(std::string display, std::string &info);
+	void		display_format_info(std::string str);
 	void		do_add();
 	void		do_search();
 public:

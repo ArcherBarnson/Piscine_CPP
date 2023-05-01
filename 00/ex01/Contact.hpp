@@ -20,17 +20,11 @@ class	Contact
 {
 public:
 	void		display_contact_info();
-	std::string	format_str(std::string str);
 	std::string	first_name;
 	std::string	last_name;
 	std::string	nickname;
 	std::string	phone_number;
 	std::string	darkest_secret;
-	std::string	trunc_first_name;
-	std::string	trunc_last_name;
-	std::string	trunc_nickname;
-	std::string	trunc_phone_number;
-	std::string	trunc_darkest_secret;
 };
 
 #endif

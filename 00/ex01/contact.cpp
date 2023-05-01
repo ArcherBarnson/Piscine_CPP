@@ -12,26 +12,6 @@
 
 #include "Contact.hpp"
 
-std::string	Contact::format_str(std::string str)
-{
-	int	i = str.length() - 1;
-	int	trunc_size = str.length() - 10;
-	std::string	tr;
-
-	if (trunc_size > 0)
-	{
-		tr = str;
-		tr.erase(i - trunc_size + 1, i);
-		tr[i - trunc_size] = '.';
-	}
-	else
-	{
-		str.resize(10, ' ');
-		tr = str;
-	}
-	return (tr);
-}
-
 void	Contact::display_contact_info()
 {
 	std::cout << "First name : " << this->first_name << std::endl;
