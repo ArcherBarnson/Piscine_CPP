@@ -14,8 +14,13 @@
 
 class PhoneBookCtl {
 public :
+
+PhoneBookCtl( void );
+
 	int	check_cmd(std::string cmd);
 	void	info_msg(int msg);
+
+~PhoneBookCtl( void );
 };
 
 #endif

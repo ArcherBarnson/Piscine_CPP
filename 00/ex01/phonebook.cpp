@@ -12,15 +12,19 @@
 
 #include "PhoneBook.hpp"
 
+PhoneBook::PhoneBook( void ) {
+	return;
+}
+
 void	PhoneBook::exec_cmd(int cmd)
 {
 	if (cmd == 1)
-		do_add();
+		_do_add();
 	if (cmd == 2)
-		do_search();
+		_do_search();
 }
 
-void	PhoneBook::prompt_contact_info(std::string display, std::string &info)
+void	PhoneBook::_prompt_contact_info(std::string display, std::string &info)
 {
 	std::cout << display;
 	std::getline(std::cin, info);
@@ -28,11 +32,11 @@ void	PhoneBook::prompt_contact_info(std::string display, std::string &info)
 		return ;
 }
 
-void	PhoneBook::do_add()
+void	PhoneBook::_do_add()
 {
 	int	i = 0;
 
-	while (this->contact_list[i].first_name != "" && i < 8)
+	while (this->_contact_list[i].first_name != "" && i < 8)
 		i++;
 	if (i == 8)
 	{
@@ -40,15 +44,15 @@ void	PhoneBook::do_add()
 		i = 0;
 	}
 	std::cout << PH_ADD << std::endl;
-	this->prompt_contact_info("First Name : ", this->contact_list[i].first_name);
-	this->prompt_contact_info("Last Name : ", this->contact_list[i].last_name);
-	this->prompt_contact_info("Nickname : ", this->contact_list[i].nickname);
-	this->prompt_contact_info("Phone Number : ", this->contact_list[i].phone_number);
-	this->prompt_contact_info("Darkest Secret : ", this->contact_list[i].darkest_secret);
+	this->_prompt_contact_info("First Name : ", this->_contact_list[i].first_name);
+	this->_prompt_contact_info("Last Name : ", this->_contact_list[i].last_name);
+	this->_prompt_contact_info("Nickname : ", this->_contact_list[i].nickname);
+	this->_prompt_contact_info("Phone Number : ", this->_contact_list[i].phone_number);
+	this->_prompt_contact_info("Darkest Secret : ", this->_contact_list[i].darkest_secret);
 	std::cout << PH_CREATED << std::endl;
 }
 
-void	PhoneBook::display_format_info(std::string str)
+void	PhoneBook::_display_format_info(std::string str)
 {
 	int	len = str.length();
 	int	trunc_size = len - 10;
@@ -65,7 +69,7 @@ void	PhoneBook::display_format_info(std::string str)
 	std::cout << tr << " | ";
 }
 
-void	PhoneBook::do_search()
+void	PhoneBook::_do_search()
 {
 	int		i = 0;
 	int		index_access;
@@ -77,9 +81,9 @@ void	PhoneBook::do_search()
 		std::cout << " | ";
 		std::cout << (char)((i + 1) + '0');
 		std::cout << " | ";
-		display_format_info(this->contact_list[i].first_name);
-		display_format_info(this->contact_list[i].last_name);
-		display_format_info(this->contact_list[i].nickname);
+		_display_format_info(this->_contact_list[i].first_name);
+		_display_format_info(this->_contact_list[i].last_name);
+		_display_format_info(this->_contact_list[i].nickname);
 		std::cout << std::endl;
 		i++;
 	}
@@ -94,5 +98,9 @@ void	PhoneBook::do_search()
 		return ;
 	}
 	index_access = index[0] - '0';
-	this->contact_list[index_access - 1].display_contact_info();
+	this->_contact_list[index_access - 1].display_contact_info();
+}
+
+PhoneBook::~PhoneBook( void ) {
+	return ;
 }

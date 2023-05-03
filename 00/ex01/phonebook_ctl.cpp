@@ -12,6 +12,10 @@
 
 #include "PhoneBookCtl.hpp"
 
+PhoneBookCtl::PhoneBookCtl( void ) {
+	return ;
+}
+
 int	PhoneBookCtl::check_cmd(std::string cmd)
 {
 	if (cmd.compare(ADD) == 0)
@@ -29,4 +33,8 @@ void	PhoneBookCtl::info_msg(int msg)
 		std::cout << CMD_MSG << std::endl;
 	if (msg == 2)
 		std::cout << GOODBYE << std::endl;
+}
+
+PhoneBookCtl::~PhoneBookCtl( void ) {
+	return ;
 }

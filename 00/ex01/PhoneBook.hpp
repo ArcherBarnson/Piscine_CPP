@@ -25,18 +25,23 @@
 #define	PH_CREATED	"[ADD] ---    |Contact successfully created|    --- [ADD]"
 #define S_ID		"[SEARCH]- |Please enter the ID of the contact| -[SEARCH]"
 #define	S_BAD_ID	"[SEARCH]- |Invalid ID. IDs range from 1 to 8 | -[SEARCH]"
-#define	SUB_QUIT	"(Eof detected) Exiting contextual menu..."
 
 class	PhoneBook
 {
-private:
-	void		prompt_contact_info(std::string display, std::string &info);
-	void		display_format_info(std::string str);
-	void		do_add();
-	void		do_search();
 public:
+
+PhoneBook( void );
+
 	void		exec_cmd(int cmd);
-	Contact		contact_list[8];
+
+~PhoneBook( void );
+
+private:
+	void		_prompt_contact_info(std::string display, std::string &info);
+	void		_display_format_info(std::string str);
+	void		_do_add();
+	void		_do_search();
+	Contact		_contact_list[8];
 };
 
 #endif
