@@ -10,11 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	phonebook
+NAME	=	zombies
 
-SRCS	=	contact.cpp \
-		phonebook.cpp \
-		phonebook_ctl.cpp \
+SRCS	=	zombie.cpp \
+		zombieHorde.cpp \
 		main.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)
