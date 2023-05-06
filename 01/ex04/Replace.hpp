@@ -8,7 +8,7 @@ class Replace {
 		Replace( std::string filename, std::string s1, std::string s2 );
 		~Replace( void );
 		std::string	replace(void);
-		void		bufToFile(std::string buf, std::string destfile);
+		void		bufToFile(std::string buf, char *destfile);
 
 
 	private:
