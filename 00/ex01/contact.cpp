@@ -18,11 +18,11 @@ Contact::Contact( void ) {
 
 void	Contact::display_contact_info()
 {
-	std::cout << "First name : " << this->first_name << std::endl;
-	std::cout << "Last name : " << this->last_name << std::endl;
-	std::cout << "Nickname : " << this->nickname << std::endl;
-	std::cout << "Le 06: " << this->phone_number << std::endl;
-	std::cout << "Darkest Secret: " << this->darkest_secret << std::endl;
+	std::cout << "First name	:  " << this->first_name << std::endl;
+	std::cout << "Last name	:  " << this->last_name << std::endl;
+	std::cout << "Nickname	:  " << this->nickname << std::endl;
+	std::cout << "Phone number	:  " << this->phone_number << std::endl;
+	std::cout << "Darkest secret	:  " << this->darkest_secret << std::endl;
 }
 
 Contact::~Contact( void ) {
