@@ -30,11 +30,11 @@ class	PhoneBook
 {
 public:
 
-PhoneBook( void );
+	PhoneBook( void );
+	~PhoneBook( void );
 
 	void		exec_cmd(int cmd);
 
-~PhoneBook( void );
 
 private:
 	void		_prompt_contact_info(std::string display, std::string &info);

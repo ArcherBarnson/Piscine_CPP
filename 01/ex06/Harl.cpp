@@ -12,6 +12,7 @@ Harl::~Harl( void ) {
 void	Harl::complain(std::string level)
 {
 	int	set_level = -1;
+	int	i = 0;
 	void	(Harl::*fct_tab[4]) (void) =
 		{&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
 
@@ -22,7 +23,10 @@ void	Harl::complain(std::string level)
 	if (set_level == -1)
 		std::cout << "***UNINTELLIGIBLE COMPUTER NOISES***" << std::endl;
 	else
-		(this->*fct_tab[set_level])();
+	{
+		for (i = set_level; i < 4; i++)
+			(this->*fct_tab[i])();
+	}
 	return ;
 }
 
