@@ -76,7 +76,7 @@ bool	Account::makeWithdrawal(int withdrawal)
 		std::cout << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
 		return (1);
 	}
-	std::cout << ";refused" << std::endl;
+	std::cout << ";withdrawal:refused" << std::endl;
 	return (0);
 }
 
