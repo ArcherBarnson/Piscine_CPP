@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:09:30 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/04/04 12:23:25 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/07/26 14:58:42 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	PhoneBook::_do_add()
 	std::cout << PH_CREATED << std::endl;
 }
 
-void	PhoneBook::_display_format_info(std::string str)
+/*void	PhoneBook::_display_format_info(std::string str)
 {
 	int	len = str.length();
 	int	trunc_size = len - 10;
@@ -67,6 +67,14 @@ void	PhoneBook::_display_format_info(std::string str)
 	else
 		tr = std::string(10 - str.length(), ' ') + str;
 	std::cout << tr << " | ";
+}*/
+
+void	PhoneBook::_display_format_info(std::string str)
+{
+	//int	len = str.length();
+	//int	trunc_size = len - 10;
+
+	std::cout << std::setfill(' ') << std::setw(10) << str << std::endl;
 }
 
 void	PhoneBook::_do_search()
