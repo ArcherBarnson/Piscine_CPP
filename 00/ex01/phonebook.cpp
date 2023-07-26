@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:09:30 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/07/26 14:58:42 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/07/26 15:27:37 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,19 @@ void	PhoneBook::_do_add()
 
 void	PhoneBook::_display_format_info(std::string str)
 {
-	//int	len = str.length();
-	//int	trunc_size = len - 10;
+	int		len = str.length();
+	int		trunc_size = len - 10;
+	std::string	tr = str;
 
-	std::cout << std::setfill(' ') << std::setw(10) << str << std::endl;
+	if (trunc_size > 0)
+	{
+		tr = str;
+		tr.erase(len - trunc_size);
+		tr[(len - 1) - (len - 10)] = '.';
+	}
+	else
+		tr = std::string(10 - str.length(), ' ') + str;
+	std::cout << std::setfill(' ') << std::setw(10) << tr << "|";
 }
 
 void	PhoneBook::_do_search()
@@ -85,7 +94,7 @@ void	PhoneBook::_do_search()
 
 	while (i < 8)
 	{
-		std::cout << " --------------------------------------------" << std::endl;
+		std::cout << " ---------------------------------------" << std::endl;
 		std::cout << " | ";
 		std::cout << (char)((i + 1) + '0');
 		std::cout << " | ";
@@ -95,7 +104,7 @@ void	PhoneBook::_do_search()
 		std::cout << std::endl;
 		i++;
 	}
-	std::cout << " --------------------------------------------" << std::endl;
+	std::cout << " ---------------------------------------" << std::endl;
 	std::cout << S_ID << std::endl;
 	std::getline(std::cin, index);
 	if (std::cin.eof())
