@@ -35,13 +35,15 @@ public:
 	~PhoneBook( void );
 
 	void		exec_cmd(int cmd);
+	int		get_oldest_contact();
+	void		set_oldest_contact(int i);
 
 
 private:
-	void		_prompt_contact_info(std::string display, std::string &info);
 	void		_display_format_info(std::string str);
 	void		_do_add();
 	void		_do_search();
+	int		_oldest_contact;
 	Contact		_contact_list[8];
 };
 

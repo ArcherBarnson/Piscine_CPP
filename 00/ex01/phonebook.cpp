@@ -12,7 +12,7 @@
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook( void ) {
+PhoneBook::PhoneBook( void ) : _oldest_contact(0) {
 	return;
 }
 
@@ -24,31 +24,36 @@ void	PhoneBook::exec_cmd(int cmd)
 		_do_search();
 }
 
-void	PhoneBook::_prompt_contact_info(std::string display, std::string &info)
-{
-	std::cout << display;
-	std::getline(std::cin, info);
-	if (std::cin.eof())
-		return ;
-}
-
 void	PhoneBook::_do_add()
 {
 	int	i = 0;
 
-	while (this->_contact_list[i].first_name != "" && i < 8)
+	while (i < 8 && this->_contact_list[i].get_contact_info(0) != "")
 		i++;
 	if (i == 8)
 	{
 		std::cout << PH_FULL << std::endl;
-		i = 0;
+		i = this->_oldest_contact;
+		std::cout << "Oldest contact is  "
+			<< this->_contact_list[_oldest_contact].get_contact_info(0) << std::endl;
+		if (i < 7)
+			this->_oldest_contact = i + 1;
+		else if (i == 7)
+			this->_oldest_contact = 0;
 	}
 	std::cout << PH_ADD << std::endl;
-	this->_prompt_contact_info("First Name : ", this->_contact_list[i].first_name);
-	this->_prompt_contact_info("Last Name : ", this->_contact_list[i].last_name);
-	this->_prompt_contact_info("Nickname : ", this->_contact_list[i].nickname);
-	this->_prompt_contact_info("Phone Number : ", this->_contact_list[i].phone_number);
-	this->_prompt_contact_info("Darkest Secret : ", this->_contact_list[i].darkest_secret);
+	std::cout << "i = " << i << std::endl << std::endl;
+	this->_contact_list[i].fill_contact_infos();
+	if (std::cin.eof())
+		return ;
+	while (this->_contact_list[i].get_contact_info(0).length() == 0
+		|| this->_contact_list[i].get_contact_info(1).length() == 0
+		|| this->_contact_list[i].get_contact_info(2).length() == 0
+		|| this->_contact_list[i].get_contact_info(3).length() == 0
+		|| this->_contact_list[i].get_contact_info(4).length() == 0) {
+		std::cout << "ERROR:There is one or more empty fields." << std::endl;
+		this->_contact_list[i].fill_contact_infos();
+	}
 	std::cout << PH_CREATED << std::endl;
 }
 
@@ -98,9 +103,9 @@ void	PhoneBook::_do_search()
 		std::cout << " | ";
 		std::cout << (char)((i + 1) + '0');
 		std::cout << " | ";
-		_display_format_info(this->_contact_list[i].first_name);
-		_display_format_info(this->_contact_list[i].last_name);
-		_display_format_info(this->_contact_list[i].nickname);
+		_display_format_info(this->_contact_list[i].get_contact_info(0));
+		_display_format_info(this->_contact_list[i].get_contact_info(1));
+		_display_format_info(this->_contact_list[i].get_contact_info(2));
 		std::cout << std::endl;
 		i++;
 	}
