@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:09:30 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/07/26 15:29:54 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/07/26 15:59:24 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,12 @@ void	PhoneBook::_do_add()
 	{
 		std::cout << PH_FULL << std::endl;
 		i = this->_oldest_contact;
-		std::cout << "Oldest contact is  "
-			<< this->_contact_list[_oldest_contact].get_contact_info(0) << std::endl;
 		if (i < 7)
 			this->_oldest_contact = i + 1;
 		else if (i == 7)
 			this->_oldest_contact = 0;
 	}
 	std::cout << PH_ADD << std::endl;
-	std::cout << "i = " << i << std::endl << std::endl;
 	this->_contact_list[i].fill_contact_infos();
 	if (std::cin.eof())
 		return ;
