@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/26 18:18:07 by bgrulois          #+#    #+#             */
+/*   Updated: 2023/07/26 18:24:08 by bgrulois         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Harl.hpp"
 #include <iostream>
 
@@ -19,10 +31,24 @@ void	Harl::complain(std::string level)
 	(level.compare("INFO") == 0 || level.compare("info") == 0) ? set_level = 1:set_level;
 	(level.compare("WARNING") == 0 || level.compare("warning") == 0) ? set_level = 2:set_level;
 	(level.compare("ERROR") == 0 || level.compare("error") == 0) ? set_level = 3:set_level;
-	if (set_level == -1)
-		std::cout << "***UNINTELLIGIBLE COMPUTER NOISES***" << std::endl;
-	else
-		(this->*fct_tab[set_level])();
+	switch (set_level)
+	{
+		case (-1):
+			std::cout << "***UNINTELLIGIBLE COMPUTER NOISES***" << std::endl;
+			break;
+		case (0):
+			(this->*fct_tab[0])();
+			break;
+		case (1):
+			(this->*fct_tab[1])();
+			break;
+		case (2):
+			(this->*fct_tab[2])();
+			break;
+		case (3):
+			(this->*fct_tab[3])();
+			break;
+	}
 	return ;
 }
 

@@ -6,13 +6,13 @@
 #    By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 10:53:17 by bgrulois          #+#    #+#              #
-#    Updated: 2023/04/04 10:25:35 by bgrulois         ###   ########.fr        #
+#    Updated: 2023/07/26 17:07:53 by bgrulois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	zombies
 
-SRCS	=	zombie.cpp \
+SRCS	=	Zombie.cpp \
 		newZombie.cpp \
 		randomChump.cpp \
 		main.cpp
