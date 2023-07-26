@@ -6,15 +6,15 @@
 #    By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 10:53:17 by bgrulois          #+#    #+#              #
-#    Updated: 2023/07/26 15:16:21 by bgrulois         ###   ########.fr        #
+#    Updated: 2023/07/26 15:35:13 by bgrulois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	phonebook
 
-SRCS	=	contact.cpp \
-		phonebook.cpp \
-		phonebookCtl.cpp \
+SRCS	=	Contact.cpp \
+		PhoneBook.cpp \
+		PhoneBookCtl.cpp \
 		main.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)
