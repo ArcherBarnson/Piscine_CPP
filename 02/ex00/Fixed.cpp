@@ -17,3 +17,11 @@ Fixed::Fixed& operator=(Fixed const & =) {
 Fixed::~Fixed( void ) {
 	return;
 }
+
+Fixed::int	getRawBits( void ) const {
+	return _raw;
+}
+
+Fixed::void	setRawBits(int const raw) {
+	_raw = raw;
+}

@@ -12,7 +12,7 @@ class	Fixed {
 	
 	private:
 		int			_fixed;
-		static int const 	&_fract;
+		static int const 	&_raw;
 };
 
 #endif
