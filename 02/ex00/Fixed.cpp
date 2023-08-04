@@ -1,6 +1,6 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed( void ) {
+Fixed::Fixed( void ) : _fixed(0) {
 	return ;
 }
 
@@ -9,7 +9,7 @@ Fixed::Fixed(Fixed const & copy) {
 	return ;
 }
 
-Fixed::Fixed& operator=(Fixed const & =) {
+Fixed::Fixed& operator=(const Fixed& =) {
 	std::cout << "Assignation operator called" << std::endl;
 	return *this;
 }
