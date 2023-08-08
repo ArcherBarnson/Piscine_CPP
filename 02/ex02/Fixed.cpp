@@ -63,6 +63,22 @@ bool 	operator!=( const Fixed & obj1, const Fixed & obj2) {
 	return (obj1.getRawBits() != obj2.getRawBits());
 }
 
+bool 	operator>=( const Fixed & obj1, const Fixed & obj2) {
+	return (obj1.getRawBits() >= obj2.getRawBits());
+}
+
+bool 	operator<=( const Fixed & obj1, const Fixed & obj2) {
+	return (obj1.getRawBits() <= obj2.getRawBits());
+}
+
+bool 	operator>( const Fixed & obj1, const Fixed & obj2) {
+	return (obj1.getRawBits() > obj2.getRawBits());
+}
+
+bool 	operator<( const Fixed & obj1, const Fixed & obj2) {
+	return (obj1.getRawBits() < obj2.getRawBits());
+}
+
 std::ostream	&operator<<(std::ostream &outfile, Fixed const & fixed) {
 	outfile << fixed.toFloat();
 	return (outfile);

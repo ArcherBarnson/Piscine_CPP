@@ -26,5 +26,9 @@ class	Fixed {
 std::ostream 	&operator<<(std::ostream &outfile, Fixed const & fixed);
 bool 		operator==(const Fixed & obj1, const Fixed & obj2);
 bool		operator!=(const Fixed & obj1, const Fixed & obj2);
+bool		operator>=(const Fixed & obj1, const Fixed & obj2);
+bool		operator<=(const Fixed & obj1, const Fixed & obj2);
+bool		operator>(const Fixed & obj1, const Fixed & obj2);
+bool		operator<(const Fixed & obj1, const Fixed & obj2);
 
 #endif
