@@ -79,6 +79,12 @@ bool 	operator<( const Fixed & obj1, const Fixed & obj2) {
 	return (obj1.getRawBits() < obj2.getRawBits());
 }
 
+Fixed	operator+( const Fixed & obj1, const Fixed & obj2 ) {
+	Fixed res;
+	res.setRawBits(obj1.getRawBits() + obj2.getRawBits());
+	return res;
+}
+
 std::ostream	&operator<<(std::ostream &outfile, Fixed const & fixed) {
 	outfile << fixed.toFloat();
 	return (outfile);

@@ -30,5 +30,6 @@ bool		operator>=(const Fixed & obj1, const Fixed & obj2);
 bool		operator<=(const Fixed & obj1, const Fixed & obj2);
 bool		operator>(const Fixed & obj1, const Fixed & obj2);
 bool		operator<(const Fixed & obj1, const Fixed & obj2);
+Fixed 		operator+( const Fixed & obj1, const Fixed & obj2 );
 
 #endif
