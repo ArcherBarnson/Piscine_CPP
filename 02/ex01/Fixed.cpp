@@ -21,13 +21,14 @@ Fixed::Fixed(const float f) {
 
 Fixed::Fixed(Fixed const &src) {
 	std::cout << "Copy contructor called" << std::endl;
-	this->_fixed = src.getRawBits();
+	*this = src;
 	return ;
 }
 
 Fixed & Fixed::operator=( const Fixed & other) {
 	std::cout << "Assignation operator called" << std::endl;
-	_fixed = other.getRawBits();
+	if (this != &other)
+		_fixed = other.getRawBits();
 	return *this;
 }
 
