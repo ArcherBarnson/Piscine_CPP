@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/08 18:17:43 by bgrulois          #+#    #+#             */
+/*   Updated: 2023/08/08 18:17:48 by bgrulois         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "Fixed.hpp"
 
@@ -7,6 +19,7 @@ int main( void )
 	Fixed const b( 10 );
 	Fixed const c( 42.42f );
 	Fixed const d( b );
+	std::cout << a << std::endl;
 	a = Fixed( 1234.4321f );
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
