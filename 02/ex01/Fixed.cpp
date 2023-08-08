@@ -9,7 +9,7 @@ Fixed::Fixed( void ) : _fixed(0) {
 
 Fixed::Fixed(const int n) {
 	std::cout << "Int constructor called" << std::endl;
-	_fixed = n;
+	_fixed = n << 8;
 	return ;
 }
 
@@ -21,13 +21,13 @@ Fixed::Fixed(const float f) {
 
 Fixed::Fixed(Fixed const &src) {
 	std::cout << "Copy contructor called" << std::endl;
-	_fixed = src.getRawBits();
+	this->_fixed = src.getRawBits();
 	return ;
 }
 
 Fixed & Fixed::operator=( const Fixed & other) {
 	std::cout << "Assignation operator called" << std::endl;
-	this->_fixed = other.getRawBits();
+	_fixed = other.getRawBits();
 	return *this;
 }
 
@@ -42,17 +42,17 @@ Fixed::~Fixed( void ) {
 }
 
 int	Fixed::getRawBits( void ) const {
-	std::cout << "getRawBits member function called" << std::endl;
+	//std::cout << "getRawBits member function called" << std::endl;
 	return _fixed;
 }
 
 void	Fixed::setRawBits(int const raw) {
-	std::cout << "setRawBits member function called" << std::endl;
+	//std::cout << "setRawBits member function called" << std::endl;
 	_fixed = raw;
 }
 
 int	Fixed::toInt( void ) const {	//fixed to int
-	return roundf((float)(_fixed * (1 << _raw)));
+	return (_fixed >> _raw);
 }
 
 float	Fixed::toFloat( void ) const {	//fixed to float
