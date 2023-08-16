@@ -5,7 +5,7 @@ Fixed getArea(Point const a, Point const b, Point const c)
 {
 	Fixed area = (a.getX() * (b.getY() - c.getY()) +
 			b.getX() * (c.getY() - a.getY()) +
-			c.getX() *(a.getY() - b.getY())) / Fixed(2.0);
+			c.getX() *(a.getY() - b.getY())) / Fixed(2.0f);
 	if (area < 0)
 		area = -area;
 	return (area);

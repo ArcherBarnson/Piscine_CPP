@@ -14,13 +14,12 @@ Point::Point(Point const &src) {
 }
 
 Point & Point::operator=(Point const & other) {
-	if (this != &other)
+	(void)other;
+	/*if (this != &other)
 	{
-		//_x = other.getX();
-		//_y = other.getY();
-		_x = Fixed(other._x);
-		_y = Fixed(other._y);
-	}
+		_x = other.getX();
+		_y = other.getY();
+	}*/
 	return *this;
 }
 
@@ -29,9 +28,11 @@ Point::~Point( void ) {
 }
 
 Fixed const Point::getX(void) const {
-	return (_x);
+	Fixed const fx = _x;
+	return (fx);
 }
 
 Fixed const Point::getY(void) const {
-	return (_y);
+	Fixed const fy = _y;
+	return (fy);
 }
