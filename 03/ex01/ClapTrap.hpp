@@ -1,5 +1,5 @@
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef CLAP_TRAP_HPP
+# define CLAP_TRAP_HPP
 
 #include <iostream>
 
@@ -13,7 +13,7 @@ class ClapTrap {
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 
-	private:
+	protected:
 		std::string const & _name;
 		int _hitPoints;
 		int _energyPoints;
