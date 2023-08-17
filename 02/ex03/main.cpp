@@ -15,15 +15,15 @@
 #include "Point.hpp"
 
 int main( void ) {
-	Point a(7, 0);
+	Point a(0, 0);
 	Point b(10, 10);
 	Point c(0, 20);
-	Point point(5, 5);
-	Fixed ax = a.getX();
-        std::cout << "AX :: " << ax << std::endl;
-
+	Point point(115, 115);
 	if (bsp(a, b, c, point))
+	{
 		std::cout << "Point is inside of the triangle" << std::endl;
+		return 1;
+	}
 	std::cout << "Point is NOT inside of the triangle" << std::endl;
 	return 0;
 }

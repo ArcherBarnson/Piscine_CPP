@@ -8,8 +8,8 @@ Point::Point(const float x, const float y) : _x(x), _y(y) {
 	return ;
 }
 
-Point::Point(Point const &src) {
-	*this = src;
+Point::Point(Point const &src) : _x(src._x), _y(src._y){
+	//*this = src;
 	return ;
 }
 
