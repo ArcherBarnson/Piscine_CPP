@@ -12,12 +12,15 @@
 
 #include <iostream>
 #include "Fixed.hpp"
+#include "Point.hpp"
 
 int main( void ) {
-	Point const a(0, 0);
-	Point const b(10, 10);
-	Point const c(0, 20);
-	Point const point(5, 5);
+	Point a(7, 0);
+	Point b(10, 10);
+	Point c(0, 20);
+	Point point(5, 5);
+	Fixed ax = a.getX();
+        std::cout << "AX :: " << ax << std::endl;
 
 	if (bsp(a, b, c, point))
 		std::cout << "Point is inside of the triangle" << std::endl;

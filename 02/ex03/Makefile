@@ -21,7 +21,7 @@ OBJS	=	$(SRCS:.cpp=.o)
 
 CC	=	c++
 
-CPPFLAGS=	-Wall -Werror -Wextra -std=c++98
+CPPFLAGS=	-Wall -Werror -Wextra -std=c++98 -g3
 
 
 %.o:		%.cpp
