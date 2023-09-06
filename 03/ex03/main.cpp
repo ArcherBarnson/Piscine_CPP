@@ -6,13 +6,14 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:58:08 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/06 12:41:43 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/09/06 13:56:08 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main(void)
 {
@@ -64,5 +65,5 @@ int	main(void)
 	std::cout << std::endl << "DONE" << std::endl;
 	return (0);*/
 	DiamondTrap d1("oi");
-	d1.attack();
+	d1.attack("yeah");
 }
