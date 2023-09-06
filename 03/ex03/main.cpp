@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:58:08 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/06 13:56:08 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:41:43 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,12 @@ int	main(void)
 	return (0);*/
 	DiamondTrap d1("oi");
 	d1.attack("yeah");
+	int i = 0;
+	while (++i < 15)
+		d1.beRepaired(10);
+	d1.takeDamage(99);
+	d1.beRepaired(9);
+	std::cout << "BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOORDER" << std::endl;
+	d1.whoAmI();
+	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 11:23:39 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/06 12:37:36 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:35:42 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 		DiamondTrap(DiamondTrap const & src);
 		DiamondTrap &operator=(DiamondTrap const & other);
 		~DiamondTrap( void );
+		void	whoAmI();
 	protected:
 		std::string const & _name;
 };
