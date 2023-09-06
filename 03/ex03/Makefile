@@ -6,13 +6,16 @@
 #    By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 10:53:17 by bgrulois          #+#    #+#              #
-#    Updated: 2023/09/06 10:53:13 by bgrulois         ###   ########.fr        #
+#    Updated: 2023/09/06 12:37:32 by bgrulois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	claptrap
+NAME	=	fragtrap
 
 SRCS	=	ClapTrap.cpp \
+		ScavTrap.cpp \
+		FragTrap.cpp \
+		DiamondTrap.cpp \
 		main.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)

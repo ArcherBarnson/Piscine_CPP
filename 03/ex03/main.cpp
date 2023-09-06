@@ -5,17 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 10:55:07 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/06 10:55:22 by bgrulois         ###   ########.fr       */
+/*   Created: 2023/09/06 10:58:08 by bgrulois          #+#    #+#             */
+/*   Updated: 2023/09/06 12:41:43 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main(void)
 {
-	ScavTrap	st0("st0");
+	/*ScavTrap	st0("st0");
 	ScavTrap	st1("st1");
 	int i = 0;
 
@@ -42,6 +43,26 @@ int	main(void)
 	std::cout << std::endl << "DBG : st1 enters guard mode" << std::endl << std::endl;
 	st1.guardGate();
 	
+	std::cout << std::endl << "TESTING FRAGTRAPS" << std::endl;
+	FragTrap	ft0("ft0");
+	FragTrap	ft1("ft1");
+
+	std::cout << "DBG : ft0 attacks like crazy until it runs out of energy" << std::endl;
+	i = 0;
+	while (++i < 100)
+		ft0.attack("very violently and without stopping");
+	std::cout << "DBG : ft0 takes 500hp of damage, cannot repair because they are destroyed" << std::endl;
+	ft0.takeDamage(500);
+	ft0.beRepaired(200);
+	
+	std::cout << "DBG : ft1 repairs for 50 more hp (25 + 25) and asks for high fives" << std::endl;
+	ft1.beRepaired(25);
+	ft1.beRepaired(25);
+	ft1.highFivesGuys();
+	std::cout << "DBG : ft1 doesnt get a high five, instead gets 1000000hp of damage for asking" << std::endl;
+	ft1.takeDamage(1000000);
 	std::cout << std::endl << "DONE" << std::endl;
-	return (0);
+	return (0);*/
+	DiamondTrap d1("oi");
+	d1.attack();
 }

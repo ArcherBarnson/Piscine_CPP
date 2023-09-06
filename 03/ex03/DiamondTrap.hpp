@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 10:54:22 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/06 10:54:58 by bgrulois         ###   ########.fr       */
+/*   Created: 2023/09/06 11:23:39 by bgrulois          #+#    #+#             */
+/*   Updated: 2023/09/06 12:37:36 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
 # include <iostream>
 # include "ClapTrap.hpp"
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class DiamondTrap : public ScavTrap, public FragTrap {
 	public:
-		ScavTrap(std::string const & name);
-		ScavTrap(ScavTrap const & src);
-		ScavTrap &operator=(ScavTrap const & other);
-		~ScavTrap(void);
-		void	guardGate();
-	private:
+		DiamondTrap(std::string const & name);
+		DiamondTrap(DiamondTrap const & src);
+		DiamondTrap &operator=(DiamondTrap const & other);
+		~DiamondTrap( void );
+	protected:
 		std::string const & _name;
 };
 
