@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 11:23:36 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/06 15:00:43 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:43:09 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ DiamondTrap & DiamondTrap::operator=(DiamondTrap const & other) {
 }
 
 DiamondTrap::~DiamondTrap( void ) {
+	std::cout << "DiamondTrap destructor called" << std::endl;
 	return;
 }
 
