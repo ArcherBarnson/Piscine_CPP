@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 14:26:54 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/06 14:26:56 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:10:32 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@ ScavTrap & ScavTrap::operator=(ScavTrap const & other) {
 
 ScavTrap::~ScavTrap(void) {
 	std::cout << "ScavTrap destructor called" << std::endl;
+	return ;
+}
+
+void	ScavTrap::attack(std::string &target)
+{
+	if (_energyPoints <= 0)
+		std::cout << "ClapTrap " << _name << " cannot attack without energy points !" << std::endl;
+	if (_hitPoints <= 0)
+		std::cout << "ClapTrap " << _name << " cannot attack : they are dead !" << std::endl;
+	if (_hitPoints > 0 && _energyPoints > 0)
+	{
+		std::cout << "ClapTrap " << _name << " attacks " << target;
+		std::cout << " causing " << _attackDamage << " points of damage !" << std::endl;
+		ClapTrap(target).takeDamage(_attackDamage);
+		_energyPoints--;
+	}
 	return ;
 }
 

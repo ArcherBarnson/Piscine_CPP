@@ -6,7 +6,7 @@
 #    By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 10:53:17 by bgrulois          #+#    #+#              #
-#    Updated: 2023/09/06 14:56:26 by bgrulois         ###   ########.fr        #
+#    Updated: 2023/09/12 16:42:11 by bgrulois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJS	=	$(SRCS:.cpp=.o)
 
 CC	=	c++
 
-CPPFLAGS=	-Wall -Werror -Wextra -Wshadow -std=c++98
+CPPFLAGS=	-Wall -Werror -Wextra -std=c++98
 
 
 %.o:		%.cpp

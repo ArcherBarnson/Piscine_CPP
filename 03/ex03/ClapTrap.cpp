@@ -1,7 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/12 13:41:53 by bgrulois          #+#    #+#             */
+/*   Updated: 2023/09/13 18:11:04 by bgrulois         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(std::string const & name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	std::cout << "ClapTrap default constuctor called" << std::endl;
+	std::cout << "DBG IN CLAPTRAP:: NAME IS :: " << _name << std::endl;
+	std::cout << "DBG IN CLAPTRAP:: HP IS :: " << _hitPoints << std::endl;
 	return ;
 }
 
@@ -27,7 +41,27 @@ ClapTrap::~ClapTrap(void) {
 	return ;
 }
 
-void	ClapTrap::attack(std::string const & target)
+std::string	ClapTrap::getName(void) const
+{
+	return (_name);
+}
+
+int	ClapTrap::getHp()
+{
+	return (_hitPoints);
+}
+
+int	ClapTrap::getEp()
+{
+	return (_energyPoints);
+}
+
+int	ClapTrap::getAd()
+{
+	return (_attackDamage);
+}
+
+void	ClapTrap::attack(std::string &target)
 {
 	if (_energyPoints <= 0)
 		std::cout << "ClapTrap " << _name << " cannot attack without energy points !" << std::endl;
@@ -37,6 +71,7 @@ void	ClapTrap::attack(std::string const & target)
 	{
 		std::cout << "ClapTrap " << _name << " attacks " << target;
 		std::cout << " causing " << _attackDamage << " points of damage !" << std::endl;
+		ClapTrap(target).takeDamage(_attackdamage);
 		_energyPoints--;
 	}
 	return ;

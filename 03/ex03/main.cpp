@@ -6,13 +6,11 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:58:08 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/06 14:41:43 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:09:31 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
 #include "DiamondTrap.hpp"
 
 int	main(void)
@@ -65,13 +63,18 @@ int	main(void)
 	std::cout << std::endl << "DONE" << std::endl;
 	return (0);*/
 	DiamondTrap d1("oi");
-	d1.attack("yeah");
-	int i = 0;
-	while (++i < 15)
-		d1.beRepaired(10);
-	d1.takeDamage(99);
-	d1.beRepaired(9);
-	std::cout << "BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOORDER" << std::endl;
+	std::string fuckyou = "bruh";
+	d1.attack(fuckyou);
+	DiamondTrap d2(d1);
+	//int i = 0;
+	//while (++i < 15)
+	//	d1.beRepaired(10);
+	//d1.takeDamage(99);
+	//d1.beRepaired(9);
 	d1.whoAmI();
+	d2.whoAmI();
+	//std::cout << "aaaaaaa" << std::endl;
+	//d2.whoAmI();
+	//d2.whoAmI();
 	return 0;
 }

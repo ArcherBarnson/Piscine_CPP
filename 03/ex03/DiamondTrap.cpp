@@ -6,20 +6,20 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 11:23:36 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/07 13:43:09 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:11:52 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string const & name) : ClapTrap(name), ScavTrap(name), FragTrap(name), _name(name) {
+DiamondTrap::DiamondTrap(std::string const & name) : ClapTrap(name + ("_clap_name")), ScavTrap(name + ("_clap_name")), FragTrap(name + ("_clap_name")), _name(name) {
 	std::cout << "DiamondTrap constructor called" << std::endl;
 	_hitPoints = FragTrap::_hitPoints;
 	_energyPoints = ScavTrap::_energyPoints;
 	_attackDamage = FragTrap::_attackDamage;
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap const & src) : ClapTrap(src._name), ScavTrap(src._name), FragTrap(src._name), _name(src._name) {
+DiamondTrap::DiamondTrap(DiamondTrap const & src) : ClapTrap(src._name + "_clap_name"), ScavTrap(src._name), FragTrap(src._name), _name(src._name) {
 	std::cout << "DiamondTrap copy constructor called" << std::endl;
 	return ;
 }
@@ -43,10 +43,11 @@ DiamondTrap::~DiamondTrap( void ) {
 void	DiamondTrap::whoAmI()
 {
 	std::cout << "child name : " << _name << std::endl;
-	std::cout << "parent name : " << ClapTrap::_name << std::endl;
+	std::cout << "parent name : " << FragTrap::getName() << std::endl;
 	//"proof";
 	//std::cout << &_name << std::endl;
 	//std::cout << &(ClapTrap::_name) << std::endl;
+	//std::cout << ClapTrap::_name.length() << std::endl;
 	//THEY ARE THE SAME, WHY ?
 	return ;
 }

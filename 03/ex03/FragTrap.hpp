@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:56:43 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/06 11:09:49 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:01:19 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ class FragTrap : virtual public ClapTrap {
 		FragTrap &operator=(FragTrap const & other);
 		~FragTrap(void);
 		void	highFivesGuys();
+		using	ClapTrap::getHp;
+		using	ClapTrap::getEp;
+		using	ClapTrap::getAd;
 	private:
-		std::string const & _name;
+		std::string  _name;
 };
 
 #endif
