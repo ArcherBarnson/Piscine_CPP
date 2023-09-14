@@ -15,7 +15,7 @@
 DiamondTrap::DiamondTrap(std::string const & name) : ClapTrap(name + ("_clap_name")), ScavTrap(name + ("_clap_name")), FragTrap(name + ("_clap_name")), _name(name) {
 	std::cout << "DiamondTrap constructor called" << std::endl;
 	_hitPoints = FragTrap::_hitPoints;
-	_energyPoints = ScavTrap::_energyPoints;
+	_energyPoints = 50;	//fuck this shit
 	_attackDamage = FragTrap::_attackDamage;
 }
 

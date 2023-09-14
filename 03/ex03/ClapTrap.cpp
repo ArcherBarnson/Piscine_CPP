@@ -71,8 +71,9 @@ void	ClapTrap::attack(std::string &target)
 	{
 		std::cout << "ClapTrap " << _name << " attacks " << target;
 		std::cout << " causing " << _attackDamage << " points of damage !" << std::endl;
-		ClapTrap(target).takeDamage(_attackdamage);
+		ClapTrap(target).takeDamage(_attackDamage);
 		_energyPoints--;
+		std::cout << _name << " has " << _energyPoints << "ep left" << std::endl;
 	}
 	return ;
 }
