@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:58:08 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/06 10:58:09 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:13:02 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	ScavTrap	st0("st0");
 	ScavTrap	st1("st1");
 	int i = 0;
-
+//////////////////////////////// TESTS FROM EX01 ///////////////////////////////////////////////////////
 	std::cout << "DBG : st1 attacks until it can't" << std::endl << std::endl;
 	while (++i < 49)
 		st1.attack("the void");
@@ -42,7 +42,7 @@ int	main(void)
 	st0.beRepaired(555);
 	std::cout << std::endl << "DBG : st1 enters guard mode" << std::endl << std::endl;
 	st1.guardGate();
-	
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 	std::cout << std::endl << "TESTING FRAGTRAPS" << std::endl;
 	FragTrap	ft0("ft0");
 	FragTrap	ft1("ft1");
@@ -50,7 +50,7 @@ int	main(void)
 	std::cout << "DBG : ft0 attacks like crazy until it runs out of energy" << std::endl;
 	i = 0;
 	while (++i < 100)
-		ft0.attack("very violently and without stopping");
+		ft0.attack("nothing");
 	std::cout << "DBG : ft0 takes 500hp of damage, cannot repair because they are destroyed" << std::endl;
 	ft0.takeDamage(500);
 	ft0.beRepaired(200);

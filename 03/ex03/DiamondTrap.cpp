@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 11:23:36 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/02 15:00:26 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:30:59 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 DiamondTrap::DiamondTrap(std::string const & name) : ClapTrap(name + ("_clap_name")), ScavTrap(name + ("_clap_name")), FragTrap(name + ("_clap_name")), _name(name) {
 	std::cout << "DiamondTrap constructor called" << std::endl;
 	_energyPoints = 50;
-	std::cout << this->_hitPoints << std::endl;
+	/*std::cout << this->_hitPoints << std::endl;
 	std::cout << this->_energyPoints << std::endl;
 	std::cout << this->_attackDamage << std::endl;
-	std::cout << ScavTrap::getName() << std::endl;
-	std::cout << "DiamondTrap constructor end" << std::endl;
+	std::cout << ScavTrap::getName() << std::endl;*/
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap const & src) : ClapTrap(src), ScavTrap(src), FragTrap(src), _name(src._name + "_clap_name") {
+DiamondTrap::DiamondTrap(DiamondTrap const & src) : ClapTrap(src), ScavTrap(src), FragTrap(src), _name(src._name) {
 	std::cout << "DiamondTrap copy constructor called" << std::endl;
 	std::cout << "diamond name : " << _name << std::endl;
 	return ;

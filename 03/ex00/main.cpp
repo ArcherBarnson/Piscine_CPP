@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:53:03 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/06 10:53:05 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:07:16 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	main(void)
 
 	std::cout << "DBG : 8 successive attacks by ct1" << std::endl << std::endl;
 	ct1.attack("bystander");
-	ct1.attack("bystander");
+	ct1.attack("bystander2");
+	ct1.attack("bystander3");
 	ct1.attack("bandit");
 	ct1.attack("acceptable loss");
 	ct1.attack("human");
 	ct1.attack("non-human");
-	ct1.attack("your mom");
 	ct1.attack("the pROgRaM");
 	std::cout << std::endl << "DBG : ct1 takes 9hp of damage" << std::endl << std::endl;
 	ct1.takeDamage(9);
