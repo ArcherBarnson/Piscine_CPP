@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:58:08 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/13 18:09:31 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/02 14:34:57 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,17 @@ int	main(void)
 	std::cout << std::endl << "DONE" << std::endl;
 	return (0);*/
 	DiamondTrap d1("oi");
-	std::string fuckyou = "bruh";
-	d1.attack(fuckyou);
-	DiamondTrap d2(d1);
+	//std::string fuckyou = "bruh";
+	//d1.attack(fuckyou);
+	//DiamondTrap d2(d1);
+	//DiamondTrap d3 = d1;
 	//int i = 0;
 	//while (++i < 15)
 	//	d1.beRepaired(10);
 	//d1.takeDamage(99);
 	//d1.beRepaired(9);
-	d1.whoAmI();
-	d2.whoAmI();
+	//d1.whoAmI();
+	//d2.whoAmI();
 	//std::cout << "aaaaaaa" << std::endl;
 	//d2.whoAmI();
 	//d2.whoAmI();

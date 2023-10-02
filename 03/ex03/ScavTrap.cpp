@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 14:26:54 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/13 18:10:32 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/02 13:26:38 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ ScavTrap::ScavTrap(std::string const & name) : ClapTrap(name) ,_name(name) {
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;
+	std::cout << "Scav name : " << _name << std::endl;
+	std::cout << "Scav ep : " << _energyPoints << std::endl;
 	return ;
 }
 
