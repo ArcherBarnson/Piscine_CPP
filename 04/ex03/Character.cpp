@@ -6,19 +6,17 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:32:10 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/04 11:49:51 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:54:23 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
 #include "Character.hpp"
-#include "ICharacter.hpp"
 
 Character::Character( void ) {
 	return ;
 }
 
-Character::Character( std::string name ) : _name(name) {
+Character::Character( std::string name ) : ICharacter(), _name(name) {
 	return ;
 }
 
@@ -27,9 +25,8 @@ Character::Character(Character const & src) {
 	return ;
 }
 
-Character & Character operator=(Character const & other) {
-	if (other != &src)
-		_name = _name.other; //attention a ca
+Character & Character::operator=(Character const & other) {
+	(void)other;
 	return *this;
 }
 
@@ -47,7 +44,7 @@ void			Character::equip(AMateria* m)
 	int	i = 0;
 	while (i < 4)
 	{
-		if (!_inventory[i]);
+		if (!_inventory[i])
 		{
 			_inventory[i] = m;
 			return ;
@@ -60,7 +57,7 @@ void			Character::equip(AMateria* m)
 
 void			Character::unequip(int idx)
 {
-	if (_invenory[idx])
+	if (_inventory[idx])
 		_inventory[idx] = NULL;
 	else
 		std::cout << "Cannot unequip empty slot (duh)" << std::cout;

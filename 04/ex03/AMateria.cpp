@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/04 11:00:24 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:22:51 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ AMateria::AMateria(AMateria const & src)
 	return ;
 }
 
-AMateria & AMateria operator=(AMateria const & other) {
+AMateria & AMateria::operator=(AMateria const & other) {
 	if (this != &other)
 		type = other.type;
 	return *this;

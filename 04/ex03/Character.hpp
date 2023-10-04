@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:26:15 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/04 11:36:58 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/04 13:05:09 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ class Character : public ICharacter {
 		Character(Character const & src);
 		Character &operator=(Character const & src);
 		~Character( void );
+		std::string const & getName() const;
 	private:
-		AMateria const		*_inventory[4];
+		AMateria		*_inventory[4];
 		std::string const	_name;
 };
 
