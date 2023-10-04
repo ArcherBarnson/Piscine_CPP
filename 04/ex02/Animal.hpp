@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:56:50 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/07 15:30:19 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/03 17:11:16 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 class Animal {
 	public:
-		//Animal( void );
 		Animal(Animal const & src);
 		Animal &operator=(Animal const & other);
 		virtual ~Animal( void );

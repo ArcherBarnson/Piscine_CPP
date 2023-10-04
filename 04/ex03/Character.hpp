@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:26:15 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/07 16:58:43 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:36:58 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 class Character : public ICharacter {
 	public:
+		Character( void );
 		Character( std::string name );
 		Character(Character const & src);
 		Character &operator=(Character const & src);
