@@ -6,32 +6,32 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 11:43:37 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/04 11:58:35 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:06:37 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateriaSource"
+#include "MateriaSource.hpp"
 
-AMateriaSource::AMateriaSource( void ) {
+MateriaSource::MateriaSource( void ) {
 	return ;
 }
 
-AMateriaSource::AMateriaSource(AMateriaSource const & src) {
+MateriaSource::MateriaSource(MateriaSource const & src) {
 	*this = src;
 	return ;
 }
 
-AMateriaSource & AMateriaSource operator=(AMateriaSource const & other) {
-	if (other != &src)
-		_name = _name.other; //attention a ca
+MateriaSource & MateriaSource::operator=(MateriaSource const & other) {
+	(void)other;
+	//_name = _name.other;
 	return *this;
 }
 
-AMateriaSource::~AMateriaSource( void ) {
+MateriaSource::~MateriaSource( void ) {
 	return ;
 }
 
-void		AMateriaSource::learnMateria(AMateria* m)
+void		MateriaSource::learnMateria(AMateria* m)
 {
 	int	i = 0;
 	while (i < 4)
@@ -47,17 +47,15 @@ void		AMateriaSource::learnMateria(AMateria* m)
 	return ;
 }
 
-AMateria*	AMateriaSource::createMateria(std::string const & type)
+AMateria*	MateriaSource::createMateria(std::string const & type)
 {
 	int	i = 0;
 
-	AMateria* cpy = new AMateria(type);
 	while (i < 4)
 	{
-		if (type.compare(_materiaStorage[i]) == 0)
+		if (type.compare(_materiaStorage[i]->getType()) == 0)
 		{
-			cpy = &_materiaStorage[i];
-			return cpy;
+			return (_materiaStorage[i]->clone());
 		}
 		i++;
 	}

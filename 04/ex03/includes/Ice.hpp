@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 11:37:58 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/04 11:48:59 by bgrulois         ###   ########.fr       */
+/*   Created: 2023/09/07 16:26:15 by bgrulois          #+#    #+#             */
+/*   Updated: 2023/10/04 17:26:11 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIASOURCE_HPP
-# define MATERIASOURCE_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
 
-class MateriaSource : public IMateriaSource {
+class Ice : public AMateria {
 	public:
-		MateriaSource( void );
-		MateriaSource(MateriaSource const & src);
-		MateriaSource &operator=(MateriaSource const & src);
-		~MateriaSource( void );
-	private:
-		_*materiaStorage[4];
-
+		Ice( void );
+		Ice(Ice const & src);
+		Ice &operator=(Ice const & src);
+		~Ice( void );
+		AMateria* clone() const; 
+		virtual void use(ICharacter& target);
 };
 
 #endif

@@ -1,45 +1,53 @@
 # **************************************************************************** #
-#                                                                              #
+#	                                                                          #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/03 10:53:17 by bgrulois          #+#    #+#              #
-#    Updated: 2023/10/04 12:26:47 by bgrulois         ###   ########.fr        #
+#    Created: 2023/10/04 16:06:09 by bgrulois          #+#    #+#              #
+#    Updated: 2023/10/04 16:06:45 by bgrulois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	sonicyouthsong
+NAME    =    recap
 
-SRCS	=	Character.cpp \
-		AMateria.cpp \
-		Cure.cpp \
-		Ice.cpp \
-		main.cpp
+SRCS_FILES    =    main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp \
+                MateriaSource.cpp 
 
-OBJS	=	$(SRCS:.cpp=.o)
+INC_FILES    =    AMateria.hpp ICharacter.hpp Character.hpp Ice.hpp Cure.hpp \
+                IMateriaSource.hpp MateriaSource.hpp
 
-CC	=	c++
+SRCS    =    $(addprefix srcs/, $(SRCS_FILES))
 
-CPPFLAGS=	-Wall -Werror -Wextra -std=c++98
+INCS    =    $(addprefix includes/, $(INC_FILES))
 
+CXX    =    c++
 
-%.o:		%.cpp
-		$(CC) $(CPPFLAGS) -c $< -o $@
+CPPFLAGS    =    -Wall -Wextra -Werror -std=c++98 -I./includes -g3
 
-all:		${NAME}
+OBJS_FILES    =    $(SRCS_FILES:%.cpp=%.o)
 
-${NAME}:	$(OBJS)
-		${CC} ${CPPFLAGS} $(OBJS) -o $(NAME)
+OBJS    =    $(addprefix objs/, $(OBJS_FILES))
 
-clean:
-		rm -rf ${OBJS}
+DEP        =    $(OBJS:%.o=%.d)
 
-fclean:		clean
-		rm -rf ${NAME}
+all    :    $(NAME)
 
-re:		fclean
-		make
+$(NAME)	:	$(OBJS)
+	$(CXX) $(CPPFLAGS) -o $(NAME) $(OBJS)
 
-.PHONY	=	all clean fclean re
+clean	:
+	rm -rf $(OBJS) $(DEP)
+	rm -rf objs/
+
+fclean	:	clean
+	rm -rf $(NAME)
+
+re	:	fclean all
+
+objs/%.o	: srcs/%.cpp $(INCS)
+	mkdir -p objs
+	$(CXX) $(CPPFLAGS) -MMD -o $@ -c $<
+
+.PHONY: all clean fclean re

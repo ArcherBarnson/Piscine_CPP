@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:32:10 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/04 12:54:23 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:53:58 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ std::string const & 	Character::getName() const
 	return (_name);
 }
 
-void			Character::equip(AMateria* m)
+void	Character::equip(AMateria* m)
 {
 	int	i = 0;
 	while (i < 4)
