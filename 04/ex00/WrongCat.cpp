@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:04:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/07 14:03:03 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:54:25 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,3 @@ WrongCat & WrongCat::operator=(WrongCat const & other) {
 WrongCat::~WrongCat( void ) {
 	std::cout << "WrongCat destructor called" << std::endl;
 }
-

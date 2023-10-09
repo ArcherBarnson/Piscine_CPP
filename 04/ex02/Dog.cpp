@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:04:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/07 14:44:12 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:52:41 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,8 @@ Dog::~Dog( void ) {
 	delete brain;
 }
 
+void	Dog::makeSound() const
+{
+	std::cout << "waf waf" << std::endl;
+	return ;
+}

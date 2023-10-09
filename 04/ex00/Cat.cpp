@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:04:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/07 13:35:26 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:56:53 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,8 @@ Cat::~Cat( void ) {
 	std::cout << "Cat destructor called" << std::endl;
 }
 
+void	Cat::makeSound() const
+{
+	std::cout << "miaou miaou" << std::endl;
+	return ;
+}

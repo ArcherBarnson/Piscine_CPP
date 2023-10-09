@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:05:25 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/03 17:09:45 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:48:29 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int main()
 	const Animal	*pets[4];
 	int i = -1;
 
+	Cat	*cat = new Cat();
+	Cat	*cat2 = cat;
 	while (++i < 2)
 		pets[i] = new Cat();
 	i--;
@@ -40,5 +42,7 @@ int main()
 		std::cout << "HELLLLLOOOOOOOO" << std::endl;
 	}
 	//delete [] pets; nul
+	delete cat;
+	delete cat2;
 	return 0;
 }

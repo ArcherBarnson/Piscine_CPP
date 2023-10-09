@@ -6,13 +6,16 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 11:43:37 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/04 17:06:37 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:57:27 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
 
 MateriaSource::MateriaSource( void ) {
+	int i;
+	for (i = 0; i < 4; i++)
+		_materiaStorage[i] = NULL;
 	return ;
 }
 
@@ -23,11 +26,16 @@ MateriaSource::MateriaSource(MateriaSource const & src) {
 
 MateriaSource & MateriaSource::operator=(MateriaSource const & other) {
 	(void)other;
-	//_name = _name.other;
 	return *this;
 }
 
 MateriaSource::~MateriaSource( void ) {
+	int i;
+	for (i = 0; i < 4; i++)
+	{
+		if (_materiaStorage[i] != NULL)
+			delete _materiaStorage[i];
+	}
 	return ;
 }
 
@@ -53,7 +61,7 @@ AMateria*	MateriaSource::createMateria(std::string const & type)
 
 	while (i < 4)
 	{
-		if (type.compare(_materiaStorage[i]->getType()) == 0)
+		if (_materiaStorage[i] != NULL && type == _materiaStorage[i]->getType())
 		{
 			return (_materiaStorage[i]->clone());
 		}

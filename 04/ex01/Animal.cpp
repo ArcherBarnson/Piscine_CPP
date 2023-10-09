@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:04:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/07 13:36:17 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:10:47 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,13 @@ Animal::~Animal( void ) {
 	std::cout << "Animal destructor called" << std::endl;
 }
 
-void		Animal::makeSound() const
-{
-	if (this->getType().compare("Dog") == 0)
-		std::cout << "waf waf" << std::endl;
-	else if (this->getType().compare("Cat") == 0)
-		std::cout << "meowww" << std::endl;
-	else
-		std::cout << "you are calling the base class" << std::endl;
-	return ;
-}
-
 std::string const & Animal::getType() const
 {
 	return type;
+}
+
+void	Animal::makeSound() const
+{
+	std::cout << "Animal base class makeSound member called." << std::endl;
+	return ;
 }

@@ -6,17 +6,13 @@
 #    By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 10:53:17 by bgrulois          #+#    #+#              #
-#    Updated: 2023/10/05 16:03:43 by bgrulois         ###   ########.fr        #
+#    Updated: 2023/10/09 15:21:45 by bgrulois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	sonicyouthsong
+NAME	=	bureaucratic_hellscape
 
-SRCS	=	Animal.cpp \
-		Dog.cpp \
-		Cat.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp \
+SRCS	=	Bureaucrat.cpp \
 		main.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)

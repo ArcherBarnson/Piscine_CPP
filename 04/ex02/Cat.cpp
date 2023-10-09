@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:04:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/07 14:35:15 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:52:19 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,8 @@ Cat::~Cat( void ) {
 	delete brain;
 }
 
+void	Cat::makeSound() const
+{
+	std::cout << "miaou miaou" << std::endl;
+	return ;
+}

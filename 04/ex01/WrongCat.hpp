@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:56:50 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/07 14:05:00 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:49:48 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class WrongCat : public WrongAnimal {
 		WrongCat( void );
 		WrongCat(WrongCat const & src);
 		WrongCat &operator=(WrongCat const & other);
-		~WrongCat( void );
+		virtual ~WrongCat( void );
 };
 
 #endif

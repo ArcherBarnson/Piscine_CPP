@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/05 16:16:13 by bgrulois          #+#    #+#             */
+/*   Updated: 2023/10/05 16:44:33 by bgrulois         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
@@ -25,17 +37,12 @@ int main()
 	delete i;
 	delete j;
 	std::cout << "Testing wrong animals now" << std::endl;
-	const WrongAnimal * abomination = new WrongAnimal();
-	const WrongCat * abomicat = new WrongCat();
-	std::cout << "printing WrongAnimal type" << std::endl;
-	std::cout << abomination->getType() << " " << std::endl;
+	const WrongCat * abomination = new WrongCat();
 	std::cout << "printing WrongCat type" << std::endl;
-	std::cout << abomicat->getType() << " " << std::endl;
-	std::cout << "Calling makeSound() --- order is : 1-WrongAnimal 2-WrongCat" << std::endl;
+	std::cout << abomination->getType() << " " << std::endl;
+	std::cout << "Calling makeSound() on WrongCat" << std::endl;
 	abomination->makeSound();
-	abomicat->makeSound();
 	std::cout << "Cleaning up" << std::endl;
 	delete abomination;
-	delete abomicat;
 	return 0;
 }

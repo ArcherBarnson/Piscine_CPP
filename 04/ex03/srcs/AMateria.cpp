@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/04 17:19:37 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:56:44 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ AMateria & AMateria::operator=(AMateria const & other) {
 }
 
 AMateria::~AMateria( void ) {
-	std::cout << "AMateria pure virtual destructor called." << std::endl;
+	//std::cout << "AMateria pure virtual destructor called." << std::endl;
 	return ;
 }
 

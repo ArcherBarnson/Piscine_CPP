@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:04:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/09/07 14:21:45 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:53:58 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,12 @@ WrongAnimal::~WrongAnimal( void ) {
 	std::cout << "WrongAnimal destructor called" << std::endl;
 }
 
-void		WrongAnimal::makeSound() const
-{
-	if (this->getType().compare("badbase") == 0)
-		std::cout << "this a base class but it's THE WRONG ONE" << std::endl;
-	else if (this->getType().compare("WrongCat") == 0)
-		std::cout << "***glitched out meow***" << std::endl;
-	else
-		std::cout << "Something went terribly wrong" << std::cout;
-	return ;
-}
-
 std::string const & WrongAnimal::getType() const
 {
 	return type;
+}
+
+void	WrongAnimal::makeSound() const
+{
+	std::cout << "the abomination is screeching, you probably did something unethical" << std::endl;
 }
