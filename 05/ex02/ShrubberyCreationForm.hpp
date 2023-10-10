@@ -14,6 +14,7 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 # include <iostream>
+# include <fstream>
 # include "AForm.hpp"
 # include "Bureaucrat.hpp"
 
@@ -25,7 +26,7 @@ class ShrubberyCreationForm : public AForm {
 			public:
 				const char* what() const throw();
 		};
-		ShrubberyCreationForm(std::string const & name);
+		ShrubberyCreationForm(std::string const & name, std::string const & target);
 		~ShrubberyCreationForm();
 		void	beSigned(Bureaucrat *b);
 	private:

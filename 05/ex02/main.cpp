@@ -24,7 +24,7 @@ int	main()
 		//AForm	f1 = AForm("F1", 10, 8);
 		//AForm	f2 = AForm("F2", 28, 24);
 		//AForm	f3 = AForm("F3", 100, 50);
-		ShrubberyCreationForm sC1 = ShrubberyCreationForm("sC1"); 
+		ShrubberyCreationForm sC1 = ShrubberyCreationForm("sC1", "MY"); 
 
 		B.signForm(&sC1);
 		//B.signForm(&f2);
