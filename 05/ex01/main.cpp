@@ -24,9 +24,9 @@ int	main()
 		Form	f2 = Form("F2", 28, 24);
 		Form	f3 = Form("F3", 100, 50);
 
-		f1.beSigned(A);
-		f2.beSigned(B);
-		f3.beSigned(C);
+		B.signForm(&f1);
+		B.signForm(&f2);
+		C.signForm(&f3);
 	}
 
 	catch(std::exception &e)

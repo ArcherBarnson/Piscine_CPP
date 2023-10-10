@@ -30,7 +30,7 @@ class Form {
 		unsigned short int getGs() const;
 		unsigned short int getGe() const;
 		bool	getFormState();
-		void	beSigned(Bureaucrat b);
+		void	beSigned(Bureaucrat *b);
 	private:
 		std::string const & _name;
 		bool _isSigned;
