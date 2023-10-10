@@ -24,8 +24,6 @@ int	main()
 		Form	f2 = Form("F2", 28, 24);
 		Form	f3 = Form("F3", 100, 50);
 
-		std::cout << f1 << f2 << f3 << std::endl;
-
 		B.signForm(&f1);
 		B.signForm(&f2);
 		C.signForm(&f3);

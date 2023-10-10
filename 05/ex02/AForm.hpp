@@ -1,0 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/09 15:36:09 by bgrulois          #+#    #+#             */
+/*   Updated: 2023/10/09 15:46:44 by bgrulois         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef AForm_HPP
+# define AForm_HPP
+
+# include <iostream>
+# include "Bureaucrat.hpp"
+
+class Bureaucrat;
+
+class AForm {
+	public:
+		class GradeTooLowException : public std::exception {
+			public:
+				const char* what() const throw();
+		};
+		AForm(std::string const & name, unsigned short int gS, unsigned short int gE);
+		virtual ~AForm();
+		std::string const & getName() const;
+		unsigned short int getGs() const;
+		unsigned short int getGe() const;
+		bool	getFormState();
+		void	beSigned(Bureaucrat *b);
+	private:
+		std::string const & _name;
+		bool _isSigned;
+		unsigned short int _gradeForSigning;
+		unsigned short int _gradeForExec;	
+};
+
+std::ostream	&operator<<(std::ostream &outfile, AForm const &f);
+
+#endif

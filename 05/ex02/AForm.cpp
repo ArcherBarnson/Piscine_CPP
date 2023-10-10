@@ -50,11 +50,3 @@ void    Form::beSigned(Bureaucrat *b)
         throw Form::GradeTooLowException();
     return ;
 }
-
-std::ostream	&operator<<(std::ostream &outfile, Form const &f)
-{
-	outfile << f.getName() << ", grade required|" << std::endl
-        << "-For signing : " << f.getGs() << std::endl
-        << "-For executing : " << f.getGe() << std::endl;
-	return (outfile);
-}
