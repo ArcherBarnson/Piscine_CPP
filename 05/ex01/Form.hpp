@@ -13,22 +13,24 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
+# include <iostream>
+# include "Bureaucrat.hpp"
+
+class Bureaucrat;
+
 class Form {
 	public:
-		class GradeTooHighException : public std::exception {
-			public:
-				const char* what() const throw();
-		};
 		class GradeTooLowException : public std::exception {
 			public:
 				const char* what() const throw();
 		};
-		Form(std::string const & name, unsigned short int gS, unsigned short int gE, bool isSigned);
+		Form(std::string const & name, unsigned short int gS, unsigned short int gE);
 		~Form();
 		std::string const & getName() const;
 		unsigned short int getGs() const;
 		unsigned short int getGe() const;
 		bool	getFormState();
+		void	beSigned(Bureaucrat b);
 	private:
 		std::string const & _name;
 		bool _isSigned;

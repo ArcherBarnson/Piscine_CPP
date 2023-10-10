@@ -11,30 +11,28 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main()
-{	
+{
 	try {
-		Bureaucrat bware = Bureaucrat("bware", 13);
-		int i;
-		for (i = 0; i < 13; i++)
-			bware.incrementGrade();
-		Bureaucrat blow = Bureaucrat("blow", 147);
-		for (i = 0; i < 4; i++)
-			blow.decrementGrade();
-		std::cout << bware << std::endl;
-		std::cout << blow << std::endl;
-		/* The two extremity cases are exlusive to each other because exception is thrown
-		 * and thus the program is stopped
-		 *
-		 * 	Bureaucrat b1 = Bureaucrat("b1", 0);	//too high exception
-		 *	Bureaucrat b2 = Bureaucrat("b2", 1111);	//too low exception
-		 *
-		 */
+		Bureaucrat A = Bureaucrat("A", 5);
+		Bureaucrat B = Bureaucrat("B", 25);
+		Bureaucrat C = Bureaucrat("C", 101);
+
+		Form	f1 = Form("F1", 10, 8);
+		Form	f2 = Form("F2", 28, 24);
+		Form	f3 = Form("F3", 100, 50);
+
+		f1.beSigned(A);
+		f2.beSigned(B);
+		f3.beSigned(C);
 	}
+
 	catch(std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
-	};
+	}
+
 	return 0;
 }

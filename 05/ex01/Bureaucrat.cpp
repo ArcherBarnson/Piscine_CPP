@@ -51,6 +51,14 @@ void	Bureaucrat::decrementGrade()
 	return ;
 }
 
+void	Bureaucrat::signForm(Form *f)
+{
+	if (f->getFormState())
+		std::cout << "Bureaucrat " << _name << " signed Form " << f->getName() << std::endl;
+	else
+		std::cout << "Bureaucrat " << _name << " could not sign Form " << f->getName() << " : Permission denied" << std::endl;
+}
+
 std::string const &	Bureaucrat::getName() const {
 	return _name;
 }

@@ -13,7 +13,8 @@
 NAME	=	bureaucratic_hellscape
 
 SRCS	=	Bureaucrat.cpp \
-		main.cpp
+			Form.cpp \
+			main.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)
 

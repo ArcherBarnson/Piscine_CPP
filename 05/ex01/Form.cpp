@@ -12,3 +12,40 @@
 
 #include "Form.hpp"
 
+Form::Form(std::string const & name, unsigned short int gS, unsigned short int gE) : 
+    _name(name), _isSigned(0), _gradeForSigning(gS), _gradeForExec(gE) {
+        return ;
+}
+
+Form::~Form(void) {
+    return ;
+}
+
+std::string const & Form::getName() const {
+    return _name;
+}
+
+unsigned short int Form::getGs() const {
+    return _gradeForSigning;
+}
+
+unsigned short int Form::getGe() const {
+    return _gradeForExec;
+}
+
+bool    Form::getFormState() {
+    return _isSigned;
+}
+
+const char* Form::GradeTooLowException::what() const throw() {
+	return ("Error: Grade too low, are you trying to forge a document ?");
+}
+
+void    Form::beSigned(Bureaucrat b)
+{
+    b.getGrade() <= _gradeForSigning ? _isSigned = 1 : NULL;
+    b.signForm(this);
+    if (_isSigned == 0)
+        throw Form::GradeTooLowException();
+    return ;
+}
