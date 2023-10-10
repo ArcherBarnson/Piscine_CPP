@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AForm_HPP
-# define AForm_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <iostream>
 # include "Bureaucrat.hpp"
@@ -30,7 +30,7 @@ class AForm {
 		unsigned short int getGs() const;
 		unsigned short int getGe() const;
 		bool	getFormState();
-		void	beSigned(Bureaucrat *b);
+		virtual void	beSigned(Bureaucrat *b) = 0;
 	private:
 		std::string const & _name;
 		bool _isSigned;

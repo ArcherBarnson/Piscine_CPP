@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int	main()
 {
@@ -20,13 +21,14 @@ int	main()
 		Bureaucrat B = Bureaucrat("B", 25);
 		Bureaucrat C = Bureaucrat("C", 101);
 
-		Form	f1 = Form("F1", 10, 8);
-		Form	f2 = Form("F2", 28, 24);
-		Form	f3 = Form("F3", 100, 50);
+		//AForm	f1 = AForm("F1", 10, 8);
+		//AForm	f2 = AForm("F2", 28, 24);
+		//AForm	f3 = AForm("F3", 100, 50);
+		ShrubberyCreationForm sC1 = ShrubberyCreationForm("sC1"); 
 
-		B.signForm(&f1);
-		B.signForm(&f2);
-		C.signForm(&f3);
+		B.signForm(&sC1);
+		//B.signForm(&f2);
+		//C.signForm(&f3);
 	}
 
 	catch(std::exception &e)
