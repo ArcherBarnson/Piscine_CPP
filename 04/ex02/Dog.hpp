@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:56:50 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/05 16:48:59 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/11 16:43:42 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Dog : public Animal {
 		virtual ~Dog( void );
 		virtual void	makeSound() const;
 	private:
-		Brain	*brain;
+		Brain	*_brain;
 };
 
 #endif
