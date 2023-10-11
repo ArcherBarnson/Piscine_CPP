@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:02:23 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/11 11:21:14 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:29:01 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,12 @@ void	Bureaucrat::decrementGrade()
 
 void	Bureaucrat::signForm(AForm *f)
 {
+	if (f->getFormState())
+	{
+		std::cout << _name << " cannot sign this form, it is already signed..." << std::endl;
+		return ;
+	}
 	f->beSigned(this);
-	//std::cout << _name << " signed Form " << f->getName() << std::endl;
 }
 
 std::string const &	Bureaucrat::getName() const {

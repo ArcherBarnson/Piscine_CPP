@@ -22,8 +22,12 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void) {
 
 std::string	ShrubberyCreationForm::getName()
 {
-	std::cout << "i am a little bitch" << std::cout;
 	return _name;
+}
+
+bool	ShrubberyCreationForm::getFormState()
+{
+	return _isSigned;
 }
 
 void    ShrubberyCreationForm::beSigned(Bureaucrat *b)

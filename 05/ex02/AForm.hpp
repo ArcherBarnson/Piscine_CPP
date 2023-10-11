@@ -29,7 +29,7 @@ class AForm {
 		std::string const & getName() const;
 		unsigned short int getGs() const;
 		unsigned short int getGe() const;
-		bool	getFormState();
+		virtual bool	getFormState();
 		virtual void	beSigned(Bureaucrat *b) = 0;
 	private:
 		std::string const & _name;

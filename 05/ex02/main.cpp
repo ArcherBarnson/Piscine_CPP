@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:16:39 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/11 11:22:34 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:21:08 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int	main()
 {
@@ -27,12 +28,14 @@ int	main()
 		//AForm	f3 = AForm("F3", 100, 50);
 		ShrubberyCreationForm sC1 = ShrubberyCreationForm("MY");
 		RobotomyRequestForm rC1 = RobotomyRequestForm("innocent bystander");
+		PresidentialPardonForm pP1 = PresidentialPardonForm("very corrupt politician");
 
 
 		B.signForm(&sC1);
 		B.signForm(&rC1);
-		//B.signForm(&f2);
-		//C.signForm(&f3);
+		A.signForm(&pP1);
+		A.signForm(&pP1);
+		//C.signForm(&pP1);		//throws permission exception
 	}
 
 	catch(std::exception &e)

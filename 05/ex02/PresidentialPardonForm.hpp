@@ -1,21 +1,20 @@
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 # include <iostream>
 # include <fstream>
-# include <cstdlib>
 # include "AForm.hpp"
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class RobotomyRequestForm : public AForm {
+class PresidentialPardonForm : public AForm {
 	public:
-		RobotomyRequestForm(std::string const & target);
-		~RobotomyRequestForm();
+		PresidentialPardonForm(std::string const & target);
+		~PresidentialPardonForm();
+		std::string	getName();
 		void	beSigned(Bureaucrat *b);
 		bool	getFormState();
-		std::string getName();
 	private:
 		std::string _name;
 		bool _isSigned;
@@ -23,6 +22,6 @@ class RobotomyRequestForm : public AForm {
 		unsigned short int _gradeForExec;	
 };
 
-//std::ostream	&operator<<(std::ostream &outfile, RobotomyRequestForm const &f);
+std::ostream	&operator<<(std::ostream &outfile, PresidentialPardonForm const &f);
 
 #endif

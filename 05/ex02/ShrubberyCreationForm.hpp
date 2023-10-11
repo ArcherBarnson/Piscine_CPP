@@ -26,6 +26,7 @@ class ShrubberyCreationForm : public AForm {
 		~ShrubberyCreationForm();
 		std::string	getName();
 		void	beSigned(Bureaucrat *b);
+		bool	getFormState();
 	private:
 		std::string _name;
 		bool _isSigned;
