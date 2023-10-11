@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:41:41 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/09 15:45:51 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/11 11:23:18 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 AForm::AForm(std::string const & name, unsigned short int gS, unsigned short int gE) : 
     _name(name), _isSigned(0), _gradeForSigning(gS), _gradeForExec(gE) {
-        std::cout << "A form " << _name << " was created - grade required to sign : "
+        std::cout << "A " << _name << " was created - grade required to sign : "
             << _gradeForSigning << " or higher" << std::endl;
         return ;
 }

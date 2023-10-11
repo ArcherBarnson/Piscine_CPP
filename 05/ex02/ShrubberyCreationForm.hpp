@@ -22,15 +22,12 @@ class Bureaucrat;
 
 class ShrubberyCreationForm : public AForm {
 	public:
-		class GradeTooLowException : public std::exception {
-			public:
-				const char* what() const throw();
-		};
-		ShrubberyCreationForm(std::string const & name, std::string const & target);
+		ShrubberyCreationForm(std::string const & target);
 		~ShrubberyCreationForm();
+		std::string	getName();
 		void	beSigned(Bureaucrat *b);
 	private:
-		std::string const & _name;
+		std::string _name;
 		bool _isSigned;
 		unsigned short int _gradeForSigning;
 		unsigned short int _gradeForExec;	
