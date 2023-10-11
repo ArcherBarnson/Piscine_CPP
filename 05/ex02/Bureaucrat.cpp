@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:02:23 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/11 15:15:46 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:14:54 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,14 @@ void	Bureaucrat::signForm(AForm *f)
 		std::cout << _name << " cannot sign this form, it is already signed..." << std::endl;
 		return ;
 	}
-	f->beSigned(this);
+	f->beSigned(*this);
 }
 
-executeForm(Form const & form)
+void	Bureaucrat::executeForm(AForm const & form)
 {
-	if (form.getFormState() == "")
+	form.execute(*this);
+	std::cout << _name << " executed " << form.getName() << std::endl;
+	return ;
 }
 
 std::string const &	Bureaucrat::getName() const {

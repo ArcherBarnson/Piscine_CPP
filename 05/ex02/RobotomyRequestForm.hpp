@@ -13,7 +13,7 @@ class RobotomyRequestForm : public AForm {
 	public:
 		RobotomyRequestForm(std::string const & target);
 		~RobotomyRequestForm();
-		void	beSigned(Bureaucrat *b);
+		void	beSigned(Bureaucrat const & b);
 		bool	getFormState();
 		std::string getName();
 		void	execute(Bureaucrat const & executor);
@@ -22,7 +22,7 @@ class RobotomyRequestForm : public AForm {
 		std::string _target;
 		bool _isSigned;
 		unsigned short int _gradeForSigning;
-		unsigned short int _gradeForExec;	
+		unsigned short int _gradeForExec;
 };
 
 //std::ostream	&operator<<(std::ostream &outfile, RobotomyRequestForm const &f);

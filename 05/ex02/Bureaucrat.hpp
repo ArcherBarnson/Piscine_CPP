@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 11:53:58 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/11 15:15:46 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:17:57 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Bureaucrat {
 		void	signForm(AForm *f);
 		unsigned short int getGrade() const;
 		std::string const & getName() const;
-		executeForm(Form const & form);
+		void	executeForm(AForm const & form);
 	private:
 		std::string const & _name;
 		unsigned short int _grade;

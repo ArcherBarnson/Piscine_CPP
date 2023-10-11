@@ -22,13 +22,13 @@ bool	RobotomyRequestForm::getFormState()
 	return _isSigned;
 }
 
-void    RobotomyRequestForm::beSigned(Bureaucrat *b)
+void    RobotomyRequestForm::beSigned(Bureaucrat const & b)
 {
-    b->getGrade() <= _gradeForSigning ? _isSigned = 1 : std::cout << b->getName() << " could not sign form : grade too low exception (permission denied)" << std::endl;
+    b.getGrade() <= _gradeForSigning ? _isSigned = 1 : std::cout << b.getName() << " could not sign form : grade too low exception (permission denied)" << std::endl;
     if (_isSigned == 0)
         throw AForm::GradeTooLowException();
 	else
-		std::cout << b->getName() << " signed Form " << _name << std::endl;
+		std::cout << b.getName() << " signed Form " << _name << std::endl;
     return ;
 }
 

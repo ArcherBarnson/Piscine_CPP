@@ -39,7 +39,7 @@ class AForm {
 		unsigned short int getGe() const;
 		virtual bool	getFormState();
 		virtual void	execute(Bureaucrat const & executor) = 0;
-		virtual void	beSigned(Bureaucrat *b) = 0;
+		virtual void	beSigned(Bureaucrat const & b) = 0;
 	private:
 		std::string const & _name;
 		bool _isSigned;
