@@ -1,17 +1,10 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(std::string const & target) : AForm("Robotomy Request Form", 72, 45), _name(("Robo.request_" + target).c_str()) {
+RobotomyRequestForm::RobotomyRequestForm(std::string const & target) : AForm("Robotomy Request Form", 72, 45), _name(("Robo.request_" + target).c_str()), _target(target) {
         std::cout << "A robotomy request form was made for " << target << std::endl;
         _isSigned = false;
         _gradeForSigning = 72;
-        _gradeForExec = 25;
-		srand(time(NULL));
-		int success = rand() % 2;
-		std::cout << "***Very uncomfortable drilling noises***" << std::endl;
-		if (success)
-			std::cout << target << " was successfully robotomised, i hope you're happy" << std::endl;
-		else
-			std::cout << "Robotomy on " << target << " failed terribly, now someone has to clean this up" << std::endl;
+        _gradeForExec = 25;	
         return ;
 }
 
@@ -37,4 +30,20 @@ void    RobotomyRequestForm::beSigned(Bureaucrat *b)
 	else
 		std::cout << b->getName() << " signed Form " << _name << std::endl;
     return ;
+}
+
+void	RobotomyRequestForm::execute(Bureaucrat const & executor)
+{
+	if (executor.getGrade() > _gradeForExec)
+		throw AForm::ExecutorException();
+	if (_isSigned == false)
+		throw AForm::IllegalFormException();
+	srand(time(NULL));
+	int success = rand() % 2;
+	std::cout << "***Very uncomfortable drilling noises***" << std::endl;
+	if (success)
+		std::cout << _target << " was successfully robotomised, i hope you're happy" << std::endl;
+	else
+		std::cout << "Robotomy on " << _target << " failed terribly, now someone has to clean this up" << std::endl;
+	return ;
 }

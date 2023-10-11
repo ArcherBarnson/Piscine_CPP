@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:16:39 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/11 13:21:08 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:01:47 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ int	main()
 
 		B.signForm(&sC1);
 		B.signForm(&rC1);
-		A.signForm(&pP1);
-		A.signForm(&pP1);
+		//A.signForm(&pP1);
+		//A.signForm(&pP1);
+		pP1.execute(A);
+		//pP1.execute(B);
 		//C.signForm(&pP1);		//throws permission exception
 	}
 

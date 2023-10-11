@@ -1,11 +1,11 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(std::string const & target) : AForm("Presidential Pardon Form", 145, 137), _name(("Shrub.creat_" + target).c_str()) {
+PresidentialPardonForm::PresidentialPardonForm(std::string const & target) : AForm("Presidential Pardon Form", 145, 137), _name(("Shrub.creat_" + target).c_str()), _target(target) {
         std::cout << "A presidential pardon form was made for " << target << std::endl;
         _isSigned = false;
         _gradeForSigning = 25;
         _gradeForExec = 5;
-		std::cout << target << " was pardoned by Zaphod Beeblebox" << std::endl;
+
         return ;
 }
 
@@ -31,4 +31,14 @@ void    PresidentialPardonForm::beSigned(Bureaucrat *b)
 	else
 		std::cout << b->getName() << " signed Form " << _name << std::endl;
     return ;
+}
+
+void	PresidentialPardonForm::execute(Bureaucrat const & executor)
+{
+	if (executor.getGrade() > _gradeForExec)
+		throw AForm::ExecutorException();
+	if (_isSigned == false)
+		throw AForm::IllegalFormException();
+	std::cout << _target << " was pardoned by Zaphod Beeblebox" << std::endl;
+	return ;
 }

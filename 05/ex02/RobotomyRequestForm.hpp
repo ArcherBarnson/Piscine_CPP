@@ -16,8 +16,10 @@ class RobotomyRequestForm : public AForm {
 		void	beSigned(Bureaucrat *b);
 		bool	getFormState();
 		std::string getName();
+		void	execute(Bureaucrat const & executor);
 	private:
 		std::string _name;
+		std::string _target;
 		bool _isSigned;
 		unsigned short int _gradeForSigning;
 		unsigned short int _gradeForExec;	

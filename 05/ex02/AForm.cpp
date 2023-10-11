@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:41:41 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/11 11:23:18 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:51:57 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,14 @@ bool    AForm::getFormState() {
 
 const char* AForm::GradeTooLowException::what() const throw() {
 	return ("Error: Grade too low, are you trying to forge a document ?");
+}
+
+const char* AForm::ExecutorException::what() const throw() {
+	return ("Error: Cannot execute form, are you habilitated or debilitated ?");
+}
+
+const char* AForm::IllegalFormException::what() const throw() {
+	return ("Error: Cannot execute an unsigned form, that would be treason !");
 }
 
 /*void    AForm::beSigned(Bureaucrat *b)

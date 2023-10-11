@@ -27,8 +27,10 @@ class ShrubberyCreationForm : public AForm {
 		std::string	getName();
 		void	beSigned(Bureaucrat *b);
 		bool	getFormState();
+		void	execute(Bureaucrat const & executor);
 	private:
 		std::string _name;
+		std::string _target;
 		bool _isSigned;
 		unsigned short int _gradeForSigning;
 		unsigned short int _gradeForExec;	

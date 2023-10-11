@@ -24,12 +24,21 @@ class AForm {
 			public:
 				const char* what() const throw();
 		};
+		class ExecutorException : public std::exception {
+			public:
+				const char* what() const throw();
+		};
+		class IllegalFormException : public std::exception {
+			public:
+				const char* what() const throw();
+		};
 		AForm(std::string const & name, unsigned short int gS, unsigned short int gE);
 		virtual ~AForm();
 		std::string const & getName() const;
 		unsigned short int getGs() const;
 		unsigned short int getGe() const;
 		virtual bool	getFormState();
+		virtual void	execute(Bureaucrat const & executor) = 0;
 		virtual void	beSigned(Bureaucrat *b) = 0;
 	private:
 		std::string const & _name;

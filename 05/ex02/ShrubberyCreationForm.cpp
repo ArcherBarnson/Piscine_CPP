@@ -1,18 +1,11 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const & target) : AForm("Shrubbery Creation Form", 145, 137), _name(("Shrub.creat_" + target).c_str()) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const & target) : AForm("Shrubbery Creation Form", 145, 137), _name(("Shrub.creat_" + target).c_str()), _target(target) {
         std::cout << "A shrubbery creation form was made for " << target << std::endl;
         _isSigned = false;
         _gradeForSigning = 145;
         _gradeForExec = 137;
-        std::ofstream out((target + "_shrubbery").c_str());
-        out << "        ###     " << std::endl
-            << "        #o###   " << std::endl
-            << "     #####o###  " << std::endl
-            << "    #o#\\||#/### " << std::endl
-            << "     ###\\|/#o#  " << std::endl
-            << "     # }|{  # " << std::endl;
-        out.close();
+        
         return ;
 }
 
@@ -38,4 +31,21 @@ void    ShrubberyCreationForm::beSigned(Bureaucrat *b)
 	else
 		std::cout << b->getName() << " signed Form " << _name << std::endl;
     return ;
+}
+
+void	ShrubberyCreationForm::execute(Bureaucrat const & executor)
+{
+	if (executor.getGrade() > _gradeForExec)
+		throw AForm::ExecutorException();
+	if (_isSigned == false)
+		throw AForm::IllegalFormException();
+	std::ofstream out((_target + "_shrubbery").c_str());
+        out << "        ###     " << std::endl
+            << "        #o###   " << std::endl
+            << "     #####o###  " << std::endl
+            << "    #o#\\||#/### " << std::endl
+            << "     ###\\|/#o#  " << std::endl
+            << "     # }|{  # " << std::endl;
+        out.close();
+	return ;
 }

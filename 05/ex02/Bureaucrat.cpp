@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:02:23 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/11 13:29:01 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:15:46 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ void	Bureaucrat::signForm(AForm *f)
 		return ;
 	}
 	f->beSigned(this);
+}
+
+executeForm(Form const & form)
+{
+	if (form.getFormState() == "")
 }
 
 std::string const &	Bureaucrat::getName() const {
