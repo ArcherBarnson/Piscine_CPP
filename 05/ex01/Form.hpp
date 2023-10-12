@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:36:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/09 15:46:44 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:46:28 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Form {
 		unsigned short int getGs() const;
 		unsigned short int getGe() const;
 		bool	getFormState();
-		void	beSigned(Bureaucrat *b);
+		void	beSigned(Bureaucrat &b);
 	private:
 		std::string const & _name;
 		bool _isSigned;

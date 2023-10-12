@@ -6,13 +6,13 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:41:41 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/12 13:31:22 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:05:47 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
-AForm::AForm(std::string const & name, unsigned short int gS, unsigned short int gE) : 
+AForm::AForm(std::string const name, unsigned short int gS, unsigned short int gE) : 
     _name(name), _isSigned(0), _gradeForSigning(gS), _gradeForExec(gE) {
         std::cout << "A " << _name << " was created - grade required to sign : "
             << _gradeForSigning << " or higher" << std::endl;
@@ -37,6 +37,14 @@ unsigned short int AForm::getGe() const {
 
 bool    AForm::getFormState() const {
     return _isSigned;
+}
+
+void	AForm::beSigned(Bureaucrat const & b) 
+{
+	if (b.getGrade() <= _gradeForSigning)
+		this->_isSigned = true;
+	else
+		throw AForm::GradeTooLowException();
 }
 
 const char* AForm::GradeTooLowException::what() const throw() {
