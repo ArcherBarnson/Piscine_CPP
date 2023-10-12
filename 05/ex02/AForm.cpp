@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:41:41 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/11 14:51:57 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:31:22 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ unsigned short int AForm::getGe() const {
     return _gradeForExec;
 }
 
-bool    AForm::getFormState() {
+bool    AForm::getFormState() const {
     return _isSigned;
 }
 
@@ -50,11 +50,3 @@ const char* AForm::ExecutorException::what() const throw() {
 const char* AForm::IllegalFormException::what() const throw() {
 	return ("Error: Cannot execute an unsigned form, that would be treason !");
 }
-
-/*void    AForm::beSigned(Bureaucrat *b)
-{
-    b->getGrade() <= _gradeForSigning ? _isSigned = 1 : std::cout << b->getName() << " could not sign form : grade too low exception (permission denied)" << std::endl;
-    if (_isSigned == 0)
-        throw Form::GradeTooLowException();
-    return ;
-}*/

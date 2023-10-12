@@ -37,7 +37,7 @@ class AForm {
 		std::string const & getName() const;
 		unsigned short int getGs() const;
 		unsigned short int getGe() const;
-		virtual bool	getFormState();
+		virtual bool	getFormState() const;
 		virtual void	execute(Bureaucrat const & executor) = 0;
 		virtual void	beSigned(Bureaucrat const & b) = 0;
 	private:
@@ -47,6 +47,6 @@ class AForm {
 		unsigned short int _gradeForExec;	
 };
 
-std::ostream	&operator<<(std::ostream &outfile, AForm const &f);
+//std::ostream	&operator<<(std::ostream &outfile, AForm const &f);
 
 #endif

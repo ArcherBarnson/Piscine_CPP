@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:02:23 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/11 17:14:54 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:42:00 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,23 +51,6 @@ void	Bureaucrat::decrementGrade()
 	return ;
 }
 
-void	Bureaucrat::signForm(AForm *f)
-{
-	if (f->getFormState())
-	{
-		std::cout << _name << " cannot sign this form, it is already signed..." << std::endl;
-		return ;
-	}
-	f->beSigned(*this);
-}
-
-void	Bureaucrat::executeForm(AForm const & form)
-{
-	form.execute(*this);
-	std::cout << _name << " executed " << form.getName() << std::endl;
-	return ;
-}
-
 std::string const &	Bureaucrat::getName() const {
 	return _name;
 }
@@ -82,6 +65,33 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
 	return ("Error: Grade too high (must be 1 or lower)");
+}
+
+void	Bureaucrat::signForm(AForm const & form)
+{
+	if (form.getFormState() == true)
+	{
+		std::cout << form.getName() << " is already signed ! What are you doing ?" << std::endl;
+		return ;
+	}
+	if (form.beSigned(*this))
+		std::cout << _name << " signed " << form.getName() << std::endl;
+	else
+		std::cout << _name << "could not sign form: Permission denied" << std::endl;
+	return ;
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	try {
+		form.execute(*this);
+		std::cout << form.getName() << " was successfully executed, long live the empire !" << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		e.what();
+	}
+	return ;
 }
 
 std::ostream	&operator<<(std::ostream &outfile, Bureaucrat const &b)

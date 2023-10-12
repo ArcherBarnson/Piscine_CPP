@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:16:39 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/11 15:01:47 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:28:26 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,17 @@ int	main()
 		//AForm	f1 = AForm("F1", 10, 8);
 		//AForm	f2 = AForm("F2", 28, 24);
 		//AForm	f3 = AForm("F3", 100, 50);
-		ShrubberyCreationForm sC1 = ShrubberyCreationForm("MY");
-		RobotomyRequestForm rC1 = RobotomyRequestForm("innocent bystander");
+		//ShrubberyCreationForm sC1 = ShrubberyCreationForm("MY");
+		//RobotomyRequestForm rC1 = RobotomyRequestForm("innocent bystander");
 		PresidentialPardonForm pP1 = PresidentialPardonForm("very corrupt politician");
 
 
-		B.signForm(&sC1);
-		B.signForm(&rC1);
+		//B.signForm(&sC1);
+		//B.signForm(&rC1);
 		//A.signForm(&pP1);
 		//A.signForm(&pP1);
-		pP1.execute(A);
+		A.signForm(pP1);
+		A.executeForm(pP1);
 		//pP1.execute(B);
 		//C.signForm(&pP1);		//throws permission exception
 	}

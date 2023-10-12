@@ -13,9 +13,10 @@ class PresidentialPardonForm : public AForm {
 		PresidentialPardonForm(std::string const & target);
 		~PresidentialPardonForm();
 		std::string	getName();
-		void	beSigned(Bureaucrat *b);
+		std::string targetGetName();
 		bool	getFormState();
-		void	execute(Bureaucrat const & executor);
+		void	execute(Bureaucrat const & executor) const;
+		void	beSigned(Bureaucrat const & b) const;
 	private:
 		std::string _name;
 		std::string _target;

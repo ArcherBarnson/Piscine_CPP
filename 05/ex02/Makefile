@@ -6,7 +6,7 @@
 #    By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 10:53:17 by bgrulois          #+#    #+#              #
-#    Updated: 2023/10/11 13:19:32 by bgrulois         ###   ########.fr        #
+#    Updated: 2023/10/12 13:29:26 by bgrulois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,6 @@ NAME	=	bureaucratic_hellscape
 
 SRCS	=	Bureaucrat.cpp \
 			AForm.cpp \
-			ShrubberyCreationForm.cpp \
-			RobotomyRequestForm.cpp \
 			PresidentialPardonForm.cpp \
 			main.cpp
 

@@ -9,36 +9,34 @@ PresidentialPardonForm::PresidentialPardonForm(std::string const & target) : AFo
         return ;
 }
 
+void	PresidentialPardonForm::beSigned(Bureaucrat const & b) const
+{
+	b.getGrade() <= _gradeForSigning ? _isSigned = true : throw AForm::GradeTooLowException();
+	return ;
+}
+
+void	PresidentialFormPardon::execute(Bureaucrat const & executor) const
+{
+	std::string exec_msg = _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+	if (_isSigned == false)
+		throw AForm::IllegalFormException();
+	executor.getGrade() <= _gradeForExec ? std::cout << exec_msg << std::endl : throw AForm::ExecutorException();
+	return ;
+}
+
 PresidentialPardonForm::~PresidentialPardonForm(void) {
     return ;
 }
 
-std::string	PresidentialPardonForm::getName()
-{
+std::string	PresidentialPardonForm::getName() {
 	return _name;
+}
+
+std::string PresidentialPadronForm::targetGetName() {
+	return _target;
 }
 
 bool	PresidentialPardonForm::getFormState()
 {
 	return _isSigned;
-}
-
-void    PresidentialPardonForm::beSigned(Bureaucrat *b)
-{
-    b->getGrade() <= _gradeForSigning ? _isSigned = 1 : std::cout << b->getName() << " could not sign form : grade too low exception (permission denied)" << std::endl;
-    if (_isSigned == 0)
-        throw AForm::GradeTooLowException();
-	else
-		std::cout << b->getName() << " signed Form " << _name << std::endl;
-    return ;
-}
-
-void	PresidentialPardonForm::execute(Bureaucrat const & executor)
-{
-	if (executor.getGrade() > _gradeForExec)
-		throw AForm::ExecutorException();
-	if (_isSigned == false)
-		throw AForm::IllegalFormException();
-	std::cout << _target << " was pardoned by Zaphod Beeblebox" << std::endl;
-	return ;
 }
