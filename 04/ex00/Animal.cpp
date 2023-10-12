@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:04:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/05 16:23:49 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:42:42 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ Animal::Animal(Animal const & src) {
 
 Animal & Animal::operator=(Animal const & other) {
 	std::cout << "Animal assignement operator called" << std::endl;
-	if (this != &other)
-		type = other.type;
+	type = other.type;
 	return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:05:25 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/11 16:41:13 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:58:05 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,15 @@ int main()
 	}
 
 	//deep copy test
-	std::cout << "DEEP COPY" << std::endl;
+	std::cout << "------------------DEEP COPY TEST------------" << std::endl;
 	Cat *cat = new Cat();
+	cat->setBrainIdea(0, "I AM ANNOYED BY THE CPP04 SUBJECT BECAUSE IT IS QUITE UNCLEAR :((");
 	Cat *cat2 = new Cat(*cat);
 
-	cat2->makeSound();
+	cat->makeSound();
 	delete cat;
+	std::cout << "the brain was deep copied as well : proof -> cat2.getBrainIdea(0) == " << cat2->getBrainIdea(0) << std::endl; 	//special test, getter needs to be enabled in .hpp and .cpp
+	cat2->makeSound();
 	delete cat2;
 	return 0;
 }

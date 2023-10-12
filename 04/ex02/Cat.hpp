@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:56:50 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/11 16:31:38 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:00:50 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class Cat : public Animal {
 		Cat &operator=(Cat const & other);
 		virtual ~Cat( void );
 		virtual void	makeSound() const;
+		std::string	getBrainIdea(int i);
+		void		setBrainIdea(int i, std::string idea);
 	private:
 		Brain	*_brain;
 };

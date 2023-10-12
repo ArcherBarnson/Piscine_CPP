@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:04:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/05 15:56:53 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:42:50 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ Cat::Cat(Cat const & src) {
 
 Cat & Cat::operator=(Cat const & other) {
 	std::cout << "Cat assignement operator called" << std::endl;
-	if (this != &other)
-		type = other.type;
+	type = other.type;
 	return *this;
 }
 

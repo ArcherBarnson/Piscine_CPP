@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:04:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/05 16:12:48 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:43:07 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ Dog::Dog(Dog const & src) {
 
 Dog & Dog::operator=(Dog const & other) {
 	std::cout << "Dog assignement operator called" << std::endl;
-	if (this != &other)
-		type = other.type;
+	type = other.type;
 	return *this;
 }
 

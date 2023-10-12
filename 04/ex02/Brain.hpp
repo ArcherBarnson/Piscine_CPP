@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:56:50 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/11 16:41:12 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:56:30 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ class Brain {
 		Brain(Brain const & src);
 		Brain &operator=(Brain const & other);
 		virtual ~Brain( void );
+		void	setIdea(int i, std::string idea);
+		std::string getIdea(int i);
 
 	protected:
 		std::string ideas[100];
