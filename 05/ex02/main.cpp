@@ -64,19 +64,21 @@
 
 int    main(void)
 {
-    try
-    {
-        Bureaucrat Luna("Luna", 151);
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << "Error : " << e.what() << std::endl;
-    }
-    Bureaucrat Medhi("Medhi", 50);
-    Bureaucrat Lucie("Lucie", 130);
-    Bureaucrat Julien("Julien", 4);
+    //try
+    //{
+    //    Bureaucrat Luna("Luna", 151);
+    //}
+    //catch (std::exception &e)
+    //{
+    //    std::cerr << "Error : " << e.what() << std::endl;
+    //}
+    //Bureaucrat Medhi("Medhi", 50);
+    //Bureaucrat Lucie("Lucie", 130);
+    Bureaucrat Julien = Bureaucrat("Julien", 4);
 
-    PresidentialPardonForm president("Medhi");
+    PresidentialPardonForm president = PresidentialPardonForm("Very corrupt politician");
+    Julien.signForm(president);
+    std::cout << "signed in main ? " << president.getFormState() << std::endl;
     Julien.executeForm(president);
 
     // ShrubberyCreationForm arbre("Julien");
@@ -84,9 +86,9 @@ int    main(void)
 
     // RobotomyRequestForm bot("Lucie");
     // Medhi.executeForm(bot);
-    for (int i = 0; i <= 6; i++)
-        Medhi.incrementGrade();
-    std::cout << Medhi << std::endl;
+    //for (int i = 0; i <= 6; i++)
+    //    Medhi.incrementGrade();
+    //std::cout << Medhi << std::endl;
     //std::cout << bot << std::endl;
    // Medhi.executeForm(bot);
 }

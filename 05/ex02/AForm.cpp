@@ -14,9 +14,18 @@
 
 AForm::AForm(std::string const name, unsigned short int gS, unsigned short int gE) : 
     _name(name), _isSigned(0), _gradeForSigning(gS), _gradeForExec(gE) {
-        std::cout << "A " << _name << " was created - grade required to sign : "
-            << _gradeForSigning << " or higher" << std::endl;
+        //std::cout << "A " << _name << " was created - grade required to sign : "
+        //    << _gradeForSigning << " or higher" << std::endl;
         return ;
+}
+
+AForm::AForm(AForm const & copy) : _name(copy._name), _isSigned(copy._isSigned), _gradeForSigning(copy._gradeForSigning), _gradeForExec(copy._gradeForExec) {
+    return ;
+}
+
+AForm & AForm::operator=(AForm const & other) {
+    (void)other;
+    return *this;
 }
 
 AForm::~AForm(void) {
@@ -35,6 +44,10 @@ unsigned short int AForm::getGe() const {
     return _gradeForExec;
 }
 
+void    AForm::setFormState(bool state) {
+    _isSigned = state;
+}
+
 bool    AForm::getFormState() const {
     return _isSigned;
 }
@@ -42,9 +55,11 @@ bool    AForm::getFormState() const {
 void	AForm::beSigned(Bureaucrat const & b) 
 {
 	if (b.getGrade() <= _gradeForSigning)
-		this->_isSigned = true;
+		setFormState(true);
 	else
 		throw AForm::GradeTooLowException();
+    std::cout << "name ? " << _name << std::endl;
+    std::cout << "signed ? " << getFormState() << std::endl;
 }
 
 const char* AForm::GradeTooLowException::what() const throw() {

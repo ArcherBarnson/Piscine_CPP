@@ -33,13 +33,16 @@ class AForm {
 				const char* what() const throw();
 		};
 		AForm(std::string const name, unsigned short int gS, unsigned short int gE);
+		AForm(AForm const & copy);
+		AForm &operator=(AForm const & other);
 		virtual ~AForm();
+		virtual void	setFormState(bool state);
 		std::string const & getName() const;
 		unsigned short int getGs() const;
 		unsigned short int getGe() const;
 		virtual bool	getFormState() const;
 		virtual void	execute(Bureaucrat const & executor) const = 0;
-		void	beSigned(Bureaucrat  const & b) ;
+		void	beSigned(Bureaucrat const & b);
 	private:
 		std::string const _name;
 		bool _isSigned;
