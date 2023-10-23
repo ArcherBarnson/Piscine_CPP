@@ -6,17 +6,26 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:41:41 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/09 15:45:51 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:41:35 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form(std::string const & name, unsigned short int gS, unsigned short int gE) : 
+Form::Form(std::string const name, unsigned short int gS, unsigned short int gE) : 
     _name(name), _isSigned(0), _gradeForSigning(gS), _gradeForExec(gE) {
-        std::cout << "A form " << _name << " was created - grade required to sign : "
-            << _gradeForSigning << " or higher" << std::endl;
+        //std::cout << "A " << _name << " was created - grade required to sign : "
+        //    << _gradeForSigning << " or higher" << std::endl;
         return ;
+}
+
+Form::Form(Form const & copy) : _name(copy._name), _isSigned(copy._isSigned), _gradeForSigning(copy._gradeForSigning), _gradeForExec(copy._gradeForExec) {
+    return ;
+}
+
+Form & Form::operator=(Form const & other) {
+    (void)other;
+    return *this;
 }
 
 Form::~Form(void) {
@@ -35,20 +44,32 @@ unsigned short int Form::getGe() const {
     return _gradeForExec;
 }
 
-bool    Form::getFormState() {
+void    Form::setFormState(bool state) {
+    _isSigned = state;
+}
+
+bool    Form::getFormState() const {
     return _isSigned;
+}
+
+void	Form::beSigned(Bureaucrat const & b) 
+{
+	if (b.getGrade() <= _gradeForSigning)
+		setFormState(true);
+	else
+		throw Form::GradeTooLowException();
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
 	return ("Error: Grade too low, are you trying to forge a document ?");
 }
 
-void    Form::beSigned(Bureaucrat *b)
-{
-    b->getGrade() <= _gradeForSigning ? _isSigned = 1 : std::cout << b->getName() << " could not sign form : grade too low exception (permission denied)" << std::endl;
-    if (_isSigned == 0)
-        throw Form::GradeTooLowException();
-    return ;
+const char* Form::ExecutorException::what() const throw() {
+	return ("Error: Cannot execute form, are you habilitated or debilitated ?");
+}
+
+const char* Form::IllegalFormException::what() const throw() {
+	return ("Error: Cannot execute an unsigned form, that would be treason !");
 }
 
 std::ostream	&operator<<(std::ostream &outfile, Form const &f)

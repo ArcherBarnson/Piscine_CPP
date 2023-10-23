@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:36:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/23 13:39:43 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:46:44 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <iostream>
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 	public:
 		class GradeTooLowException : public std::exception {
 			public:
@@ -32,15 +32,16 @@ class Form {
 			public:
 				const char* what() const throw();
 		};
-		Form(std::string const name, unsigned short int gS, unsigned short int gE);
-		Form(Form const & copy);
-		Form &operator=(Form const & other);
-		virtual ~Form();
+		AForm(std::string const name, unsigned short int gS, unsigned short int gE);
+		AForm(AForm const & copy);
+		AForm &operator=(AForm const & other);
+		virtual ~AForm();
 		virtual void	setFormState(bool state);
 		std::string const & getName() const;
 		unsigned short int getGs() const;
 		unsigned short int getGe() const;
 		virtual bool	getFormState() const;
+		virtual void	execute(Bureaucrat const & executor) const = 0;
 		void	beSigned(Bureaucrat const & b);
 	private:
 		std::string const _name;
@@ -49,6 +50,6 @@ class Form {
 		unsigned short int _gradeForExec;	
 };
 
-std::ostream	&operator<<(std::ostream &outfile, Form const &f);
+//std::ostream	&operator<<(std::ostream &outfile, AForm const &f);
 
 #endif

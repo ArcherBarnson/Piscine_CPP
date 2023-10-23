@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:02:23 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/23 13:38:46 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:07:19 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ const char* Bureaucrat::GradeTooHighException::what() const throw() {
 	return ("Error: Grade too high (must be 1 or lower)");
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &form)
 {
 	if (form.getFormState() == true)
 	{
@@ -90,6 +90,19 @@ void	Bureaucrat::signForm(Form &form)
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
+	}
+	return ;
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	try {
+		form.execute(*this);
+		std::cout << form.getName() << " was successfully executed, long live the empire !" << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
 	}
 	return ;
 }

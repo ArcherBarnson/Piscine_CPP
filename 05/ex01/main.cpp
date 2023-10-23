@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:16:39 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/09 15:30:43 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:39:15 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	main()
 
 		std::cout << f1 << f2 << f3 << std::endl;
 
-		B.signForm(&f1);
-		B.signForm(&f2);
-		C.signForm(&f3);
+		B.signForm(f1);
+		B.signForm(f2);
+		C.signForm(f3);
 	}
 
 	catch(std::exception &e)

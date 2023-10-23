@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 11:53:58 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/23 13:38:55 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:45:47 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include <iostream>
 # include <exception>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 	public:
@@ -37,7 +37,8 @@ class Bureaucrat {
 		void	decrementGrade(void);
 		unsigned short int getGrade() const;
 		std::string const & getName() const;
-		void	signForm(Form &form);
+		void	signForm(AForm &form);
+		void	executeForm(AForm const & form);
 	private:
 		std::string const & _name;
 		unsigned short int _grade;
