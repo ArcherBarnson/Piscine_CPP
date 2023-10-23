@@ -12,11 +12,15 @@ class Bureaucrat;
 class RobotomyRequestForm : public AForm {
 	public:
 		RobotomyRequestForm(std::string const & target);
+		RobotomyRequestForm(RobotomyRequestForm const & copy);
+		RobotomyRequestForm &operator=(RobotomyRequestForm const & other);
 		~RobotomyRequestForm();
 		void	beSigned(Bureaucrat const & b);
-		bool	getFormState();
-		std::string getName();
-		void	execute(Bureaucrat const & executor);
+		void	setFormState(bool state);
+		bool	getFormState() const;
+		std::string getName() const;
+		std::string targetGetName() const;
+		void	execute(Bureaucrat const & executor) const;
 	private:
 		std::string _name;
 		std::string _target;

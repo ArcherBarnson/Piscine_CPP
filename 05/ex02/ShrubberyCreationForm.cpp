@@ -9,6 +9,16 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string const & target) : AForm
         return ;
 }
 
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & copy) : AForm("Shrubbery Creation Form", 145, 137), _name(copy._name), _target(copy._target) {
+	return ;
+}
+
+ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm const & other) {
+	_name = other._name;
+	_target = other._target;
+	return *this;
+}
+
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {
     return ;
 }
@@ -18,22 +28,18 @@ std::string	ShrubberyCreationForm::getName()
 	return _name;
 }
 
-bool	ShrubberyCreationForm::getFormState()
+bool	ShrubberyCreationForm::getFormState() const
 {
 	return _isSigned;
 }
 
-void    ShrubberyCreationForm::beSigned(Bureaucrat *b)
+void	ShrubberyCreationForm::setFormState(bool state)
 {
-    b->getGrade() <= _gradeForSigning ? _isSigned = 1 : std::cout << b->getName() << " could not sign form : grade too low exception (permission denied)" << std::endl;
-    if (_isSigned == 0)
-        throw AForm::GradeTooLowException();
-	else
-		std::cout << b->getName() << " signed Form " << _name << std::endl;
-    return ;
+	_isSigned = state;
+	return ;
 }
 
-void	ShrubberyCreationForm::execute(Bureaucrat const & executor)
+void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (executor.getGrade() > _gradeForExec)
 		throw AForm::ExecutorException();
@@ -45,7 +51,8 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor)
             << "     #####o###  " << std::endl
             << "    #o#\\||#/### " << std::endl
             << "     ###\\|/#o#  " << std::endl
-            << "     # }|{  # " << std::endl;
+            << "     # }|{  # " << std::endl << std::endl
+			<< "---- I assure you this is a tree ----" << std::endl;
         out.close();
 	return ;
 }

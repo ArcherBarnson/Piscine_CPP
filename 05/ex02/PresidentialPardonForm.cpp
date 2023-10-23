@@ -28,18 +28,10 @@ void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 	std::string exec_msg = _target + " has been pardoned by Zaphod Beeblebrox";
 	if (_isSigned == false)
 		throw AForm::IllegalFormException();
-	//executor.getGrade() >= _gradeForExec ? std::cout << exec_msg << std::endl; : throw AForm::ExecutorException();
 	if (executor.getGrade() <= _gradeForExec)
-	{
-		std::cout << "EH OH" << std::endl;
 		std::cout << exec_msg << std::endl;
-	}
 	else
-	{
-		std::cout << "va te faire" << std::endl;
 		throw AForm::ExecutorException();
-	}
-	std::cout << "hello ?" << std::endl;
 	return ;
 }
 

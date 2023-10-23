@@ -23,11 +23,14 @@ class Bureaucrat;
 class ShrubberyCreationForm : public AForm {
 	public:
 		ShrubberyCreationForm(std::string const & target);
+		ShrubberyCreationForm(ShrubberyCreationForm const & copy);
+		ShrubberyCreationForm &operator=(ShrubberyCreationForm const & other);
 		~ShrubberyCreationForm();
 		std::string	getName();
-		void	beSigned(Bureaucrat *b);
-		bool	getFormState();
-		void	execute(Bureaucrat const & executor);
+		std::string targetGetName();
+		void	setFormState(bool state);
+		bool	getFormState() const;
+		void	execute(Bureaucrat const & executor) const;
 	private:
 		std::string _name;
 		std::string _target;

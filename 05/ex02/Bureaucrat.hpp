@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 11:53:58 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/12 16:15:35 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:45:47 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ class Bureaucrat {
 				const char* what() const throw();
 		};
 		Bureaucrat(std::string const & name, unsigned short int grade);
+		Bureaucrat(Bureaucrat const & copy);
+		Bureaucrat &operator=(Bureaucrat const & other);
 		~Bureaucrat(void);
 		void	incrementGrade(void);
 		void	decrementGrade(void);

@@ -8,16 +8,32 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const & target) : AForm("Ro
         return ;
 }
 
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & copy) : AForm("Robotomy Request Form", 72, 45), _name(copy._name), _target(copy._target) {
+	return ;
+}
+
+RobotomyRequestForm & RobotomyRequestForm::operator=(RobotomyRequestForm const & other) {
+	_name = other._name;
+	_target = other._target;
+	return *this;
+}
+
 RobotomyRequestForm::~RobotomyRequestForm(void) {
     return ;
 }
 
-std::string RobotomyRequestForm::getName()
+std::string RobotomyRequestForm::getName() const
 {
 	return _name;
 }
 
-bool	RobotomyRequestForm::getFormState()
+void	RobotomyRequestForm::setFormState(bool state)
+{
+	_isSigned = state;
+	return ;
+}
+
+bool	RobotomyRequestForm::getFormState() const
 {
 	return _isSigned;
 }
@@ -32,7 +48,7 @@ void    RobotomyRequestForm::beSigned(Bureaucrat const & b)
     return ;
 }
 
-void	RobotomyRequestForm::execute(Bureaucrat const & executor)
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	if (executor.getGrade() > _gradeForExec)
 		throw AForm::ExecutorException();

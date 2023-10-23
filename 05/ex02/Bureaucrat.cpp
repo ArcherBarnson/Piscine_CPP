@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:02:23 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/12 16:42:02 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:07:19 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@ Bureaucrat::Bureaucrat(std::string const & name, unsigned short int grade) : _na
 	else
 		std::cout << "A bureaucrat " << _name << " of grade " << _grade << " was created (bureaucrat grade contructor called)" << std::endl;
 	return ;
+}
+
+Bureaucrat::Bureaucrat(Bureaucrat const & copy) : _name(copy._name), _grade(copy._grade) {
+	return ;
+}
+
+Bureaucrat & Bureaucrat::operator=(Bureaucrat const & other) {
+	(void) other;
+	return *this;
 }
 
 Bureaucrat::~Bureaucrat(void) {
@@ -80,7 +89,7 @@ void	Bureaucrat::signForm(AForm &form)
 	}
 	catch (std::exception &e)
 	{
-		e.what();
+		std::cout << e.what() << std::endl;
 	}
 	return ;
 }
@@ -93,7 +102,7 @@ void	Bureaucrat::executeForm(AForm const & form)
 	}
 	catch (std::exception & e)
 	{
-		e.what();
+		std::cerr << e.what() << std::endl;
 	}
 	return ;
 }

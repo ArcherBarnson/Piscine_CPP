@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:41:41 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/12 17:05:47 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:57:48 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void	AForm::beSigned(Bureaucrat const & b)
 		setFormState(true);
 	else
 		throw AForm::GradeTooLowException();
-    std::cout << "name ? " << _name << std::endl;
-    std::cout << "signed ? " << getFormState() << std::endl;
 }
 
 const char* AForm::GradeTooLowException::what() const throw() {
