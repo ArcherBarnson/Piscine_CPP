@@ -31,15 +31,15 @@ AForm*	Intern::makeForm(std::string formType, std::string target)
 	formType.compare(formList[1]) == 0 ? formId = 1:formId;
 	formType.compare(formList[2]) == 0 ? formId = 2:formId;
 	if(formId == -1)
-		throw InternIsDrunkException();
+		std::cerr << "Error: The intern is drunk, they tried making a form that doesn't exist..." << std::endl;
 	else
 		return (this->*forms[formId])(target);
 	return NULL;
 }
 
-const char* Intern::InternIsDrunkException::what() const throw() {
-	return ("Error: The intern is drunk, they tried making a form that doesn't exist...");
-}
+//const char* Intern::InternIsDrunkException::what() const throw() {
+//	return ("Error: The intern is drunk, they tried making a form that doesn't exist...");
+//}
 
 AForm*	Intern::sForm(std::string &target) {
 	return (new ShrubberyCreationForm(target));

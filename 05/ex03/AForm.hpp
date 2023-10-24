@@ -20,6 +20,10 @@ class Bureaucrat;
 
 class AForm {
 	public:
+	class GradeTooHighException : public std::exception {
+			public:
+				const char* what() const throw();
+		};
 		class GradeTooLowException : public std::exception {
 			public:
 				const char* what() const throw();
@@ -46,8 +50,8 @@ class AForm {
 	private:
 		std::string const _name;
 		bool _isSigned;
-		unsigned short int _gradeForSigning;
-		unsigned short int _gradeForExec;	
+		const unsigned short int _gradeForSigning;
+		const unsigned short int _gradeForExec;	
 };
 
 //std::ostream	&operator<<(std::ostream &outfile, AForm const &f);

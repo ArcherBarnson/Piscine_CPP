@@ -19,7 +19,6 @@
 
 int main()
 {
-	try {
 	Bureaucrat b1 = Bureaucrat("b1", 1);
 	Bureaucrat b2 = Bureaucrat("b2", 42);
 	Bureaucrat b3 = Bureaucrat("b3", 15);
@@ -40,11 +39,6 @@ int main()
 	b1.signForm(*sf1);
 	//b2.executeForm(ppf1);
 	b1.executeForm(*sf1);
-	}
-	catch(std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
 	return 0;
 }
 

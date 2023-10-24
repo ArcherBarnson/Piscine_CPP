@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:41:41 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/23 12:57:48 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:20:04 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 AForm::AForm(std::string const name, unsigned short int gS, unsigned short int gE) : 
     _name(name), _isSigned(0), _gradeForSigning(gS), _gradeForExec(gE) {
-        //std::cout << "A " << _name << " was created - grade required to sign : "
-        //    << _gradeForSigning << " or higher" << std::endl;
+		if (_gradeForSigning < 1 || _gradeForExec < 1)
+			throw AForm::GradeTooHighException();
+		if (_gradeForSigning > 150 || _gradeForExec > 150)
+			throw AForm::GradeTooLowException();
         return ;
 }
 
@@ -57,11 +59,15 @@ void	AForm::beSigned(Bureaucrat const & b)
 	if (b.getGrade() <= _gradeForSigning)
 		setFormState(true);
 	else
-		throw AForm::GradeTooLowException();
+		throw AForm::IllegalFormException();
+}
+
+const char* AForm::GradeTooHighException::what() const throw() {
+	return ("Error: Grade out of range (too high)");
 }
 
 const char* AForm::GradeTooLowException::what() const throw() {
-	return ("Error: Grade too low, are you trying to forge a document ?");
+	return ("Error: Grade out of range (too low)");
 }
 
 const char* AForm::ExecutorException::what() const throw() {
@@ -69,5 +75,5 @@ const char* AForm::ExecutorException::what() const throw() {
 }
 
 const char* AForm::IllegalFormException::what() const throw() {
-	return ("Error: Cannot execute an unsigned form, that would be treason !");
+	return ("Error: Cannot sign form, that would be treason !");
 }

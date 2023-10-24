@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:36:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/23 13:39:43 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:32:31 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ class Form {
 	private:
 		std::string const _name;
 		bool _isSigned;
-		unsigned short int _gradeForSigning;
-		unsigned short int _gradeForExec;	
+		const unsigned short int _gradeForSigning;
+		const unsigned short int _gradeForExec;	
 };
 
 std::ostream	&operator<<(std::ostream &outfile, Form const &f);
