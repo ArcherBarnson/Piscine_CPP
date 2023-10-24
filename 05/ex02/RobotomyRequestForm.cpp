@@ -1,6 +1,6 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(std::string const & target) : AForm("Robotomy Request Form", 72, 45), _name(("Robo.request_" + target).c_str()), _target(target) {
+RobotomyRequestForm::RobotomyRequestForm(std::string const & target) : AForm("Robotomy Request Form", 72, 45), _name(("Robo_form[" + target + "]").c_str()), _target(target) {
         std::cout << "A robotomy request form was made for " << target << std::endl;
         _isSigned = false;
         _gradeForSigning = 72;
@@ -62,4 +62,12 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 	else
 		std::cout << "Robotomy on " << _target << " failed terribly, now someone has to clean this up" << std::endl;
 	return ;
+}
+
+std::ostream	&operator<<(std::ostream &outfile, RobotomyRequestForm const &f)
+{
+	outfile << f.getName() << ", grade required|" << std::endl
+        << "-For signing : " << f.getGs() << std::endl
+        << "-For executing : " << f.getGe() << std::endl;
+	return (outfile);
 }

@@ -29,6 +29,6 @@ class RobotomyRequestForm : public AForm {
 		unsigned short int _gradeForExec;
 };
 
-//std::ostream	&operator<<(std::ostream &outfile, RobotomyRequestForm const &f);
+std::ostream	&operator<<(std::ostream &outfile, RobotomyRequestForm const &f);
 
 #endif

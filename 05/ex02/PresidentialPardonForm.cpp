@@ -1,6 +1,6 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(std::string const & target) : AForm("Presidential Pardon Form", 25, 5), _name(("PresidentalPardon_" + target).c_str()), _target(target) {
+PresidentialPardonForm::PresidentialPardonForm(std::string const & target) : AForm("Presidential Pardon Form", 25, 5), _name(("Presidental_pardon_form[" + target + "]").c_str()), _target(target) {
         std::cout << "A presidential pardon form was made for " << target << std::endl;
         _isSigned = false;
         _gradeForSigning = 25;
@@ -50,4 +50,12 @@ bool	PresidentialPardonForm::getFormState() const
 
 void    PresidentialPardonForm::setFormState(bool state) {
     _isSigned = state;
+}
+
+std::ostream	&operator<<(std::ostream &outfile, PresidentialPardonForm const &f)
+{
+	outfile << f.getName() << ", grade required|" << std::endl
+        << "-For signing : " << f.getGs() << std::endl
+        << "-For executing : " << f.getGe() << std::endl;
+	return (outfile);
 }

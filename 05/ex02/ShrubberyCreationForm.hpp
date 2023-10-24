@@ -26,7 +26,7 @@ class ShrubberyCreationForm : public AForm {
 		ShrubberyCreationForm(ShrubberyCreationForm const & copy);
 		ShrubberyCreationForm &operator=(ShrubberyCreationForm const & other);
 		~ShrubberyCreationForm();
-		std::string	getName();
+		std::string	getName() const;
 		std::string targetGetName();
 		void	setFormState(bool state);
 		bool	getFormState() const;

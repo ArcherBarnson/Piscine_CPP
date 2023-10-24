@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:02:23 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/23 13:38:46 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:02:28 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	Bureaucrat::signForm(Form &form)
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << _name << " could not sign " << form.getName() << " -> " << e.what() << std::endl;
 	}
 	return ;
 }

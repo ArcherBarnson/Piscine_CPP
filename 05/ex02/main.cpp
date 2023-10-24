@@ -25,8 +25,10 @@ int main()
 	//Bureaucrat bBad2 = Bureaucrat("bBad2", -1);
 
 	PresidentialPardonForm ppf1("very corrupt politician");
-	ShrubberyCreationForm shrub1("random dude");
+	ShrubberyCreationForm shrub1("petrol company that specializes in greenwashing");
 	RobotomyRequestForm robo1("innocent bystander");
+
+	std::cout << ppf1 << std::endl << shrub1 << std::endl << robo1 << std::endl;
 
 	b2.signForm(shrub1);
 	b3.signForm(robo1);
@@ -34,6 +36,7 @@ int main()
 	b1.signForm(ppf1);
 	b2.executeForm(ppf1);
 	b1.executeForm(ppf1);
+	b2.executeForm(shrub1);
 	return 0;
 }
 

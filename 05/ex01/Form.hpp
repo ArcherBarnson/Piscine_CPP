@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:36:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/24 11:39:37 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/24 11:56:41 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ class Form {
 		Form(std::string const name, unsigned short int gS, unsigned short int gE);
 		Form(Form const & copy);
 		Form &operator=(Form const & other);
-		virtual ~Form();
-		virtual void	setFormState(bool state);
+		~Form();
+		void	setFormState(bool state);
 		std::string const & getName() const;
 		unsigned short int getGs() const;
 		unsigned short int getGe() const;
-		virtual bool	getFormState() const;
+		bool	getFormState() const;
 		void	beSigned(Bureaucrat const & b);
 	private:
 		std::string const _name;
