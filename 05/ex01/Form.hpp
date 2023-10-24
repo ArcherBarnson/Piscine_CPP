@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:36:09 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/23 15:32:31 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/24 11:39:37 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ class Bureaucrat;
 
 class Form {
 	public:
+		class GradeTooHighException : public std::exception {
+			public:
+				const char* what() const throw();
+		};
 		class GradeTooLowException : public std::exception {
 			public:
 				const char* what() const throw();

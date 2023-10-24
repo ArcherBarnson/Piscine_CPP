@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:41:41 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/23 13:41:35 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/24 11:47:09 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 Form::Form(std::string const name, unsigned short int gS, unsigned short int gE) : 
     _name(name), _isSigned(0), _gradeForSigning(gS), _gradeForExec(gE) {
-        //std::cout << "A " << _name << " was created - grade required to sign : "
-        //    << _gradeForSigning << " or higher" << std::endl;
+        if (_gradeForSigning < 1 || _gradeForExec < 1)
+			throw Form::GradeTooHighException();
+		if (_gradeForSigning > 150 || _gradeForExec > 150)
+			throw Form::GradeTooLowException();
         return ;
 }
 
@@ -60,8 +62,12 @@ void	Form::beSigned(Bureaucrat const & b)
 		throw Form::GradeTooLowException();
 }
 
+const char* Form::GradeTooHighException::what() const throw() {
+	return ("Error: Grade out of range (too high)");
+}
+
 const char* Form::GradeTooLowException::what() const throw() {
-	return ("Error: Grade too low, are you trying to forge a document ?");
+	return ("Error: Grade out of range (too low)");
 }
 
 const char* Form::ExecutorException::what() const throw() {

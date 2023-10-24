@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:41:41 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/23 15:20:04 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/10/24 11:40:55 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,12 @@ const char* AForm::ExecutorException::what() const throw() {
 
 const char* AForm::IllegalFormException::what() const throw() {
 	return ("Error: Cannot sign form, that would be treason !");
+}
+
+std::ostream	&operator<<(std::ostream &outfile, AForm const &f)
+{
+	outfile << f.getName() << ", grade required|" << std::endl
+        << "-For signing : " << f.getGs() << std::endl
+        << "-For executing : " << f.getGe() << std::endl;
+	return (outfile);
 }

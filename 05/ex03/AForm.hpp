@@ -54,6 +54,6 @@ class AForm {
 		const unsigned short int _gradeForExec;	
 };
 
-//std::ostream	&operator<<(std::ostream &outfile, AForm const &f);
+std::ostream	&operator<<(std::ostream &outfile, AForm const &f);
 
 #endif
