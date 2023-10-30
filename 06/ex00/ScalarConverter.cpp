@@ -49,7 +49,6 @@ void	ScalarConverter::convert(std::string input)
 		{
 			case 1:
 			{
-				std::cout << "float ?" << std::endl;
 				_f = strtof(input.c_str(), &ScalarConverter::_endbuf);
 				_c = static_cast<char>(_f);
 				_i = static_cast<long>(_f);
@@ -109,8 +108,8 @@ void ScalarConverter::displayEval(void)
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << _i << std::endl;
-	std::cout << "float : " << _f << "f" << std::endl;
-	std::cout << "double : " << _d << std::endl;
+	std::cout << "float : " << std::fixed << std::setprecision(1) << _f << "f" << std::endl;
+	std::cout << "double : " << std::fixed << std::setprecision(1) << _d << std::endl;
 	return ;
 }
 

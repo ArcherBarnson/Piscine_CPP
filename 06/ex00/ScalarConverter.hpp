@@ -2,10 +2,12 @@
 # define SCALARCONVERTER_HPP
 
 # include <iostream>
+# include <iomanip>
 # include <cerrno>
 # include <cstring>
 # include <stdlib.h>
 # include <limits.h>
+# include <float.h>
 
 class ScalarConverter {
 	public:
