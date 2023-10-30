@@ -12,7 +12,7 @@
 
 NAME	=	sclar_converter	
 
-SRCS	=	SclarConverter.cpp \
+SRCS	=	ScalarConverter.cpp \
 		main.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)

@@ -16,6 +16,7 @@ class ScalarConverter {
 		static void	convert(std::string input);
 		static int detectType(std::string input);
 		static void display(int mode);
+		static void displayEval(void);
 	private:
 		static char _c;
 		static long int	_i;
@@ -23,5 +24,7 @@ class ScalarConverter {
 		static double _d;
 		static char *_endbuf;
 };
+
+//std::ostream    &operator<<(std::ostream &outfile, ScalarConverter const &f);
 
 #endif
