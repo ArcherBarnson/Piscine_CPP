@@ -1,10 +1,9 @@
 #include "ScalarConverter.hpp"
 
-int main()
+int main(int ac, char **argv)
 {
-    ScalarConverter sc;
-    sc.convert("315431841");
-    sc.convert("42.0f");
-    sc.convert("-35768");
-    return 0;
+	if (ac != 2)
+		return 1;
+	ScalarConverter::convert(argv[1]);
+	return 0;
 }

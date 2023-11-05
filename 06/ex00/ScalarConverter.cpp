@@ -13,7 +13,7 @@ ScalarConverter::ScalarConverter(void) {
 	return ;
 }
 
-ScalarConverter::ScalarConverter(ScalarConverter const & copy) {
+/*ScalarConverter::ScalarConverter(ScalarConverter const & copy) {
 	_c = copy._c;
 	_i = copy._i;
 	_f = copy._f;
@@ -30,7 +30,8 @@ ScalarConverter & ScalarConverter::operator=(ScalarConverter const & other) {
 	//_endbuf = new char*(other._endbuf);
 	return *this;
 }
-
+//// aucun sens
+*/
 ScalarConverter::~ScalarConverter(void) {
 	return ;
 }
@@ -64,15 +65,8 @@ void	ScalarConverter::convert(std::string input)
 				break ;
 			}
 			
-			/*case 3:
-			{
-				_i = strtoll(input.c_str(), &ScalarConverter::_endbuf, 10);
-				_f = static_cast<float>(_i);
-				_c = static_cast<char>(_i);
-				_d = static_cast<double>(_i);
-			}*/
 		}
-		display(1);
+		displayEval();
 	}
 	return ;
 }
@@ -85,7 +79,10 @@ int	ScalarConverter::detectType(std::string input)
 	//std::cout << _endbuf << std::endl;
 	if ((_endbuf && std::strlen(_endbuf) > 1)
 		|| (_endbuf && std::strlen(_endbuf) == 1 && _endbuf[0] != 'f')) //nan
+	{
+		std::cout << "n= " << n << std::endl;
 		return 0;
+	}
 	if (_endbuf && std::strlen(_endbuf) == 1 && _endbuf[0] == 'f') //not a float, handles same for double and int
 		return 1;
 	else
