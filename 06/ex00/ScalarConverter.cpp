@@ -40,34 +40,33 @@ void	ScalarConverter::convert(std::string input)
 {
 	int type = detectType(input);
 	//std::cout << type << std::endl;
-	if (errno == ERANGE)
-		display(-1);
-	else if (type == 0)
-		display(0);
-	else
-	{	
-		switch(type)
+	//if (errno == ERANGE)
+	//	display(-1);
+	//if (type == 0)
+	//	display(0);
+	//else
+	//{	
+	switch(type)
+	{
+		case 1:
 		{
-			case 1:
-			{
-				_f = strtof(input.c_str(), &ScalarConverter::_endbuf);
-				_c = static_cast<char>(_f);
-				_i = static_cast<long>(_f);
-				_d = static_cast<double>(_f);
-				break ;
-			}
-			case 2:
-			{
-				_d = strtod(input.c_str(), &ScalarConverter::_endbuf);
-				_f = static_cast<float>(_d);
-				_c = static_cast<char>(_d);
-				_i = static_cast<long>(_d);
-				break ;
-			}
-			
+			_f = strtof(input.c_str(), &ScalarConverter::_endbuf);
+			_c = static_cast<char>(_f);
+			_i = static_cast<long>(_f);
+			_d = static_cast<double>(_f);
+			break ;
 		}
-		displayEval();
+		case 2:
+		{
+			_d = strtod(input.c_str(), &ScalarConverter::_endbuf);
+			_f = static_cast<float>(_d);
+			_c = static_cast<char>(_d);
+			_i = static_cast<long>(_d);
+			break ;
+		}
+			
 	}
+		displayEval();
 	return ;
 }
 
@@ -79,10 +78,7 @@ int	ScalarConverter::detectType(std::string input)
 	//std::cout << _endbuf << std::endl;
 	if ((_endbuf && std::strlen(_endbuf) > 1)
 		|| (_endbuf && std::strlen(_endbuf) == 1 && _endbuf[0] != 'f')) //nan
-	{
-		std::cout << "n= " << n << std::endl;
 		return 0;
-	}
 	if (_endbuf && std::strlen(_endbuf) == 1 && _endbuf[0] == 'f') //not a float, handles same for double and int
 		return 1;
 	else
