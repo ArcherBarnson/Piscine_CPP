@@ -3,11 +3,11 @@
 int main()
 {
     Base base;
-    Base * test = base.generate();
-    Base & testref = *(base.generate());
-    base.identify(test);
-    base.identify(testref);
-    delete test;
-    delete &(testref);
+    Base * test = generate();           //gen by ptr
+    Base & testref = *(generate());     //gen by ref
+    identify(test);                     //id by ptr
+    identify(testref);                  //if by ref
+    delete test;                        //delete Base * test
+    delete &(testref);                  //delete Base & testref
     return 0;
-}    
+}

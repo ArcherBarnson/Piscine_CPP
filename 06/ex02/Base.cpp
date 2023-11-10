@@ -1,10 +1,13 @@
 #include "Base.hpp"
+# include "A.hpp"
+# include "B.hpp"
+# include "C.hpp"
 
 Base::~Base(){
     return ;
 }
 
-Base * Base::generate(void)
+Base *generate(void)
 {
     char types[3] = {'A', 'B', 'C'};
     srand(time(NULL));
@@ -21,7 +24,7 @@ Base * Base::generate(void)
     return NULL;
 }
 
-void    Base::identify(Base *p)
+void    identify(Base *p)
 {
     A* a = dynamic_cast<A*>(p);
     B* b = dynamic_cast<B*>(p);
@@ -35,7 +38,7 @@ void    Base::identify(Base *p)
     return ;
 }
 
-void    Base::identify(Base &p)
+void    identify(Base &p)
 {
     try {
         (void) dynamic_cast<A&>(p);
