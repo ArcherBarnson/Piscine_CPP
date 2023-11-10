@@ -3,16 +3,16 @@
 
 # include <iostream>
 
-template <class type>
-void swap(type &a, type &b) {
-    type tmp = a;
+template <typename T>
+void swap(T &a, T &b) {
+    T tmp = a;
     a = b;
     b = tmp;
     return ;
 }
 
-template <class type>
-type min(type a, type b) {
+template <typename T>
+T min(T a, T b) {
     if (a < b)
         return a;
     if (a > b)
@@ -20,8 +20,8 @@ type min(type a, type b) {
     return a;
 }
 
-template <class type>
-type max(type a, type b) {
+template <typename T>
+T max(T a, T b) {
     if (a > b)
         return a;
     if (a < b)
