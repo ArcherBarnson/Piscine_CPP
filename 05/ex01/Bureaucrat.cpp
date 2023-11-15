@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:02:23 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/24 12:02:28 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:46:41 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ void	Bureaucrat::incrementGrade()
 		std::cout << "Cannot increment grade, bureaucrat is aleady exploiting eveyone else" << std::endl;
 	else
 	{
-		std::cout << *this << std::endl;
+		std::cout << "Incrementing grade of " << *this << std::endl;
 		_grade--;
+		std::cout << *this << std::endl;
 	}
 	return ;
 }
@@ -54,8 +55,9 @@ void	Bureaucrat::decrementGrade()
 		std::cout << "Cannot decrement grade, bureaucrat is already down on the ground and starving" << std::endl;
 	else
 	{
-		std::cout << *this << std::endl;
+		std::cout << "Decrementing grade of " << *this << std::endl;
 		_grade++;
+		std::cout << *this << std::endl;
 	}
 	return ;
 }

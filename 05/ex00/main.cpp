@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:16:39 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/24 11:32:07 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:44:05 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	main()
 		Bureaucrat blow = Bureaucrat("blow", 147);
 		for (i = 0; i < n; i++)
 			blow.decrementGrade();
-		std::cout << bware << std::endl;
-		std::cout << blow << std::endl;
 		/* The two extremity cases are exclusive to each other because exception is thrown
 		 * and thus the program is stopped
 		 *

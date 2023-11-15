@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:02:23 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/10/24 11:26:32 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:42:58 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ void	Bureaucrat::incrementGrade()
 		throw GradeTooHighException();
 	else
 	{
-		std::cout << *this << std::endl;
+		std::cout << "Incrementing grade of " << *this << std::endl;
 		_grade--;
+		std::cout << *this << std::endl;
 	}
 	return ;
 }
@@ -45,8 +46,9 @@ void	Bureaucrat::decrementGrade()
 		throw GradeTooLowException();
 	else
 	{
-		std::cout << *this << std::endl;
+		std::cout << "Decrementing grade of " << *this << std::endl;
 		_grade++;
+		std::cout << *this << std::endl;
 	}
 	return ;
 }

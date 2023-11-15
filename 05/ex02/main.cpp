@@ -37,6 +37,7 @@ int main()
 	b2.executeForm(ppf1);
 	b1.executeForm(ppf1);
 	b2.executeForm(shrub1);
+	b3.executeForm(robo1);
 	return 0;
 }
 

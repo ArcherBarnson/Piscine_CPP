@@ -27,6 +27,7 @@ int main()
 	Intern someGuy;
 	AForm *ppf1;
 	AForm *sf1;
+
 	ppf1 = someGuy.makeForm("Intern increased pay form lol", "me");
 	sf1 = someGuy.makeForm("Shrubbery Creation", "ethically concerned oil corporation");
 	//PresidentialPardonForm ppf1("very corrupt politician");
@@ -39,6 +40,8 @@ int main()
 	b1.signForm(*sf1);
 	//b2.executeForm(ppf1);
 	b1.executeForm(*sf1);
+	//delete ppf1;			//doesnt do anything because pointer is NULL
+	delete sf1;
 	return 0;
 }
 
