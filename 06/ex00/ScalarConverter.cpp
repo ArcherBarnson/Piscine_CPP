@@ -12,12 +12,18 @@
 
 #include "ScalarConverter.hpp"
 
-char ScalarConverter::_c = 0;
+/*char ScalarConverter::_c = 0;
 long int ScalarConverter::_i = 0;
 float ScalarConverter::_f = 0;
 double ScalarConverter::_d = 0;
-char* ScalarConverter::_endbuf = NULL;
+char* ScalarConverter::_endbuf = NULL;*/
 
+
+char _c = 0;
+long int _i = 0;
+float _f = 0;
+double _d = 0;
+char* _endbuf = NULL;
 
 //constructors ???
 
@@ -25,25 +31,16 @@ ScalarConverter::ScalarConverter(void) {
 	return ;
 }
 
-/*ScalarConverter::ScalarConverter(ScalarConverter const & copy) {
-	_c = copy._c;
-	_i = copy._i;
-	_f = copy._f;
-	_d = copy._d;
-	_endbuf = copy._endbuf;
+ScalarConverter::ScalarConverter(ScalarConverter const & copy) {
+	*this = copy;
 	return ;
 }
 
 ScalarConverter & ScalarConverter::operator=(ScalarConverter const & other) {
-	_c = other._c;
-	_i = other._i;
-	_f = other._f;
-	_d = other._d;
-	//_endbuf = new char*(other._endbuf);
+	(void)other;
 	return *this;
 }
-//// aucun sens
-*/
+
 ScalarConverter::~ScalarConverter(void) {
 	return ;
 }
@@ -51,18 +48,19 @@ ScalarConverter::~ScalarConverter(void) {
 void	ScalarConverter::convert(std::string input)
 {
 	int type = detectType(input);
-	//std::cout << type << std::endl;
-	//if (errno == ERANGE)
-	//	display(-1);
-	//if (type == 0)
-	//	display(0);
-	//else
-	//{	
 	switch(type)
 	{
+		case 0:
+		{
+			_c = -1;
+			_d = DBL_MAX + 1;
+			_i = 2147483648;
+			_f = _d;
+			break ;				//pire technique de gestion de cas particulier du mois mdr (ca marche bien)
+		}
 		case 1:
 		{
-			_f = strtof(input.c_str(), &ScalarConverter::_endbuf);
+			_f = strtof(input.c_str(), &_endbuf);
 			_c = static_cast<char>(_f);
 			_i = static_cast<long>(_f);
 			_d = static_cast<double>(_f);
@@ -70,7 +68,7 @@ void	ScalarConverter::convert(std::string input)
 		}
 		case 2:
 		{
-			_d = strtod(input.c_str(), &ScalarConverter::_endbuf);
+			_d = strtod(input.c_str(), &_endbuf);
 			_f = static_cast<float>(_d);
 			_c = static_cast<char>(_d);
 			_i = static_cast<long>(_d);
@@ -78,17 +76,16 @@ void	ScalarConverter::convert(std::string input)
 		}
 			
 	}
-		displayEval();
+	displayEval();
 	return ;
 }
 
-int	ScalarConverter::detectType(std::string input)
+int	detectType(std::string input)
 {
 	double n;
 
-	n = strtod(input.c_str(), &ScalarConverter::_endbuf);
-	//std::cout << _endbuf << std::endl;
-	if ((_endbuf && std::strlen(_endbuf) > 1)
+	n = strtod(input.c_str(), &_endbuf);
+	if ((input == _endbuf) || (_endbuf && std::strlen(_endbuf) > 1)
 		|| (_endbuf && std::strlen(_endbuf) == 1 && _endbuf[0] != 'f')) //nan
 		return 0;
 	if (_endbuf && std::strlen(_endbuf) == 1 && _endbuf[0] == 'f') //not a float, handles same for double and int
@@ -99,7 +96,7 @@ int	ScalarConverter::detectType(std::string input)
 	return 3;				//0 -> nan, 2 -> double or int, 1 -> float, 4 -> ???
 }
 
-void ScalarConverter::displayEval(void)
+void displayEval(void)
 {
 	std::cout << "char : ";
 	if (_d < 32 || _d > 126)
@@ -113,12 +110,20 @@ void ScalarConverter::displayEval(void)
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << _i << std::endl;
-	std::cout << "float : " << std::fixed << std::setprecision(1) << _f << "f" << std::endl;
-	std::cout << "double : " << std::fixed << std::setprecision(1) << _d << std::endl;
+	if (_c == -1)
+	{
+		std::cout << "float : nan" << "f" << std::endl;
+		std::cout << "double : nan" << std::endl;
+	}
+	else
+	{
+		std::cout << "float : " << std::fixed << std::setprecision(1) << _f << "f" << std::endl;
+		std::cout << "double : " << std::fixed << std::setprecision(1) << _d << std::endl;
+	}
 	return ;
 }
 
-void ScalarConverter::display(int mode)
+/*void display(int mode)
 {
 	switch(mode)
 	{
@@ -144,9 +149,4 @@ void ScalarConverter::display(int mode)
 			displayEval();
 		}
 	}
-}
-
-/*std::ostream &operator<<(std::ostream &outfile, ScalarConverter const &s)
-{
-
 }*/

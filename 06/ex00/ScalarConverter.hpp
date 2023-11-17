@@ -26,19 +26,11 @@ class ScalarConverter {
 		ScalarConverter(void);
 		ScalarConverter(ScalarConverter const & copy);
 		ScalarConverter &operator=(ScalarConverter const & other);
-		~ScalarConverter(void);
+		virtual ~ScalarConverter(void) = 0;
 		static void	convert(std::string input);
-		static int detectType(std::string input);
-		static void display(int mode);
-		static void displayEval(void);
-	private:
-		static char _c;
-		static long int	_i;
-		static float _f;
-		static double _d;
-		static char *_endbuf;
 };
 
-//std::ostream    &operator<<(std::ostream &outfile, ScalarConverter const &f);
+int detectType(std::string input);
+void displayEval(void);
 
 #endif

@@ -14,8 +14,12 @@
 
 int main(int ac, char **argv)
 {
-	if (ac != 2)
-		return 1;
+	if (ac == 1)
+	{
+		std::cout << "Error : no argument given" << std::endl;
+		std::cout << "(usage example : ./scalar_converter <n>)" << std::endl;
+		return (1);
+	}
 	ScalarConverter::convert(argv[1]);
 	return 0;
 }

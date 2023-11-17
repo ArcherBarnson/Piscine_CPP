@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	sclar_converter	
+NAME	=	scalar_converter	
 
 SRCS	=	ScalarConverter.cpp \
 		main.cpp
