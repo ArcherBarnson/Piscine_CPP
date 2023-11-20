@@ -52,45 +52,28 @@ void Span::addNumberArray(std::vector<int> array)
 
 int	Span::shortestSpan()
 {
-	std::vector<int>::iterator i = _vN.begin();
-	std::vector<int>::iterator j = _vN.begin();
-	j++;
-	int shortestSpan = abs(*i, *j);
-	if (_vN.size() <= 0)
-		return (-1);	//throw excp
-	i = _vN.begin();
-	for (; i < _vN.end(); i++)
+	std::vector<int>::iterator begin = _vN.begin();
+	std::vector<int>::iterator end = _vN.end();
+	int shortestSpan = 0;
+	int currentSpan = 0;
+	if (_size <= 1)
+		return (currentSpan);
+	std::sort(begin, end);
+	int i = 0;
+	for (; begin != end; end--)
 	{
-		for (; j < _vN.end(); j++)
-		{
-			if (abs(*i, *j) < shortestSpan && *j != *i)
-			{
-				shortestSpan = abs(*i, *j);
-			}
-		}
-		j = _vN.begin();
+		currentSpan = abs(_vN[i], _vN[i + 1]);
+		if (shortestSpan > currentSpan || shortestSpan == 0)
+			shortestSpan = currentSpan;
+		i++;
 	}
 	return (shortestSpan);
 }
 
 int	Span::longestSpan()
 {
-	int max = 0;
-	int longestSpan;
-	std::vector<int>::iterator i = _vN.begin();
-	if (_vN.size() <= 0)
-		return (-1);	//throw excp
-	for (; i < _vN.end(); i++)
-	{
-		if (*i > max)
-			max = *i;
-	}
-	i = _vN.begin();
-	longestSpan = max - *i;
-	for (; i < _vN.end(); i++)
-	{
-		if (max - *i > longestSpan)
-			longestSpan = max - *i;
-	}
+	if (_size <= 1)
+		return (0);
+	int longestSpan = (*std::max_element(_vN.begin(), _vN.end()) - *std::min_element(_vN.begin(), _vN.end()));
 	return (longestSpan);
 }
