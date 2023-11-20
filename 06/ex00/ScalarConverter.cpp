@@ -6,26 +6,17 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 10:59:38 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/11/15 10:59:43 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:05:29 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-
-/*char ScalarConverter::_c = 0;
-long int ScalarConverter::_i = 0;
-float ScalarConverter::_f = 0;
-double ScalarConverter::_d = 0;
-char* ScalarConverter::_endbuf = NULL;*/
-
 
 char _c = 0;
 long int _i = 0;
 float _f = 0;
 double _d = 0;
 char* _endbuf = NULL;
-
-//constructors ???
 
 ScalarConverter::ScalarConverter(void) {
 	return ;
@@ -122,31 +113,3 @@ void displayEval(void)
 	}
 	return ;
 }
-
-/*void display(int mode)
-{
-	switch(mode)
-	{
-		case -1:
-		{
-			std::cout << "char : impossible" << std::endl;
-			std::cout << "int : impossible" << std::endl;
-			std::cout << "float : nanf" << std::endl;
-			std::cout << "double : nan" << std::endl;
-			std::cout << "hint - input out of range" << std::endl;
-			break;
-		}
-		case 0:
-		{
-			std::cout << "char : impossible" << std::endl;
-			std::cout << "int : impossible" << std::endl;
-			std::cout << "float : nanf" << std::endl;
-			std::cout << "double : nan" << std::endl;
-			break;
-		}
-		case 1:
-		{
-			displayEval();
-		}
-	}
-}*/

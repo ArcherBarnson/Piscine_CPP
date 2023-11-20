@@ -40,6 +40,16 @@ void Span::addNumber(int n)
 	return ;
 }
 
+void Span::addNumberArray(std::vector<int> array)
+{
+	std::vector<int>::iterator i = array.begin();
+	if (array.size() + _vN.size() > _size)
+		return ;		//throw excp
+	for (; i != array.end(); i++)
+		_vN.push_back(*i);
+	return ;
+}
+
 int	Span::shortestSpan()
 {
 	std::vector<int>::iterator i = _vN.begin();

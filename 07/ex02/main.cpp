@@ -6,7 +6,7 @@
 /*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:02:49 by bgrulois          #+#    #+#             */
-/*   Updated: 2023/11/15 11:02:55 by bgrulois         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:54:47 by bgrulois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,32 @@ int main(int, char**)
         numbers[i] = rand();
     }
     delete [] mirror;//
+	//------------------------MORE TESTS-----------------------------------------------
+	std::cout << "--------------------MORE TEST-----------------------" << std::endl;
+	int i;
+	Array<std::string> words(5);
+	Array<int> numberz[10];
+	Array<int> nnnn[10];
+	
+	for (i = 0; i < 10; i++)
+		numberz[i] = i;
+	Array< Array<int> arrayarray[10];
+	for (i = 0; i < 10; i++)
+		arrayarray[i] = numberz;
+	words[0] = "this ";
+	words[1] = "is ";
+	words[2] = "a ";
+	words[3] = "string ";
+	words[4] = "array";
+	for (int j = 0; j < 5; j++)
+		std::cout << words[j];
+	std::cout << std::endl;
+	try {
+		words[5] = "out of range bruh";
+	}
+	catch(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
     return 0;
 }

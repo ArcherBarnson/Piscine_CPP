@@ -14,6 +14,7 @@ class Span {
 		~Span( void );
 		int abs(int a, int b);
 		void addNumber(int n);
+		void addNumberArray(std::vector<int> array);
 		int shortestSpan();
 		int longestSpan();
 	private:
