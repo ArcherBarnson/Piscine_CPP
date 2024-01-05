@@ -33,10 +33,10 @@ std::map<std::string, float> BitcoinExchange::makeCsvMap(std::string filename, i
     float value;
 
     data.open(filename.c_str());
-    for (line; std::getline(data, line); )
+    for (; std::getline(data, line); )
     {
-        date = line.substr(0, 9);
-        value = atof((line.substr(10 + offset)).c_str());
+        date = line.substr(0, 10);
+        value = atof((line.substr(11 + offset)).c_str());
         retmap.insert(std::pair<std::string, float>(date, value));
     }
     data.close();
@@ -50,8 +50,32 @@ std::map<std::string, float> BitcoinExchange::getDataMap()
 
 void    displayResults(BitcoinExchange db, std::string input)
 {
-    std::map<std::string, float>input_map = db.makeCsvMap(input, 1);
+    std::map<std::string, float>input_map = db.makeCsvMap(input, 0);
+    std::map<std::string, float>db_tmpmap = db.getDataMap();
+    std::map<std::string, float> retmap;
+    std::fstream data;
+    std::string line = "";
+    std::string date = "";
+    float value = 0;
     //iterate through inputmap
+    std::map<std::string, float>::iterator tmp_it = db_tmpmap.begin();
+    std::map<std::string, float>::iterator db_entry_it = db_tmpmap.begin();
+    data.open(input.c_str());
+    for (; std::getline(data, line); )
+    {
+        date = line.substr(0, 10);
+        value = atof((line.substr(13)).c_str());
+        tmp_it = db_entry_it;
+        db_entry_it = db_tmpmap.find(date);
+        //std::cout << "d=" << date << " - v=" << value;
+        //std::cout << "dbdbg: " << db_tmpmap[db_entry_it->first] << std::endl;
+        if (db_entry_it != db_tmpmap.end())
+            std::cout << date << " => " << value * db_entry_it->second << std::endl;
+        else
+            std::cout << "Good luck coding the closest entry finding function ! Fuck you !" << std::endl;
+        db_entry_it = tmp_it;
+    }
+    data.close();
     //if key no match find closest earlywise
     //if key match display date and db value (price) * input value (quantity)
     return ;
