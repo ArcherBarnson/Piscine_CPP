@@ -52,8 +52,10 @@ int     getStringValue(std::string str)
 {
     int i = 0;
     int val = 0;
-    int len = 10000000;//str.length();
+    int len = 10000000;
     std::string strlol = "";
+    if ((str[5] < '0' || str[5] > '1') || (str[8] < '0' || str[8] > '3'))
+        return (0);
     //std::cout << "str is " << str << std::endl;
     while (str[i])
     {
