@@ -56,13 +56,41 @@ std::list<int> PmergeMe::sort(void)
 	while (it != _lPairs.end())
 	{
 		std::cout << "[UNSORTED PAIR]: [" << it->first << " - " << it->second << "]" << std::endl;
-		if (it->first < it->second)
+		if (it->first > it->second)
 		{
 			int tmp = it->second;
 			it->second = it->first;
 			it->first = tmp;
 		}
 		std::cout << "[SORTED PAIR]: " << "[" << it->first << " - " << it->second << "]" << std::endl;
+		it++;
+	}
+	it = _lPairs.begin();
+	std::list< std::pair<int,int> >::iterator itb = _lPairs.begin();
+	itb++;
+	while (it != _lPairs.end())
+	{
+		while (itb != _lPairs.end())
+		{
+			if (it->second > itb->second)
+			{
+				int tmp = it->second;
+				it->second = itb->second;
+				itb->second = tmp;
+				tmp = it->first;
+				it->first = itb->first;
+				itb->first = tmp;
+			}
+			itb++;
+		}
+		it++;
+		itb = it;
+		itb++;
+	}
+	it = _lPairs.begin();
+	while (it != _lPairs.end())
+	{
+		std::cout << "[DBG]: " << "[" << it->first << " - " << it->second << "]" << std::endl;
 		it++;
 	}
 	//faut trier la mais jsp compter
