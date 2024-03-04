@@ -17,10 +17,13 @@ class PmergeMe {
 		//std::vector< std::list<int> > getPairs(void);
 		std::list< std::pair<int, int> > getLpairs(void);
 		std::list<int> sort(void);
+		int getNextJNumber(std::list<int> pending);
+		std::list<int> insertSort(std::list<int> pending, std::list<int> sorted);
 	private:
 		std::list<int> _lUnsorted;
 		std::list< std::pair<int, int> > _lPairs;
 		std::list<int> _lS;
+		int _odd;
 		//std::vector<int> _vUnsorted;
 		//std::vector< std::pair<int, int> > _vPairs;
 		//std::vector<int> _vS;

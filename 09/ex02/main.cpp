@@ -23,5 +23,11 @@ int main(int ac, char **av)
 	}
 	PmergeMe algo(unsorted);
 	sorted = algo.sort();
+	std::list<int>::iterator it = sorted.begin();
+	while (it != sorted.end())
+	{
+		std::cout << "[SORTED]" << *it << std::endl;
+		it++;
+	}
 	return (0);
 }
