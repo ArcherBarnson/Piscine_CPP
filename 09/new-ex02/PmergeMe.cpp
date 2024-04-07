@@ -172,16 +172,18 @@ std::list<int> PmergeMe::generateJacobsthalSequence(int size)
 std::list<int> PmergeMe::lbsInsert(std::list<int>::iterator L, std::list<int>::iterator R, std::list<int> sorted, int size, int n)
 {
     std::list<int>::iterator itm = L;
-    std::advance(itm, size / 2);
+    std::advance(itm, size / 2 - 1);
     std::list<int>::iterator itmPrev = itm;
     std::list<int>::iterator itmNext = itm;
-    itmNext++;
-    itmPrev--;
+    if (itmNext != sorted.end())
+        itmNext++;
+    if (itmPrev != sorted.begin())
+        itmPrev--;
     if (n > *itmNext)
         return(lbsInsert(itm, R, sorted, size / 2, n));
     else if (n < *itmPrev)
         return(lbsInsert(L, itm, sorted, size / 2, n));
-    sorted.insert(itmNext, n);
+    sorted.insert(itm, n);
     return (sorted);
 }
 
@@ -208,7 +210,7 @@ std::list<int> PmergeMe::lSort(std::list<std::pair<int, int> > pairs)
     std::list<std::pair<int, int> >::iterator itPairs = pairs.begin();
     std::list<int> usedIndexes;
 
-    usedIndexes.push_front(0);
+    //usedIndexes.push_front(1);
     while (itPairs != pairs.end())
     {
         sorted.push_front(itPairs->first);
@@ -226,38 +228,46 @@ std::list<int> PmergeMe::lSort(std::list<std::pair<int, int> > pairs)
     jacobsthalSequence = generateJacobsthalSequence(pending.size());
     std::cout << std::endl << "jacobsthalseq : ";
     printListb(jacobsthalSequence);
-    while (itPending != pending.end() && !pending.empty())
+    while (itPending != pending.end())
     {
         std::list<int>::iterator nToInsert = pending.begin();
-        if (!jacobsthalSequence.empty())
+        while (!jacobsthalSequence.empty())
         {
-            std::advance(nToInsert, *jacobsthalSequence.begin());
+            std::advance(nToInsert, (*jacobsthalSequence.begin() - 1));
             std::cout << *jacobsthalSequence.begin() << std::endl;
             usedIndexes.push_front(*jacobsthalSequence.begin());
             jacobsthalSequence.remove(*jacobsthalSequence.begin());
+            lbsInsert(sorted.begin(), sorted.end(), sorted, sorted.size(), *nToInsert);
+            nToInsert = pending.begin();
         }
-        else
+        while (!usedIndexes.empty())
         {
-            /*int index = getListIndex(pending, *nToInsert);
-            for (std::list<int>::iterator itTmp = usedIndexes.begin(); itTmp != usedIndexes.end(); itTmp++)
-            {
-                std::cout << "idf:" << index << std::endl;
-                if (index == *itTmp)
-                {
-                    std::cout << "index already used ?" << std::endl;
-                    nToInsert++;
-                    index++;
-                    itTmp = usedIndexes.begin();
-                }
-            }*/
-            std::cout << "idk bro" << std::endl;
+            pending.remove(*usedIndexes.begin());
+            usedIndexes.remove(*usedIndexes.begin());
+            //int index = getListIndex(pending, *nToInsert);
+            //for (std::list<int>::iterator itTmp = usedIndexes.begin(); itTmp != usedIndexes.end(); itTmp++)
+            //{
+            //    if (index == *itTmp)
+            //    {
+            //        std::cout << "index already used ?" << "i = " << index << " usedi = " << *itTmp << std::endl;
+            //        //nToInsert++;
+            //        break ;
+            //    }
+            //}
         }
-        std::cout << "next insert = " <<  *nToInsert << std::endl;
-        lbsInsert(sorted.begin(), sorted.end()--, sorted, sorted.size(), *nToInsert);
+        while (!pending.empty())
+        {
+            nToInsert = pending.begin();
+            lbsInsert(sorted.begin(), sorted.end(), sorted, sorted.size(), *nToInsert);
+            std::cout << "idk bro" << std::endl;
+            pending.remove(*pending.begin());
+            printListb(sorted);
+        }
+        //std::cout << "next insert = " <<  *nToInsert << std::endl;
+        //lbsInsert(sorted.begin(), sorted.end(), sorted, sorted.size(), *nToInsert);
         std::cout << std::endl << "sorted after bs: ";
         printListb(sorted);
-        pending.remove(*nToInsert);
-        nToInsert = pending.begin();
+        //pending.remove(*nToInsert);
         //itPending++;
     }
     return (std::list<int>());
