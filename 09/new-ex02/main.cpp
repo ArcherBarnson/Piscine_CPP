@@ -1,33 +1,5 @@
 #include "PmergeMe.hpp"
 
-std::list<int> makeLn(char **av)
-{
-    int i;
-    std::list<int> ln;
-    for (i = 1; av[i]; i++)
-    {
-        if (atoi(av[i]) < 0 || (atoi(av[i]) == 0 && av[i][0] != '0')
-            || atoll(av[i]) > INT_MAX)
-            return (std::list<int>());
-        ln.push_back(atoi(av[i]));
-    }
-    return (ln);
-}
-
-std::vector<int> makeVn(char **av)
-{
-    int i;
-    std::vector<int> vn;
-    for (i = 1; av[i]; i++)
-    {
-        if (atoi(av[i]) < 0 || (atoi(av[i]) == 0 && av[i][0] != '0') 
-            || atoll(av[i]) > INT_MAX)
-            return (std::vector<int>());
-        vn.push_back(atoi(av[i]));
-    }
-    return (vn);
-}
-
 ////////////////////////////// DBG FCTS /////////////////////////////
 void printList(std::list<int> list)
 {
@@ -74,6 +46,34 @@ void printVPairs(std::vector<std::pair<int, int> > vPairs)
 }
 /////////////////////////////////////////////////////////////////////
 
+std::list<int> makeLn(char **av)
+{
+    int i;
+    std::list<int> ln;
+    for (i = 1; av[i]; i++)
+    {
+        if (atoi(av[i]) < 0 || (atoi(av[i]) == 0 && av[i][0] != '0')
+            || atoll(av[i]) > INT_MAX)
+            return (std::list<int>());
+        ln.push_back(atoi(av[i]));
+    }
+    return (ln);
+}
+
+std::vector<int> makeVn(char **av)
+{
+    int i;
+    std::vector<int> vn;
+    for (i = 1; av[i]; i++)
+    {
+        if (atoi(av[i]) < 0 || (atoi(av[i]) == 0 && av[i][0] != '0') 
+            || atoll(av[i]) > INT_MAX)
+            return (std::vector<int>());
+        vn.push_back(atoi(av[i]));
+    }
+    return (vn);
+}
+
 bool dupCheck(char **av)
 {
     for (int i = 1; av[i]; i++)
@@ -109,5 +109,6 @@ int main(int ac, char **av)
     PmergeMe sortNumbers(ln, vn);
     printList(ln);
     printLPairs(sortNumbers.makeLPairs());
+    sortNumbers.lSort(sortNumbers.makeLPairs());
     return (0);
 }

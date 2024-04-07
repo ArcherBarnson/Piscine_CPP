@@ -22,7 +22,7 @@ class PmergeMe {
         std::list<int> lSort(std::list<std::pair<int, int> >);
         std::list<std::pair<int, int> > lSortPairs(std::list<std::pair<int, int> > pairs);
         std::list<int> vSort(std::vector<std::pair<int, int> >);
-        std::list<int> vSortPairs(std::vector<std::pair<int, int> >);
+        std::vector<std::pair<int, int> > vSortPairs(std::vector<std::pair<int, int> > pairs);
 
          
 

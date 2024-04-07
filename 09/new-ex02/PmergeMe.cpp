@@ -22,12 +22,10 @@ PmergeMe & PmergeMe::operator=(PmergeMe const & other)
     return *this;
 }
 
-std::list<int> vSort(std::vector<std::pair<int, int> >);
-
-std::list<std::pair<int, int> > PmergeMe::lSortPairs(std::list<std::pair<int, int> > pairs)
+std::vector<std::pair<int, int> > PmergeMe::vSortPairs(std::vector<std::pair<int, int> > pairs)
 {
-    std::list<std::pair<int, int> >::iterator ita = pairs.begin();
-    std::list<std::pair<int, int> >::iterator itb = pairs.begin()++;
+    std::vector<std::pair<int, int> >::iterator ita = pairs.begin();
+    std::vector<std::pair<int, int> >::iterator itb = pairs.begin()++;
     while (ita != pairs.end())
     {
         if (ita->first < ita->second)
@@ -53,6 +51,40 @@ std::list<std::pair<int, int> > PmergeMe::lSortPairs(std::list<std::pair<int, in
         }
         ita++;
         itb = ita++;
+    }
+    return (pairs);
+}
+
+std::list<std::pair<int, int> > PmergeMe::lSortPairs(std::list<std::pair<int, int> > pairs)
+{
+    std::list<std::pair<int, int> >::iterator ita = pairs.begin();
+    std::list<std::pair<int, int> >::iterator itb;
+    while (ita != pairs.end())
+    {
+        if (ita->first < ita->second)
+            {
+                int tmp = ita->first;
+                ita->first = ita->second;
+                ita->second = tmp;
+            }
+            ita++;
+    }
+    ita = pairs.begin();
+    while (ita != pairs.end())
+    {
+        itb = ita;
+        itb++;
+        while (itb != pairs.end())
+        {
+            if (ita->first < itb->first)
+            {
+                std::pair<int, int> tmpPair = *ita;
+                *ita = *itb;
+                *itb = tmpPair;
+            }
+            itb++;
+        }
+        ita++;
     }
     return (pairs);
 }
@@ -101,3 +133,42 @@ std::vector<std::pair<int, int> > PmergeMe::makeVPairs()
     }
     return (pairs);
 }
+
+/////UTILS (Remove Before Flight)//////
+void printListb(std::list<int> list)
+{
+    std::list<int>::iterator it = list.begin();
+    while (it != list.end())
+    {
+        std::cout << *it << " ";
+        it++; 
+    }
+    return ;
+}
+///////////////////////////////////////
+
+std::list<int> PmergeMe::lSort(std::list<std::pair<int, int> > pairs)
+{
+    std::list<int> sorted;
+    std::list<int> pending;
+    
+    std::list<std::pair<int, int> >::iterator itPairs = pairs.begin();
+    while (itPairs != pairs.end())
+    {
+        sorted.push_back(itPairs->first);
+        pending.push_back(itPairs->second);
+        itPairs++;
+    }
+    //std::list<int>::iterator itSorted = sorted.begin();
+    sorted.push_back(pending.back());
+    pending.remove(pending.back());
+    //std::list<int>::iterator itPending = pending.begin();
+    std::cout << std::endl << "sorted : ";
+    printListb(sorted);
+    std::cout << std::endl << "pending : ";
+    printListb(pending);
+    return (std::list<int>());
+
+}
+
+std::vector<int> vSort(std::vector<std::pair<int, int> >);
