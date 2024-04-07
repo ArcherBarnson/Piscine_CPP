@@ -17,6 +17,12 @@ class PmergeMe {
         PmergeMe(PmergeMe const & copy);
         PmergeMe &operator=(PmergeMe const & other);
 
+        int getNextJacobsthal(int n);
+        std::list<int> generateJacobsthalSequence(int size);
+        std::list<int> lbsInsert(std::list<int>::iterator L, std::list<int>::iterator R, std::list<int> sorted, int size, int n);
+        int getListIndex(std::list<int> lst, int n);
+
+
         std::list<std::pair<int, int> > makeLPairs();
         std::vector<std::pair<int, int> > makeVPairs();
         std::list<int> lSort(std::list<std::pair<int, int> >);
