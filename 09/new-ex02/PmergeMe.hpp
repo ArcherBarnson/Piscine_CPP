@@ -19,23 +19,29 @@ class PmergeMe {
 
         int getNextJacobsthal(int n);
         std::list<int> generateJacobsthalSequence(int size);
+        
         std::list<int>::iterator lbsInsert(std::list<int>::iterator L, std::list<int>::iterator R, int size, int n);
         int getListIndex(std::list<int> lst, int n);
 
 
-        std::list<std::pair<int, int> > makeLPairs();
-        std::vector<std::pair<int, int> > makeVPairs();
-        void lSort(std::list<std::pair<int, int> >);
-        std::list<std::pair<int, int> > lSortPairs(std::list<std::pair<int, int> > pairs);
-        std::list<int> vSort(std::vector<std::pair<int, int> >);
-        std::vector<std::pair<int, int> > vSortPairs(std::vector<std::pair<int, int> > pairs);
+        void lMakePairs();
+        void lSort();
+        void lSortPairs();
+        //void lRecursiveSort(std::list<std::pair<int, int> >::iterator ita, std::list<std::pair<int, int> >::iterator itb);
 
-         
+        void vMakePairs();
+        void vSort();
+        void vSortPairs();
+        std::vector<int>::iterator vbsInsert(std::vector<int>::iterator L, std::vector<int>::iterator R, int size, int n);         
+        void printVector(std::vector<int> v);
 
     private:
+        std::list<std::pair<int, int> > _lPairs;
         std::list<int> _lUnsorted;
         std::list<int> _lSorted;
-        std::vector<int> _vUnsorted;        
+        std::vector<std::pair<int, int> > _vPairs;
+        std::vector<int> _vUnsorted;
+        std::vector<int> _vSorted;
         int _straggler;
 
 };

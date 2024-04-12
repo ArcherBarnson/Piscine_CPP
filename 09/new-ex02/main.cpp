@@ -33,6 +33,7 @@ void printVector(std::vector<int> vector)
     }
     return ;
 }
+        std::list<int> _lSorted;
 
 void printVPairs(std::vector<std::pair<int, int> > vPairs)
 {
@@ -52,7 +53,7 @@ std::list<int> makeLn(char **av)
     std::list<int> ln;
     for (i = 1; av[i]; i++)
     {
-        if (atoi(av[i]) < 0 || (atoi(av[i]) == 0 && av[i][0] != '0')
+        if (atoi(av[i]) <= 0
             || atoll(av[i]) > INT_MAX)
             return (std::list<int>());
         ln.push_back(atoi(av[i]));
@@ -66,7 +67,7 @@ std::vector<int> makeVn(char **av)
     std::vector<int> vn;
     for (i = 1; av[i]; i++)
     {
-        if (atoi(av[i]) < 0 || (atoi(av[i]) == 0 && av[i][0] != '0') 
+        if (atoi(av[i]) <= 0 
             || atoll(av[i]) > INT_MAX)
             return (std::vector<int>());
         vn.push_back(atoi(av[i]));
@@ -103,12 +104,20 @@ int main(int ac, char **av)
     std::vector<int> vn = makeVn(av);
     if (ln.empty() || vn.empty())
     {
-        std::cout << "Error: bad arguments (a valid argument is a number between 0 and INT_MAX included)" << std::endl;
+        std::cout << "Error: bad arguments (a valid argument is a positive integer ([1 - INT_MAX])" << std::endl;
         return (3);
     }
     PmergeMe sortNumbers(ln, vn);
+    std::cout << "UNSORTED LIST = ";
     printList(ln);
-    printLPairs(sortNumbers.makeLPairs());
-    sortNumbers.lSort(sortNumbers.makeLPairs());
+    std::cout << std::endl << "++++ LIST SORTING ++++" << std::endl;
+    sortNumbers.lMakePairs();
+    sortNumbers.lSortPairs();
+    sortNumbers.lSort();
+
+    std::cout << std::endl << "++++ VECTOR SORTING ++++" << std::endl;
+    sortNumbers.vMakePairs();
+    sortNumbers.vSortPairs();
+    sortNumbers.vSort();
     return (0);
 }

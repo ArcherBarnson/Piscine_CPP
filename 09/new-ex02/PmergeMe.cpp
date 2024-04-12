@@ -22,11 +22,11 @@ PmergeMe & PmergeMe::operator=(PmergeMe const & other)
     return *this;
 }
 
-std::vector<std::pair<int, int> > PmergeMe::vSortPairs(std::vector<std::pair<int, int> > pairs)
+void PmergeMe::vSortPairs()
 {
-    std::vector<std::pair<int, int> >::iterator ita = pairs.begin();
-    std::vector<std::pair<int, int> >::iterator itb = pairs.begin()++;
-    while (ita != pairs.end())
+    std::vector<std::pair<int, int> >::iterator ita = _vPairs.begin();
+    std::vector<std::pair<int, int> >::iterator itb;
+    while (ita != _vPairs.end())
     {
         if (ita->first < ita->second)
             {
@@ -36,45 +36,15 @@ std::vector<std::pair<int, int> > PmergeMe::vSortPairs(std::vector<std::pair<int
             }
             ita++;
     }
-    ita = pairs.begin();
-    while (ita != pairs.end())
-    {
-        while (itb != pairs.end())
-        {
-            if (ita->first < itb->first)
-            {
-                std::pair<int, int> tmpPair = *ita;
-                *ita = *itb;
-                *itb = tmpPair;
-            }
-            itb++;
-        }
-        ita++;
-        itb = ita++;
-    }
-    return (pairs);
-}
-
-std::list<std::pair<int, int> > PmergeMe::lSortPairs(std::list<std::pair<int, int> > pairs)
-{
-    std::list<std::pair<int, int> >::iterator ita = pairs.begin();
-    std::list<std::pair<int, int> >::iterator itb;
-    while (ita != pairs.end())
-    {
-        if (ita->first < ita->second)
-            {
-                int tmp = ita->first;
-                ita->first = ita->second;
-                ita->second = tmp;
-            }
-            ita++;
-    }
-    ita = pairs.begin();
-    while (ita != pairs.end())
+    ita = _vPairs.begin();
+    itb = ita;
+    itb++;
+    //lRecursiveSort(ita, itb);
+    while (ita != _vPairs.end())
     {
         itb = ita;
         itb++;
-        while (itb != pairs.end())
+        while (itb != _vPairs.end())
         {
             if (ita->first < itb->first)
             {
@@ -86,12 +56,77 @@ std::list<std::pair<int, int> > PmergeMe::lSortPairs(std::list<std::pair<int, in
         }
         ita++;
     }
-    return (pairs);
+    return ;
 }
 
-std::list<std::pair<int, int> > PmergeMe::makeLPairs()
+void PmergeMe::lSortPairs()
 {
-    std::list<std::pair<int, int> > pairs;
+    std::list<std::pair<int, int> >::iterator ita = _lPairs.begin();
+    std::list<std::pair<int, int> >::iterator itb;
+    while (ita != _lPairs.end())
+    {
+        if (ita->first < ita->second)
+            {
+                int tmp = ita->first;
+                ita->first = ita->second;
+                ita->second = tmp;
+            }
+            ita++;
+    }
+    ita = _lPairs.begin();
+    itb = ita;
+    itb++;
+    //lRecursiveSort(ita, itb);
+    while (ita != _lPairs.end())
+    {
+        itb = ita;
+        itb++;
+        while (itb != _lPairs.end())
+        {
+            if (ita->first < itb->first)
+            {
+                std::pair<int, int> tmpPair = *ita;
+                *ita = *itb;
+                *itb = tmpPair;
+            }
+            itb++;
+        }
+        ita++;
+    }
+    /*std::list<std::pair<int, int> >::iterator it = _lPairs.begin();
+    std::cout << "PAIR CHANGED : ";
+    while (it != _lPairs.end())
+    {
+        std::cout << "[" << it->first << ":" << it->second << "] ";
+        it++; 
+    }*/
+    return ;
+}
+
+/*void PmergeMe::lRecursiveSort(std::list<std::pair<int, int> >::iterator ita, std::list<std::pair<int, int> >::iterator itb)
+{
+    std::pair<int, int> tmpPair;
+    if (*ita == _lPairs.back())
+        return ;
+    if (*itb == _lPairs.back())
+    {
+        ita++;
+        itb = ita;
+        itb++;
+        lRecursiveSort(ita, itb);
+    }
+    if (ita->first > itb->first)
+    {
+        tmpPair = *ita;
+        *ita = *itb;
+        *itb = tmpPair;
+    }
+    itb++;
+    lRecursiveSort(ita, itb);
+}*/
+
+void PmergeMe::lMakePairs()
+{
     std::pair<int, int> pairToPush;
     if (_lUnsorted.size() % 2 != 0)
     {
@@ -107,14 +142,13 @@ std::list<std::pair<int, int> > PmergeMe::makeLPairs()
         it++;
         pairToPush.second = *it;
         it++;
-        pairs.push_back(pairToPush);
+        _lPairs.push_back(pairToPush);
     }
-    return (lSortPairs(pairs));
+    return;
 }
 
-std::vector<std::pair<int, int> > PmergeMe::makeVPairs()
+void PmergeMe::vMakePairs()
 {
-    std::vector<std::pair<int, int> > pairs;
     std::pair<int, int> pairToPush;
     if (_vUnsorted.size() % 2 != 0)
     {
@@ -129,9 +163,9 @@ std::vector<std::pair<int, int> > PmergeMe::makeVPairs()
         it++;
         pairToPush.second = *it;
         it++;
-        pairs.push_back(pairToPush);
+        _vPairs.push_back(pairToPush);
     }
-    return (pairs);
+    return ;
 }
 
 /////UTILS (Remove Before Flight)//////
@@ -140,7 +174,7 @@ void printListb(std::list<int> list)
     std::list<int>::iterator it = list.begin();
     while (it != list.end())
     {
-        std::cout << *it << " ";
+        std::cout << *it << ", ";
         it++; 
     }
     return ;
@@ -187,7 +221,7 @@ std::list<int>::iterator PmergeMe::lbsInsert(std::list<int>::iterator L, std::li
     //std::cout << "n = " << n << " | L = " << *L << " | R = " << *itLast << " | size = " << size << std::endl;
     //std::cout << "_lSorted = ";
     //printListb(_lSorted);
-    std::cout << std::endl;
+    //std::cout << std::endl;
     if (n < *itMl && *itMl!= *_lSorted.begin())
         return (lbsInsert(L, itM, size / 2 + 1, n));
     if (n > *itMr && *itMr != *itLast)
@@ -196,8 +230,40 @@ std::list<int>::iterator PmergeMe::lbsInsert(std::list<int>::iterator L, std::li
         return (_lSorted.begin());
     if (n > *itMr && *itMr == *itLast)
         return (_lSorted.end());
-    //std::cout << "itM is : " << *itM << std::endl;
+    if (n < *itM)
+        itM--;
+    if (n > *itM)
+        itM++;
+    return (itM);
+}
+
+std::vector<int>::iterator PmergeMe::vbsInsert(std::vector<int>::iterator L, std::vector<int>::iterator R, int size, int n)
+{   
+    std::vector<int>::iterator itM = L;
+    std::vector<int>::iterator itLast = R;
+    std::advance(itM, size / 2);
+    std::vector<int>::iterator itMl = itM;
+    std::vector<int>::iterator itMr = itM;
+    itLast--;
+    if (*itM != *_vSorted.begin())
+        itMl--;
+    if (*itM != *itLast)
+        itMr++;
+    if (itMr == _vSorted.end())
+        itMr--;
+    
+    //std::cout << "n = " << n << " | L = " << *L << " | R = " << *itLast << " | size = " << size << std::endl;
+    //std::cout << "_lSorted = ";
+    //printListb(_lSorted);
     //std::cout << std::endl;
+    if (n < *itMl && *itMl!= *_vSorted.begin())
+        return (vbsInsert(L, itM, size / 2 + 1, n));
+    if (n > *itMr && *itMr != *itLast)
+        return (vbsInsert(itM, R, size / 2 + 1, n));    
+    if (n < *itMl && *itMl == *_vSorted.begin())
+        return (_vSorted.begin());
+    if (n > *itMr && *itMr == *itLast)
+        return (_vSorted.end());
     if (n < *itM)
         itM--;
     if (n > *itM)
@@ -228,24 +294,20 @@ bool nInLst(int n, std::list<int> lst)
     return (false);
 }
 
-void PmergeMe::lSort(std::list<std::pair<int, int> > pairs)
+void PmergeMe::lSort()
 {
     std::list<int> pending;
     std::list<int> jacobsthalSequence;
-    std::list<std::pair<int, int> >::iterator itPairs = pairs.begin();
-    std::list<int> usedIndexes;
+    std::list<std::pair<int, int> >::iterator itPairs = _lPairs.begin();
     
-    while (itPairs != pairs.end())
+    while (itPairs != _lPairs.end())
     {
         _lSorted.push_front(itPairs->first);
         pending.push_front(itPairs->second);
         itPairs++;
     }
-    //std::list<int>::iterator itPending = pending.begin();
-    //std::cout << "itPending is at: " << getListIndex(_lSorted, *itPending) << std::endl;
     _lSorted.push_front(pending.front());
     pending.remove(pending.front());
-    usedIndexes.push_back(0);
     std::cout << std::endl << "pending : ";
     printListb(pending);
     jacobsthalSequence = generateJacobsthalSequence(pending.size() + 1);
@@ -254,41 +316,79 @@ void PmergeMe::lSort(std::list<std::pair<int, int> > pairs)
     std::list<int>::iterator nToInsert = pending.begin();
     while (!pending.empty())
     {
-        //std::cout << "usedIndexes = " << usedIndexes.size() << std::endl;
-        int counter = 2;
+        int counter = 2;                        //used to keep track of indexes after elements have been removed
         while (!jacobsthalSequence.empty())
         {
             std::advance(nToInsert, (*jacobsthalSequence.begin() - counter));
             std::cout << *jacobsthalSequence.begin() << std::endl;
-            usedIndexes.push_back(*jacobsthalSequence.begin());
             jacobsthalSequence.remove(*jacobsthalSequence.begin());
             _lSorted.insert(lbsInsert(_lSorted.begin(), _lSorted.end(), _lSorted.size(), *nToInsert), *nToInsert);
             pending.remove(*nToInsert);
             nToInsert = pending.begin();
             counter++;
-            //std::cout << "pending: ";
-            //printListb(pending);
-            //std::cout << std::endl;
         }
         _lSorted.insert(lbsInsert(_lSorted.begin(), _lSorted.end(), _lSorted.size(), *nToInsert), *nToInsert);
-        //usedIndexes.push_back(getListIndex(_lSorted, *nToInsert));
         pending.remove(*nToInsert);
         nToInsert = pending.begin();
-        //}
-        //std::cout << "idk bro" << std::endl;
-        //pending.remove(*pending.begin());            
-        //printListb(_lSorted);
-        //std::cout << std::endl << "pending after bsi: ";
-        //printListb(pending);
-        //std::cout << std::endl << "_lSorted after bsi: ";
-        //printListb(_lSorted);
-        //std::cout << "pending size = " << pending.size() << std::endl;
     }
+    if (_straggler > 0)
+        _lSorted.insert(lbsInsert(_lSorted.begin(), _lSorted.end(), _lSorted.size(), _straggler), _straggler);
     std::cout << "SORTED LIST => ";
     printListb(_lSorted);
     std::cout << std::endl;
-    return ;//printListb(_lSorted);
+    return ;
 
 }
 
-std::vector<int> vSort(std::vector<std::pair<int, int> >);
+void PmergeMe::printVector(std::vector<int> v)
+{
+    for (std::vector<int>::iterator it = v.begin(); it != v.end(); it++)
+        std::cout << *it << ", ";
+    return ;
+
+}
+
+void PmergeMe::vSort()
+{
+    std::vector<int> pending;
+    std::list<int> jacobsthalSequence;
+    std::vector<std::pair<int, int> >::iterator itPairs = _vPairs.begin();
+    
+    while (itPairs != _vPairs.end())
+    {
+        _vSorted.insert(_vSorted.begin(), itPairs->first);
+        pending.insert(pending.begin(), itPairs->second);
+        itPairs++;
+    }
+    _vSorted.insert(_vSorted.begin(), pending.front());
+    pending.erase(pending.begin());
+    std::cout << std::endl << "pending : ";
+    //printListb(pending);
+    jacobsthalSequence = generateJacobsthalSequence(pending.size() + 1);
+    std::cout << std::endl << "jacobsthalseq : ";
+    //printListb(jacobsthalSequence);
+    std::vector<int>::iterator nToInsert = pending.begin();
+    while (!pending.empty())
+    {
+        int counter = 2;                        //used to keep track of indexes after elements have been removed
+        while (!jacobsthalSequence.empty())
+        {
+            std::advance(nToInsert, (*jacobsthalSequence.begin() - counter));
+            std::cout << *jacobsthalSequence.begin() << std::endl;
+            jacobsthalSequence.remove(*jacobsthalSequence.begin());
+            _vSorted.insert(vbsInsert(_vSorted.begin(), _vSorted.end(), _vSorted.size(), *nToInsert), *nToInsert);
+            pending.erase(nToInsert);
+            nToInsert = pending.begin();
+            counter++;
+        }
+        _vSorted.insert(vbsInsert(_vSorted.begin(), _vSorted.end(), _vSorted.size(), *nToInsert), *nToInsert);
+        pending.erase(nToInsert);
+        nToInsert = pending.begin();
+    }
+    if (_straggler > 0)
+        _vSorted.insert(vbsInsert(_vSorted.begin(), _vSorted.end(), _vSorted.size(), _straggler), _straggler);
+    std::cout << "SORTED VECTOR => ";
+    printVector(_vSorted);
+    std::cout << std::endl;
+    return ;
+}
