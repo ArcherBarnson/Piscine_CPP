@@ -6,6 +6,7 @@
 # include <vector>
 # include <list>
 # include <cstdlib>
+# include <time.h>
 
 # define INT_MAX 2147483647
 
@@ -23,17 +24,22 @@ class PmergeMe {
         std::list<int>::iterator lbsInsert(std::list<int>::iterator L, std::list<int>::iterator R, int size, int n);
         int getListIndex(std::list<int> lst, int n);
 
-
+        void displayList(bool sorted);
         void lMakePairs();
         void lSort();
+        void lSortMain();
         void lSortPairs();
         //void lRecursiveSort(std::list<std::pair<int, int> >::iterator ita, std::list<std::pair<int, int> >::iterator itb);
 
+        void displayVector(bool sorted);
         void vMakePairs();
         void vSort();
+        void vSortMain();
         void vSortPairs();
         std::vector<int>::iterator vbsInsert(std::vector<int>::iterator L, std::vector<int>::iterator R, int size, int n);         
         void printVector(std::vector<int> v);
+
+        void displayTimes();
 
     private:
         std::list<std::pair<int, int> > _lPairs;
@@ -43,6 +49,8 @@ class PmergeMe {
         std::vector<int> _vUnsorted;
         std::vector<int> _vSorted;
         int _straggler;
+        clock_t _lt;
+        clock_t _vt;
 
 };
 

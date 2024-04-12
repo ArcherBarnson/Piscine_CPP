@@ -108,9 +108,9 @@ int main(int ac, char **av)
         return (3);
     }
     PmergeMe sortNumbers(ln, vn);
-    std::cout << "UNSORTED LIST = ";
-    printList(ln);
-    std::cout << std::endl << "++++ LIST SORTING ++++" << std::endl;
+    //std::cout << "UNSORTED LIST = ";
+    //printList(ln);
+    /*std::cout << std::endl << "++++ LIST SORTING ++++" << std::endl;
     sortNumbers.lMakePairs();
     sortNumbers.lSortPairs();
     sortNumbers.lSort();
@@ -118,6 +118,15 @@ int main(int ac, char **av)
     std::cout << std::endl << "++++ VECTOR SORTING ++++" << std::endl;
     sortNumbers.vMakePairs();
     sortNumbers.vSortPairs();
-    sortNumbers.vSort();
+    sortNumbers.vSort();*/
+    sortNumbers.displayList(false);
+    std::cout << std::endl;
+    //sortNumbers.displayVector(false);
+    sortNumbers.lSortMain();
+    //sortNumbers.displayList(true);
+    sortNumbers.vSortMain();
+    sortNumbers.displayVector(true);
+    std::cout << std::endl;
+    sortNumbers.displayTimes();
     return (0);
 }

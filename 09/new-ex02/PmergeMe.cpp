@@ -153,6 +153,7 @@ void PmergeMe::vMakePairs()
     if (_vUnsorted.size() % 2 != 0)
     {
         _straggler = _vUnsorted.back();
+        _vUnsorted.pop_back();
         std::cout << "straggler = " << _straggler << std::endl;
         std::cout << "straggler cmp = " << _vUnsorted.back() << std::endl;
     }
@@ -168,18 +169,61 @@ void PmergeMe::vMakePairs()
     return ;
 }
 
-/////UTILS (Remove Before Flight)//////
-void printListb(std::list<int> list)
+void PmergeMe::displayList(bool sorted)
 {
-    std::list<int>::iterator it = list.begin();
-    while (it != list.end())
+    std::list<int>::iterator it;
+    std::list<int>::iterator itEnd;
+    std::string msg;
+
+    if (sorted)
     {
-        std::cout << *it << ", ";
+        msg = "+++++[SORTED ARRAY]+++++";
+        it = _lSorted.begin();
+        itEnd = _lSorted.end();
+    }
+    else
+    {
+        msg = "+++++[UNSORTED ARRAY]+++++";
+        it = _lUnsorted.begin();
+        itEnd = _lUnsorted.end();
+    }
+    std::cout << msg << std::endl; 
+    while (it != itEnd)
+    {
+        std::cout << *it << " ";
         it++; 
     }
+    std::cout << std::endl;
     return ;
 }
-///////////////////////////////////////
+
+void PmergeMe::displayVector(bool sorted)
+{
+    std::list<int>::iterator it;
+    std::list<int>::iterator itEnd;
+    std::string msg;
+
+    if (sorted)
+    {
+        msg = "+++++[SORTED ARRAY]+++++";
+        it = _lSorted.begin();
+        itEnd = _lSorted.end();
+    }
+    else
+    {
+        msg = "+++++[UNSORTED ARRAY]+++++";
+        it = _lUnsorted.begin();
+        itEnd = _lUnsorted.end();
+    }
+    std::cout << msg << std::endl; 
+    while (it != itEnd)
+    {
+        std::cout << *it << " ";
+        it++; 
+    }
+    std::cout << std::endl;
+    return ;
+}
 
 int PmergeMe::getNextJacobsthal(int n)
 {
@@ -308,11 +352,11 @@ void PmergeMe::lSort()
     }
     _lSorted.push_front(pending.front());
     pending.remove(pending.front());
-    std::cout << std::endl << "pending : ";
-    printListb(pending);
+    //std::cout << std::endl << "pending : ";
+    //printListb(pending);
     jacobsthalSequence = generateJacobsthalSequence(pending.size() + 1);
-    std::cout << std::endl << "jacobsthalseq : ";
-    printListb(jacobsthalSequence);
+    //std::cout << std::endl << "jacobsthalseq : ";
+    //printListb(jacobsthalSequence);
     std::list<int>::iterator nToInsert = pending.begin();
     while (!pending.empty())
     {
@@ -320,7 +364,7 @@ void PmergeMe::lSort()
         while (!jacobsthalSequence.empty())
         {
             std::advance(nToInsert, (*jacobsthalSequence.begin() - counter));
-            std::cout << *jacobsthalSequence.begin() << std::endl;
+            ///std::cout << *jacobsthalSequence.begin() << std::endl;
             jacobsthalSequence.remove(*jacobsthalSequence.begin());
             _lSorted.insert(lbsInsert(_lSorted.begin(), _lSorted.end(), _lSorted.size(), *nToInsert), *nToInsert);
             pending.remove(*nToInsert);
@@ -333,9 +377,9 @@ void PmergeMe::lSort()
     }
     if (_straggler > 0)
         _lSorted.insert(lbsInsert(_lSorted.begin(), _lSorted.end(), _lSorted.size(), _straggler), _straggler);
-    std::cout << "SORTED LIST => ";
-    printListb(_lSorted);
-    std::cout << std::endl;
+    //std::cout << "SORTED LIST => ";
+    //printListb(_lSorted);
+    //std::cout << std::endl;
     return ;
 
 }
@@ -362,10 +406,10 @@ void PmergeMe::vSort()
     }
     _vSorted.insert(_vSorted.begin(), pending.front());
     pending.erase(pending.begin());
-    std::cout << std::endl << "pending : ";
+    //std::cout << std::endl << "pending : ";
     //printListb(pending);
     jacobsthalSequence = generateJacobsthalSequence(pending.size() + 1);
-    std::cout << std::endl << "jacobsthalseq : ";
+    //std::cout << std::endl << "jacobsthalseq : ";
     //printListb(jacobsthalSequence);
     std::vector<int>::iterator nToInsert = pending.begin();
     while (!pending.empty())
@@ -374,7 +418,7 @@ void PmergeMe::vSort()
         while (!jacobsthalSequence.empty())
         {
             std::advance(nToInsert, (*jacobsthalSequence.begin() - counter));
-            std::cout << *jacobsthalSequence.begin() << std::endl;
+        //    std::cout << *jacobsthalSequence.begin() << std::endl;
             jacobsthalSequence.remove(*jacobsthalSequence.begin());
             _vSorted.insert(vbsInsert(_vSorted.begin(), _vSorted.end(), _vSorted.size(), *nToInsert), *nToInsert);
             pending.erase(nToInsert);
@@ -387,8 +431,35 @@ void PmergeMe::vSort()
     }
     if (_straggler > 0)
         _vSorted.insert(vbsInsert(_vSorted.begin(), _vSorted.end(), _vSorted.size(), _straggler), _straggler);
-    std::cout << "SORTED VECTOR => ";
-    printVector(_vSorted);
-    std::cout << std::endl;
+    //std::cout << "SORTED VECTOR => ";
+    //printVector(_vSorted);
+    //std::cout << std::endl;
+    return ;
+}
+
+void PmergeMe::lSortMain()
+{
+    _lt = clock();
+    lMakePairs();
+    lSortPairs();
+    lSort();
+    _lt = clock() - _lt;
+    return ;
+}
+
+void PmergeMe::vSortMain()
+{
+    _vt = clock();
+    vMakePairs();
+    vSortPairs();
+    vSort();
+    _vt = clock() - _vt;
+    return ;
+}
+
+void PmergeMe::displayTimes()
+{
+    std::cout << "Time to process a range of " << _lUnsorted.size() + (_straggler > 0 ? 1 : 0) << " elements with std::list : " <<  ((float)_lt)/CLOCKS_PER_SEC << " s" << std::endl;
+    std::cout << "Time to process a range of " << _vUnsorted.size() + (_straggler > 0 ? 1 : 0) << " elements with std::vector : " <<  ((float)_vt)/CLOCKS_PER_SEC << " s" << std::endl;
     return ;
 }
