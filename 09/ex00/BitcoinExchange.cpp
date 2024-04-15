@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgrulois <bgrulois@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/15 13:26:32 by bgrulois          #+#    #+#             */
+/*   Updated: 2024/04/15 13:54:11 by bgrulois         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange(void) {
@@ -46,7 +58,7 @@ std::map<std::string, float> BitcoinExchange::makeCsvMap(std::string filename)
             return (retmap);
         }
         date = line.substr(0, 10);
-        value = atof((line.substr(11)).c_str());
+        value = atof((line.substr(12)).c_str());
         retmap.insert(std::pair<std::string, float>(date, value));
     }
     data.close();
@@ -83,8 +95,6 @@ void    displayClosestEntry(std::map<std::string, float> db, std::string date, f
 {
     std::map<std::string, float>::iterator it = db.begin();
     int string_value = getStringValue(date);
-    //std::cout << "string value = " << string_value << std::endl;
-    //std::cout << "dbg--->" << getStringValue("2010-01-03") << std::endl;
     if (getStringValue(it->first) > string_value)
     {
         std::cout << YELLOW << "[" << date << " : Date entry invalid or before db first entry]" << RESET << std::endl;
@@ -97,7 +107,9 @@ void    displayClosestEntry(std::map<std::string, float> db, std::string date, f
         if (it != db.begin())
             it--;
         if (value >= 0 && value <= 1000)
+		{
             std::cout << CYAN << it->first << " => " << value * it->second << " (closest)" << RESET << std::endl;
+		}
     }
     else
         std::cout << YELLOW << "[" << date << " : Date entry invalid or after db last entry]" << RESET << std::endl;
@@ -142,7 +154,5 @@ void    displayResults(BitcoinExchange db, std::string input)
             std::cout << RED << "[FORMATTING ERROR : Format should be YYYY-MM-DD | VALUE]" << RESET << std::endl;
     }
     data.close();
-    //if key no match find closest earlywise
-    //if key match display date and db value (price) * input value (quantity)
     return ;
 };

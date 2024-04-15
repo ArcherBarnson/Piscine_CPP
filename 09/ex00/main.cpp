@@ -7,7 +7,7 @@ int main(int ac, char **av)
         std::cerr << RED << "./btc <input_file>"<< RESET << std::endl;
         return (1);
     }
-    BitcoinExchange bc("./data.csv");
+    BitcoinExchange bc("./input.csv");
     if (bc.getDataMap().empty())
     {
         std::cerr << RED << "FATAL : Failed to build db, exiting" << RESET << std::endl;
