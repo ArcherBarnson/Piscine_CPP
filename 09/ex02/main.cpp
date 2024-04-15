@@ -1,33 +1,123 @@
 #include "PmergeMe.hpp"
 
+////////////////////////////// DBG FCTS /////////////////////////////
+void printList(std::list<int> list)
+{
+    std::list<int>::iterator it = list.begin();
+    while (it != list.end())
+    {
+        std::cout << *it << " ";
+        it++; 
+    }
+    return ;
+}
+
+void printLPairs(std::list<std::pair<int, int> > lPairs)
+{
+    std::list<std::pair<int, int> >::iterator it = lPairs.begin();
+    while (it != lPairs.end())
+    {
+        std::cout << "[" << it->first << ":" << it->second << "] ";
+        it++; 
+    }
+    return ;
+}
+
+void printVector(std::vector<int> vector)
+{
+    std::vector<int>::iterator it = vector.begin();
+    while (it != vector.end())
+    {
+        std::cout << *it << " ";
+        it++; 
+    }
+    return ;
+}
+        std::list<int> _lSorted;
+
+void printVPairs(std::vector<std::pair<int, int> > vPairs)
+{
+    std::vector<std::pair<int, int> >::iterator it = vPairs.begin();
+    while (it != vPairs.end())
+    {
+        std::cout << "[" << it->first << ":" << it->second << "] ";
+        it++; 
+    }
+    return ;
+}
+/////////////////////////////////////////////////////////////////////
+
+std::list<int> makeLn(char **av)
+{
+    int i;
+    std::list<int> ln;
+    for (i = 1; av[i]; i++)
+    {
+        if (atoi(av[i]) <= 0
+            || atoll(av[i]) > INT_MAX)
+            return (std::list<int>());
+        ln.push_back(atoi(av[i]));
+    }
+    return (ln);
+}
+
+std::vector<int> makeVn(char **av)
+{
+    int i;
+    std::vector<int> vn;
+    for (i = 1; av[i]; i++)
+    {
+        if (atoi(av[i]) <= 0 
+            || atoll(av[i]) > INT_MAX)
+            return (std::vector<int>());
+        vn.push_back(atoi(av[i]));
+    }
+    return (vn);
+}
+
+bool dupCheck(char **av)
+{
+    for (int i = 1; av[i]; i++)
+    {
+        for (int j = i + 1; av[j]; j++)
+        {
+            if (std::string(av[i]) == std::string(av[j]))
+                return (true);
+        }
+    }
+    return (false);
+}
+
 int main(int ac, char **av)
 {
-	if (ac < 2)
-	{
-		std::cout << "./PmergeMe n0 n1 n2 n3 ..." << std::endl;
-		return (1);
-	}
-	std::list<int> unsorted;
-	std::list<int> sorted;
-	for (int i = 1; av[i]; i++)
-	{
-		if ((atoi(av[i]) == 0 && av[i][0] != '0') || atoi(av[i]) < 0 || ac < 3)
-		{
-			std::cout << "Error: only one nubmer given or bad arguments (program only takes positive integers)" << std::endl;
-			return (2);
-		}
-		else
-		{
-			unsorted.push_back(atoi(av[i]));
-		}
-	}
-	PmergeMe algo(unsorted);
-	sorted = algo.sort();
-	std::list<int>::iterator it = sorted.begin();
-	while (it != sorted.end())
-	{
-		std::cout << "[SORTED]" << *it << std::endl;
-		it++;
-	}
-	return (0);
+    if (ac < 2)
+    {
+        std::cout << "./PmergeMe <n1> <n2> <...> <nx>" << std::endl;
+        return (1);
+    }
+    else if (dupCheck(av))
+    {
+        std::cout << "Error: duplicate numbers are not allowed" << std::endl;
+        return (2);
+    }
+    std::list<int> ln = makeLn(av);
+    std::vector<int> vn = makeVn(av);
+    if (ln.empty() || vn.empty())
+    {
+        std::cout << "Error: bad arguments (a valid argument is a positive integer ([1 - INT_MAX])" << std::endl;
+        return (3);
+    }
+    PmergeMe sortNumbers(ln, vn);
+    sortNumbers.displayList(false);
+    sortNumbers.displayVector(false);
+    std::cout << std::endl;
+    //sortNumbers.displayVector(false);
+    sortNumbers.lSortMain();
+    //sortNumbers.displayList(true);
+    sortNumbers.vSortMain();
+    sortNumbers.displayList(true);
+    sortNumbers.displayVector(true);
+    std::cout << std::endl;
+    sortNumbers.displayTimes();
+    return (0);
 }
